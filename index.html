@@ -109,7 +109,7 @@
     }
 
     .l-brand img {
-      height: 44px;
+      height: 80px;
       width: auto;
       filter: brightness(0) invert(1)
     }
@@ -163,11 +163,11 @@
       align-items: center;
       justify-content: space-between;
       padding: 0 5%;
-      height: 68px;
+      height: 100px;
       background: rgba(255, 255, 255, .88);
       backdrop-filter: blur(24px);
       border-bottom: 1px solid var(--border);
-      transition: box-shadow .3s
+      transition: height .3s, box-shadow .3s
     }
 
     nav.scrolled {
@@ -181,16 +181,18 @@
     }
 
     .logo img {
-      height: 40px;
+      height: 80px;
       width: auto;
-      display: block
+      display: block;
+      object-fit: contain
     }
 
     .logo-white img {
-      height: 40px;
+      height: 80px;
       width: auto;
       display: block;
-      filter: brightness(0) invert(1)
+      filter: brightness(0) invert(1);
+      object-fit: contain
     }
 
     .nav-links {
@@ -485,12 +487,12 @@
       max-width: 110px;
       object-fit: contain;
       display: block;
-      filter: grayscale(1);
-      transition: filter .3s
+      transition: transform .3s, filter .3s
     }
 
     .t-item:hover .t-logo {
-      filter: grayscale(0)
+      transform: scale(1.05);
+      filter: brightness(1.1)
     }
 
     .t-name {
@@ -2061,59 +2063,226 @@
     <span class="ticker-lbl">Featured On</span>
     <div style="overflow:hidden;padding-left:180px">
       <div class="ticker-track">
-        <div class="t-item"><img class="t-logo" src="https://logo.clearbit.com/aninews.in" alt="ANI News"
-            onerror="this.src='https://logo.clearbit.com/ani.in'"><span class="t-name">ANI News</span></div>
-        <div class="t-item"><img class="t-logo" src="https://logo.clearbit.com/finance.yahoo.com" alt="Yahoo Finance"
-            onerror="this.style.display='none'"><span class="t-name">Yahoo Finance</span></div>
-        <div class="t-item"><img class="t-logo" src="https://logo.clearbit.com/businesswire.com" alt="BusinessWire"
-            onerror="this.style.display='none'"><span class="t-name">BusinessWire</span></div>
-        <div class="t-item"><img class="t-logo" src="https://logo.clearbit.com/digitaljournal.com" alt="Digital Journal"
-            onerror="this.style.display='none'"><span class="t-name">Digital Journal</span></div>
-        <div class="t-item"><img class="t-logo" src="https://logo.clearbit.com/prnewswire.com" alt="PR Newswire"
-            onerror="this.style.display='none'"><span class="t-name">PR Newswire</span></div>
-        <div class="t-item"><img class="t-logo" src="https://logo.clearbit.com/newsvoir.com" alt="NewsVoir"
-            onerror="this.style.display='none'"><span class="t-name">NewsVoir</span></div>
-        <div class="t-item"><img class="t-logo" src="https://logo.clearbit.com/globenewswire.com" alt="Globe Newswire"
-            onerror="this.style.display='none'"><span class="t-name">Globe Newswire</span></div>
-        <div class="t-item"><img class="t-logo" src="https://logo.clearbit.com/inc42.com" alt="Inc42"
-            onerror="this.style.display='none'"><span class="t-name">Inc42</span></div>
-        <div class="t-item"><img class="t-logo" src="https://logo.clearbit.com/entrepreneur.com"
-            alt="Entrepreneur India" onerror="this.style.display='none'"><span class="t-name">Entrepreneur India</span>
+
+        <!-- ANI News -->
+        <div class="t-item">
+          <svg class="t-logo" viewBox="0 0 110 32" fill="none" xmlns="http://www.w3.org/2000/svg"
+            style="width:auto;height:28px">
+            <rect width="110" height="32" rx="4" fill="#C8102E" />
+            <text x="55" y="21" font-family="Georgia,serif" font-size="14" font-weight="700" fill="#fff"
+              text-anchor="middle" letter-spacing="2">ANI NEWS</text>
+          </svg>
         </div>
-        <div class="t-item"><img class="t-logo" src="https://logo.clearbit.com/financialexpress.com"
-            alt="Financial Express" onerror="this.style.display='none'"><span class="t-name">Financial Express</span>
+
+        <!-- Yahoo Finance -->
+        <div class="t-item">
+          <svg class="t-logo" viewBox="0 0 140 32" fill="none" xmlns="http://www.w3.org/2000/svg"
+            style="width:auto;height:28px">
+            <rect width="140" height="32" rx="4" fill="#6001D2" />
+            <text x="70" y="21" font-family="Arial,sans-serif" font-size="13" font-weight="700" fill="#fff"
+              text-anchor="middle">Yahoo Finance</text>
+          </svg>
         </div>
-        <div class="t-item"><img class="t-logo" src="https://logo.clearbit.com/businessworld.in" alt="BW Businessworld"
-            onerror="this.style.display='none'"><span class="t-name">BW Businessworld</span></div>
-        <div class="t-item"><img class="t-logo" src="https://logo.clearbit.com/theprint.in" alt="The Print"
-            onerror="this.style.display='none'"><span class="t-name">The Print</span></div>
-        <!-- duplicate for seamless loop -->
-        <div class="t-item"><img class="t-logo" src="https://logo.clearbit.com/aninews.in" alt="ANI News"
-            onerror="this.src='https://logo.clearbit.com/ani.in'"><span class="t-name">ANI News</span></div>
-        <div class="t-item"><img class="t-logo" src="https://logo.clearbit.com/finance.yahoo.com" alt="Yahoo Finance"
-            onerror="this.style.display='none'"><span class="t-name">Yahoo Finance</span></div>
-        <div class="t-item"><img class="t-logo" src="https://logo.clearbit.com/businesswire.com" alt="BusinessWire"
-            onerror="this.style.display='none'"><span class="t-name">BusinessWire</span></div>
-        <div class="t-item"><img class="t-logo" src="https://logo.clearbit.com/digitaljournal.com" alt="Digital Journal"
-            onerror="this.style.display='none'"><span class="t-name">Digital Journal</span></div>
-        <div class="t-item"><img class="t-logo" src="https://logo.clearbit.com/prnewswire.com" alt="PR Newswire"
-            onerror="this.style.display='none'"><span class="t-name">PR Newswire</span></div>
-        <div class="t-item"><img class="t-logo" src="https://logo.clearbit.com/newsvoir.com" alt="NewsVoir"
-            onerror="this.style.display='none'"><span class="t-name">NewsVoir</span></div>
-        <div class="t-item"><img class="t-logo" src="https://logo.clearbit.com/globenewswire.com" alt="Globe Newswire"
-            onerror="this.style.display='none'"><span class="t-name">Globe Newswire</span></div>
-        <div class="t-item"><img class="t-logo" src="https://logo.clearbit.com/inc42.com" alt="Inc42"
-            onerror="this.style.display='none'"><span class="t-name">Inc42</span></div>
-        <div class="t-item"><img class="t-logo" src="https://logo.clearbit.com/entrepreneur.com"
-            alt="Entrepreneur India" onerror="this.style.display='none'"><span class="t-name">Entrepreneur India</span>
+
+        <!-- Financial Express -->
+        <div class="t-item">
+          <svg class="t-logo" viewBox="0 0 160 32" fill="none" xmlns="http://www.w3.org/2000/svg"
+            style="width:auto;height:28px">
+            <rect width="160" height="32" rx="4" fill="#003580" />
+            <text x="80" y="21" font-family="Georgia,serif" font-size="12" font-weight="700" fill="#fff"
+              text-anchor="middle">Financial Express</text>
+          </svg>
         </div>
-        <div class="t-item"><img class="t-logo" src="https://logo.clearbit.com/financialexpress.com"
-            alt="Financial Express" onerror="this.style.display='none'"><span class="t-name">Financial Express</span>
+
+        <!-- PR Newswire -->
+        <div class="t-item">
+          <svg class="t-logo" viewBox="0 0 145 32" fill="none" xmlns="http://www.w3.org/2000/svg"
+            style="width:auto;height:28px">
+            <rect width="145" height="32" rx="4" fill="#003087" />
+            <text x="72" y="21" font-family="Arial,sans-serif" font-size="12" font-weight="700" fill="#fff"
+              text-anchor="middle">PR Newswire</text>
+          </svg>
         </div>
-        <div class="t-item"><img class="t-logo" src="https://logo.clearbit.com/businessworld.in" alt="BW Businessworld"
-            onerror="this.style.display='none'"><span class="t-name">BW Businessworld</span></div>
-        <div class="t-item"><img class="t-logo" src="https://logo.clearbit.com/theprint.in" alt="The Print"
-            onerror="this.style.display='none'"><span class="t-name">The Print</span></div>
+
+        <!-- Inc42 -->
+        <div class="t-item">
+          <svg class="t-logo" viewBox="0 0 90 32" fill="none" xmlns="http://www.w3.org/2000/svg"
+            style="width:auto;height:28px">
+            <rect width="90" height="32" rx="4" fill="#1C1C1C" />
+            <text x="45" y="21" font-family="Arial,sans-serif" font-size="15" font-weight="800" fill="#FF6600"
+              text-anchor="middle">Inc42</text>
+          </svg>
+        </div>
+
+        <!-- Entrepreneur India -->
+        <div class="t-item">
+          <svg class="t-logo" viewBox="0 0 175 32" fill="none" xmlns="http://www.w3.org/2000/svg"
+            style="width:auto;height:28px">
+            <rect width="175" height="32" rx="4" fill="#E31837" />
+            <text x="87" y="21" font-family="Arial,sans-serif" font-size="12" font-weight="700" fill="#fff"
+              text-anchor="middle">Entrepreneur India</text>
+          </svg>
+        </div>
+
+        <!-- BusinessWire -->
+        <div class="t-item">
+          <svg class="t-logo" viewBox="0 0 145 32" fill="none" xmlns="http://www.w3.org/2000/svg"
+            style="width:auto;height:28px">
+            <rect width="145" height="32" rx="4" fill="#004990" />
+            <text x="72" y="21" font-family="Arial,sans-serif" font-size="13" font-weight="700" fill="#fff"
+              text-anchor="middle">BusinessWire</text>
+          </svg>
+        </div>
+
+        <!-- Globe Newswire -->
+        <div class="t-item">
+          <svg class="t-logo" viewBox="0 0 158 32" fill="none" xmlns="http://www.w3.org/2000/svg"
+            style="width:auto;height:28px">
+            <rect width="158" height="32" rx="4" fill="#00539B" />
+            <text x="79" y="21" font-family="Arial,sans-serif" font-size="12" font-weight="700" fill="#fff"
+              text-anchor="middle">Globe Newswire</text>
+          </svg>
+        </div>
+
+        <!-- BW Businessworld -->
+        <div class="t-item">
+          <svg class="t-logo" viewBox="0 0 165 32" fill="none" xmlns="http://www.w3.org/2000/svg"
+            style="width:auto;height:28px">
+            <rect width="165" height="32" rx="4" fill="#222" />
+            <text x="82" y="21" font-family="Georgia,serif" font-size="12" font-weight="700" fill="#F0A500"
+              text-anchor="middle">BW Businessworld</text>
+          </svg>
+        </div>
+
+        <!-- The Print -->
+        <div class="t-item">
+          <svg class="t-logo" viewBox="0 0 110 32" fill="none" xmlns="http://www.w3.org/2000/svg"
+            style="width:auto;height:28px">
+            <rect width="110" height="32" rx="4" fill="#1A1A1A" />
+            <text x="55" y="21" font-family="Georgia,serif" font-size="14" font-weight="700" fill="#fff"
+              text-anchor="middle">The Print</text>
+          </svg>
+        </div>
+
+        <!-- Digital Journal -->
+        <div class="t-item">
+          <svg class="t-logo" viewBox="0 0 148 32" fill="none" xmlns="http://www.w3.org/2000/svg"
+            style="width:auto;height:28px">
+            <rect width="148" height="32" rx="4" fill="#0072BC" />
+            <text x="74" y="21" font-family="Arial,sans-serif" font-size="12" font-weight="700" fill="#fff"
+              text-anchor="middle">Digital Journal</text>
+          </svg>
+        </div>
+
+        <!-- NewsVoir -->
+        <div class="t-item">
+          <svg class="t-logo" viewBox="0 0 110 32" fill="none" xmlns="http://www.w3.org/2000/svg"
+            style="width:auto;height:28px">
+            <rect width="110" height="32" rx="4" fill="#2E7D32" />
+            <text x="55" y="21" font-family="Arial,sans-serif" font-size="13" font-weight="700" fill="#fff"
+              text-anchor="middle">NewsVoir</text>
+          </svg>
+        </div>
+
+        <!-- === DUPLICATE SET for seamless loop === -->
+
+        <div class="t-item">
+          <svg class="t-logo" viewBox="0 0 110 32" fill="none" xmlns="http://www.w3.org/2000/svg"
+            style="width:auto;height:28px">
+            <rect width="110" height="32" rx="4" fill="#C8102E" />
+            <text x="55" y="21" font-family="Georgia,serif" font-size="14" font-weight="700" fill="#fff"
+              text-anchor="middle" letter-spacing="2">ANI NEWS</text>
+          </svg>
+        </div>
+        <div class="t-item">
+          <svg class="t-logo" viewBox="0 0 140 32" fill="none" xmlns="http://www.w3.org/2000/svg"
+            style="width:auto;height:28px">
+            <rect width="140" height="32" rx="4" fill="#6001D2" />
+            <text x="70" y="21" font-family="Arial,sans-serif" font-size="13" font-weight="700" fill="#fff"
+              text-anchor="middle">Yahoo Finance</text>
+          </svg>
+        </div>
+        <div class="t-item">
+          <svg class="t-logo" viewBox="0 0 160 32" fill="none" xmlns="http://www.w3.org/2000/svg"
+            style="width:auto;height:28px">
+            <rect width="160" height="32" rx="4" fill="#003580" />
+            <text x="80" y="21" font-family="Georgia,serif" font-size="12" font-weight="700" fill="#fff"
+              text-anchor="middle">Financial Express</text>
+          </svg>
+        </div>
+        <div class="t-item">
+          <svg class="t-logo" viewBox="0 0 145 32" fill="none" xmlns="http://www.w3.org/2000/svg"
+            style="width:auto;height:28px">
+            <rect width="145" height="32" rx="4" fill="#003087" />
+            <text x="72" y="21" font-family="Arial,sans-serif" font-size="12" font-weight="700" fill="#fff"
+              text-anchor="middle">PR Newswire</text>
+          </svg>
+        </div>
+        <div class="t-item">
+          <svg class="t-logo" viewBox="0 0 90 32" fill="none" xmlns="http://www.w3.org/2000/svg"
+            style="width:auto;height:28px">
+            <rect width="90" height="32" rx="4" fill="#1C1C1C" />
+            <text x="45" y="21" font-family="Arial,sans-serif" font-size="15" font-weight="800" fill="#FF6600"
+              text-anchor="middle">Inc42</text>
+          </svg>
+        </div>
+        <div class="t-item">
+          <svg class="t-logo" viewBox="0 0 175 32" fill="none" xmlns="http://www.w3.org/2000/svg"
+            style="width:auto;height:28px">
+            <rect width="175" height="32" rx="4" fill="#E31837" />
+            <text x="87" y="21" font-family="Arial,sans-serif" font-size="12" font-weight="700" fill="#fff"
+              text-anchor="middle">Entrepreneur India</text>
+          </svg>
+        </div>
+        <div class="t-item">
+          <svg class="t-logo" viewBox="0 0 145 32" fill="none" xmlns="http://www.w3.org/2000/svg"
+            style="width:auto;height:28px">
+            <rect width="145" height="32" rx="4" fill="#004990" />
+            <text x="72" y="21" font-family="Arial,sans-serif" font-size="13" font-weight="700" fill="#fff"
+              text-anchor="middle">BusinessWire</text>
+          </svg>
+        </div>
+        <div class="t-item">
+          <svg class="t-logo" viewBox="0 0 158 32" fill="none" xmlns="http://www.w3.org/2000/svg"
+            style="width:auto;height:28px">
+            <rect width="158" height="32" rx="4" fill="#00539B" />
+            <text x="79" y="21" font-family="Arial,sans-serif" font-size="12" font-weight="700" fill="#fff"
+              text-anchor="middle">Globe Newswire</text>
+          </svg>
+        </div>
+        <div class="t-item">
+          <svg class="t-logo" viewBox="0 0 165 32" fill="none" xmlns="http://www.w3.org/2000/svg"
+            style="width:auto;height:28px">
+            <rect width="165" height="32" rx="4" fill="#222" />
+            <text x="82" y="21" font-family="Georgia,serif" font-size="12" font-weight="700" fill="#F0A500"
+              text-anchor="middle">BW Businessworld</text>
+          </svg>
+        </div>
+        <div class="t-item">
+          <svg class="t-logo" viewBox="0 0 110 32" fill="none" xmlns="http://www.w3.org/2000/svg"
+            style="width:auto;height:28px">
+            <rect width="110" height="32" rx="4" fill="#1A1A1A" />
+            <text x="55" y="21" font-family="Georgia,serif" font-size="14" font-weight="700" fill="#fff"
+              text-anchor="middle">The Print</text>
+          </svg>
+        </div>
+        <div class="t-item">
+          <svg class="t-logo" viewBox="0 0 148 32" fill="none" xmlns="http://www.w3.org/2000/svg"
+            style="width:auto;height:28px">
+            <rect width="148" height="32" rx="4" fill="#0072BC" />
+            <text x="74" y="21" font-family="Arial,sans-serif" font-size="12" font-weight="700" fill="#fff"
+              text-anchor="middle">Digital Journal</text>
+          </svg>
+        </div>
+        <div class="t-item">
+          <svg class="t-logo" viewBox="0 0 110 32" fill="none" xmlns="http://www.w3.org/2000/svg"
+            style="width:auto;height:28px">
+            <rect width="110" height="32" rx="4" fill="#2E7D32" />
+            <text x="55" y="21" font-family="Arial,sans-serif" font-size="13" font-weight="700" fill="#fff"
+              text-anchor="middle">NewsVoir</text>
+          </svg>
+        </div>
+
       </div>
     </div>
   </div>
@@ -2338,123 +2507,18 @@
     </div>
   </div>
 
-  <!-- PRICING -->
-  <section id="pricing">
+  <!-- CUSTOM PR PACKAGE -->
+  <section id="custom-package" style="background: var(--pl)">
     <div class="tc reveal">
-      <span class="s-label">PR Packages</span>
-      <h2 class="s-title">Transparent Pricing. Powerful Reach.</h2>
-      <p class="s-sub">No hidden fees. No locked contracts. Just real media coverage at honest prices.</p>
-    </div>
-    <div class="price-anchor reveal">
-      <span class="anc-old">Market Agency Cost: <s>₹25,000+</s></span>
-      <div class="anc-div"></div>
-      <span class="anc-new">Infusion Bizz starts at ₹4,999</span>
-    </div>
-    <div class="price-grid reveal">
-      <div class="p-card">
-        <p class="p-tier">Starter PR</p>
-        <div class="p-price"><sup>₹</sup>4,999</div>
-        <div class="p-was">Market rate: ₹15,000+</div>
-        <ul class="p-feats">
-          <li><span class="p-check"><svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="var(--p)"
-                stroke-width="2.5">
-                <path d="M2 6l3 3 5-5" />
-              </svg></span>1 Press Release Publication</li>
-          <li><span class="p-check"><svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="var(--p)"
-                stroke-width="2.5">
-                <path d="M2 6l3 3 5-5" />
-              </svg></span>25+ Media Platforms</li>
-          <li><span class="p-check"><svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="var(--p)"
-                stroke-width="2.5">
-                <path d="M2 6l3 3 5-5" />
-              </svg></span>Basic SEO Distribution</li>
-          <li><span class="p-check"><svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="var(--p)"
-                stroke-width="2.5">
-                <path d="M2 6l3 3 5-5" />
-              </svg></span>Publication Links Report</li>
-          <li><span class="p-check"><svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="var(--p)"
-                stroke-width="2.5">
-                <path d="M2 6l3 3 5-5" />
-              </svg></span>48-Hour Turnaround</li>
-        </ul>
-        <a class="btn-ghost" style="width:100%;text-align:center;display:block"
-          href="https://wa.me/919999999999?text=Starter+PR+Package+enquiry" target="_blank">Get Started</a>
-      </div>
-      <div class="p-card feat">
-        <span class="pop-badge">Most Popular</span>
-        <p class="p-tier">Growth PR</p>
-        <div class="p-price"><sup>₹</sup>9,999</div>
-        <div class="p-was">Market rate: ₹30,000+</div>
-        <ul class="p-feats">
-          <li><span class="p-check"><svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="var(--p)"
-                stroke-width="2.5">
-                <path d="M2 6l3 3 5-5" />
-              </svg></span>1 PR + Professional Editing</li>
-          <li><span class="p-check"><svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="var(--p)"
-                stroke-width="2.5">
-                <path d="M2 6l3 3 5-5" />
-              </svg></span>100+ Media Platforms</li>
-          <li><span class="p-check"><svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="var(--p)"
-                stroke-width="2.5">
-                <path d="M2 6l3 3 5-5" />
-              </svg></span>Advanced SEO Distribution</li>
-          <li><span class="p-check"><svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="var(--p)"
-                stroke-width="2.5">
-                <path d="M2 6l3 3 5-5" />
-              </svg></span>Social Media Syndication</li>
-          <li><span class="p-check"><svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="var(--p)"
-                stroke-width="2.5">
-                <path d="M2 6l3 3 5-5" />
-              </svg></span>PR Consultation Call</li>
-          <li><span class="p-check"><svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="var(--p)"
-                stroke-width="2.5">
-                <path d="M2 6l3 3 5-5" />
-              </svg></span>Detailed Analytics Report</li>
-          <li><span class="p-check"><svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="var(--p)"
-                stroke-width="2.5">
-                <path d="M2 6l3 3 5-5" />
-              </svg></span>24-Hour Priority Turnaround</li>
-        </ul>
-        <a class="btn-primary" style="width:100%;justify-content:center;display:flex"
-          href="https://wa.me/919999999999?text=Growth+PR+Package+enquiry" target="_blank">Start Your PR Campaign</a>
-      </div>
-      <div class="p-card">
-        <p class="p-tier">Corporate PR</p>
-        <div class="p-price"><sup>₹</sup>24,999</div>
-        <div class="p-was">Market rate: ₹75,000+</div>
-        <ul class="p-feats">
-          <li><span class="p-check"><svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="var(--p)"
-                stroke-width="2.5">
-                <path d="M2 6l3 3 5-5" />
-              </svg></span>4 Press Releases / Month</li>
-          <li><span class="p-check"><svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="var(--p)"
-                stroke-width="2.5">
-                <path d="M2 6l3 3 5-5" />
-              </svg></span>500+ Media Platforms</li>
-          <li><span class="p-check"><svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="var(--p)"
-                stroke-width="2.5">
-                <path d="M2 6l3 3 5-5" />
-              </svg></span>Full PR Strategy</li>
-          <li><span class="p-check"><svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="var(--p)"
-                stroke-width="2.5">
-                <path d="M2 6l3 3 5-5" />
-              </svg></span>Brand Storytelling</li>
-          <li><span class="p-check"><svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="var(--p)"
-                stroke-width="2.5">
-                <path d="M2 6l3 3 5-5" />
-              </svg></span>Dedicated PR Manager</li>
-          <li><span class="p-check"><svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="var(--p)"
-                stroke-width="2.5">
-                <path d="M2 6l3 3 5-5" />
-              </svg></span>Monthly Performance Review</li>
-          <li><span class="p-check"><svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="var(--p)"
-                stroke-width="2.5">
-                <path d="M2 6l3 3 5-5" />
-              </svg></span>Media Placement Strategy</li>
-        </ul>
-        <a class="btn-ghost" style="width:100%;text-align:center;display:block"
-          href="https://wa.me/919999999999?text=Corporate+PR+Package+enquiry" target="_blank">Contact Our Team</a>
-      </div>
+      <span class="s-label">TAILORED SOLUTIONS</span>
+      <h2 class="s-title">Want to get your custom PR package?</h2>
+      <p class="s-sub" style="margin-bottom: 40px;">Our team will craft a tailored press release distribution strategy that fits your brand's unique needs.</p>
+      <a class="btn-primary" href="https://wa.me/919999999999?text=I+want+to+get+my+custom+PR+package" target="_blank">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" style="margin-right: 8px;">
+          <path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.025 3.129l-.651 2.375 2.446-.641c.821.45 1.761.689 2.946.69h.002c3.18 0 5.77-2.586 5.772-5.766 0-3.18-2.592-5.764-5.772-5.764zm3.376 8.21c-.139.39-.705.712-1.025.75-.32.039-.64.06-1.103-.139-.463-.199-1.135-.419-1.844-.734-1.123-.507-1.848-1.656-1.907-1.734-.059-.077-.479-.636-.479-1.22s.306-.871.415-.991c.109-.12.24-.15.319-.15.08 0 .159.001.23.001.076.001.171-.027.268.209.1.24.341.83.371.89.03.06.05.13.01.21-.04.08-.12.18-.24.28-.112.1-.23.18-.32.279-.088.1-.19.21-.08.4.11.19.49.808 1.05 1.304.72.64 1.32.84 1.51.93.19.09.3.08.41-.05.11-.13.48-.56.6-.75.12-.19.24-.16.4-.1.16.05 1.03.48 1.21.57.18.09.3.13.34.19.04.06.04.34-.09.73zM12 2C6.477 2 2 6.477 2 12c0 1.891.524 3.662 1.435 5.176L2 22l4.957-1.303A9.954 9.954 0 0012 22c5.523 0 10-4.477 10-10S17.523 2 12 2z"/>
+        </svg>
+        Chat with us now
+      </a>
     </div>
   </section>
 
