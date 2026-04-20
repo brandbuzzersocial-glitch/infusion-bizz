@@ -109,9 +109,10 @@
     }
 
     .l-brand img {
-      height: 80px;
+      height: 700px;
       width: auto;
-      filter: brightness(0) invert(1)
+      filter: brightness(0) invert(1);
+      margin: -300px 0
     }
 
     .l-bar {
@@ -177,22 +178,28 @@
     .logo {
       display: inline-flex;
       align-items: center;
-      text-decoration: none
+      text-decoration: none;
+      height: 100px;
+      width: 240px;
+      overflow: hidden;
+      justify-content: center
     }
 
     .logo img {
-      height: 80px;
+      height: 650px;
       width: auto;
       display: block;
-      object-fit: contain
+      object-fit: contain;
+      margin: -260px 0
     }
 
     .logo-white img {
-      height: 80px;
+      height: 650px;
       width: auto;
       display: block;
       filter: brightness(0) invert(1);
-      object-fit: contain
+      object-fit: contain;
+      margin: -260px 0
     }
 
     .nav-links {
@@ -1968,35 +1975,6 @@
         display: none
       }
     }
-    /* PORTFOLIO */
-    #portfolio {
-      background: #faf9ff;
-    }
-    .port-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; margin-top: 48px; }
-    .port-card { background: #fff; border: 1.5px solid var(--border); border-radius: 20px; transition: all .3s ease; display: flex; flex-direction: column; text-decoration: none; height: 100%; position: relative; overflow: hidden; }
-    .port-card:hover { transform: translateY(-8px); border-color: var(--p); box-shadow: 0 24px 60px var(--glow); }
-    .port-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 4px; background: linear-gradient(90deg, var(--p), var(--ps)); opacity: 0; transition: opacity .3s; z-index: 2; }
-    .port-card:hover::before { opacity: 1; }
-    .port-thumb { width: 100%; height: 170px; overflow: hidden; position: relative; border-bottom: 1px solid var(--border); flex-shrink: 0; }
-    .port-thumb img { width: 100%; height: 100%; object-fit: cover; transition: transform .6s ease; }
-    .port-card:hover .port-thumb img { transform: scale(1.08); }
-    .port-content { padding: 26px 22px; display: flex; flex-direction: column; flex-grow: 1; }
-    .port-pub { font-size: 11px; font-weight: 700; letter-spacing: .15em; text-transform: uppercase; color: var(--p); margin-bottom: 14px; display: inline-flex; align-items: center; background: var(--pl); padding: 5px 12px; border-radius: 100px; align-self: flex-start; }
-    .port-title { font-family: 'Poppins', sans-serif; font-size: 16px; font-weight: 700; color: var(--black); line-height: 1.5; margin-bottom: 22px; flex-grow: 1; display: -webkit-box; -webkit-line-clamp: 4; -webkit-box-orient: vertical; overflow: hidden; }
-    .port-meta { display: flex; align-items: center; justify-content: space-between; border-top: 1px solid var(--border); padding-top: 16px; margin-top: auto; }
-    .port-date { font-size: 12px; color: var(--muted); font-weight: 500; display: flex; align-items: center; gap: 6px; }
-    .port-link-icon { color: var(--p); background: var(--pl); width: 32px; height: 32px; border-radius: 50%; display: flex; align-items: center; justify-content: center; transition: all .3s; }
-    .port-card:hover .port-link-icon { background: var(--p); color: #fff; transform: scale(1.1) rotate(-15deg); }
-    
-    @media(max-width:1024px) {
-      .port-grid { grid-template-columns: repeat(2, 1fr); gap: 20px; }
-    }
-    @media(max-width:768px) {
-      .port-grid { grid-template-columns: 1fr; margin-top: 32px; }
-      .port-content { padding: 22px 18px; }
-      .port-title { font-size: 15px; }
-      .port-thumb { height: 200px; }
-    }
   </style>
 </head>
 
@@ -2009,7 +1987,7 @@
   <div id="loader">
     <canvas id="loader-canvas"></canvas>
     <p class="l-tag">Initialising Global Media Network</p>
-    <p class="l-brand"><img src="logo.png" alt="Infusion Bizz"></p>
+    <p class="l-brand"><img src="new_logo.png" alt="Infusion Bizz"></p>
     <div class="l-bar">
       <div class="l-fill"></div>
     </div>
@@ -2017,14 +1995,14 @@
 
   <!-- NAV -->
   <nav id="nav">
-    <a class="logo" href="#"><img src="logo.png" alt="Infusion Bizz"></a>
+    <a class="logo" href="#"><img src="new_logo.png" alt="Infusion Bizz"></a>
     <ul class="nav-links">
       <li><a href="#services">Services</a></li>
       <li><a href="#process">Process</a></li>
       <li><a href="#pricing">Packages</a></li>
       <li><a href="#testimonials">Results</a></li>
     </ul>
-    <a class="btn-nav" href="https://wa.me/919660966608?text=Hi%2C+I%27m+interested+in+PR+services" target="_blank">Get
+    <a class="btn-nav" href="https://wa.me/919999999999?text=Hi%2C+I%27m+interested+in+PR+services" target="_blank">Get
       PR Published</a>
     <button class="hamburger" id="hamburger" onclick="toggleMenu()" aria-label="Menu">
       <span></span><span></span><span></span>
@@ -2037,7 +2015,7 @@
     <a href="#process" onclick="closeMenu()">Process</a>
     <a href="#pricing" onclick="closeMenu()">Packages</a>
     <a href="#testimonials" onclick="closeMenu()">Results</a>
-    <a class="btn-primary" href="https://wa.me/919660966608?text=Hi%2C+I%27m+interested+in+PR+services" target="_blank"
+    <a class="btn-primary" href="https://wa.me/919999999999?text=Hi%2C+I%27m+interested+in+PR+services" target="_blank"
       onclick="closeMenu()">Get PR Published</a>
   </div>
 
@@ -2057,7 +2035,7 @@
         <p class="hero-sub">Get your brand featured across 500+ leading media platforms with strategic press release
           distribution and corporate PR — at prices that actually make sense.</p>
         <div class="hero-btns">
-          <a class="btn-primary" href="https://wa.me/919660966608?text=I+want+to+get+my+PR+published" target="_blank">
+          <a class="btn-primary" href="https://wa.me/919999999999?text=I+want+to+get+my+PR+published" target="_blank">
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
               <path d="M5 12h14M12 5l7 7-7 7" />
             </svg>
@@ -2095,128 +2073,226 @@
 
         <!-- ANI News -->
         <div class="t-item">
-          <img class="t-logo" src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a4/ANI_Logo.svg/320px-ANI_Logo.svg.png" alt="ANI News" style="height:28px;width:auto;object-fit:contain">
+          <svg class="t-logo" viewBox="0 0 110 32" fill="none" xmlns="http://www.w3.org/2000/svg"
+            style="width:auto;height:28px">
+            <rect width="110" height="32" rx="4" fill="#C8102E" />
+            <text x="55" y="21" font-family="Georgia,serif" font-size="14" font-weight="700" fill="#fff"
+              text-anchor="middle" letter-spacing="2">ANI NEWS</text>
+          </svg>
         </div>
 
         <!-- Yahoo Finance -->
         <div class="t-item">
-          <img class="t-logo" src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/54/Yahoo_Finance_Logo_2021.svg/320px-Yahoo_Finance_Logo_2021.svg.png" alt="Yahoo Finance" style="height:28px;width:auto;object-fit:contain">
+          <svg class="t-logo" viewBox="0 0 140 32" fill="none" xmlns="http://www.w3.org/2000/svg"
+            style="width:auto;height:28px">
+            <rect width="140" height="32" rx="4" fill="#6001D2" />
+            <text x="70" y="21" font-family="Arial,sans-serif" font-size="13" font-weight="700" fill="#fff"
+              text-anchor="middle">Yahoo Finance</text>
+          </svg>
         </div>
 
         <!-- Financial Express -->
         <div class="t-item">
-          <img class="t-logo" src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/7e/The_Financial_Express_%28India%29_Logo.svg/320px-The_Financial_Express_%28India%29_Logo.svg.png" alt="Financial Express" style="height:28px;width:auto;object-fit:contain">
+          <svg class="t-logo" viewBox="0 0 160 32" fill="none" xmlns="http://www.w3.org/2000/svg"
+            style="width:auto;height:28px">
+            <rect width="160" height="32" rx="4" fill="#003580" />
+            <text x="80" y="21" font-family="Georgia,serif" font-size="12" font-weight="700" fill="#fff"
+              text-anchor="middle">Financial Express</text>
+          </svg>
         </div>
 
         <!-- PR Newswire -->
         <div class="t-item">
-          <img class="t-logo" src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e0/PR_Newswire_logo_%282017%29.png/320px-PR_Newswire_logo_%282017%29.png" alt="PR Newswire" style="height:28px;width:auto;object-fit:contain">
+          <svg class="t-logo" viewBox="0 0 145 32" fill="none" xmlns="http://www.w3.org/2000/svg"
+            style="width:auto;height:28px">
+            <rect width="145" height="32" rx="4" fill="#003087" />
+            <text x="72" y="21" font-family="Arial,sans-serif" font-size="12" font-weight="700" fill="#fff"
+              text-anchor="middle">PR Newswire</text>
+          </svg>
         </div>
 
         <!-- Inc42 -->
         <div class="t-item">
-          <img class="t-logo" src="https://logo.clearbit.com/inc42.com" alt="Inc42" style="height:28px;width:auto;object-fit:contain">
+          <svg class="t-logo" viewBox="0 0 90 32" fill="none" xmlns="http://www.w3.org/2000/svg"
+            style="width:auto;height:28px">
+            <rect width="90" height="32" rx="4" fill="#1C1C1C" />
+            <text x="45" y="21" font-family="Arial,sans-serif" font-size="15" font-weight="800" fill="#FF6600"
+              text-anchor="middle">Inc42</text>
+          </svg>
         </div>
 
         <!-- Entrepreneur India -->
         <div class="t-item">
-          <img class="t-logo" src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a8/Entrepreneur_magazine_logo.svg/320px-Entrepreneur_magazine_logo.svg.png" alt="Entrepreneur India" style="height:28px;width:auto;object-fit:contain">
+          <svg class="t-logo" viewBox="0 0 175 32" fill="none" xmlns="http://www.w3.org/2000/svg"
+            style="width:auto;height:28px">
+            <rect width="175" height="32" rx="4" fill="#E31837" />
+            <text x="87" y="21" font-family="Arial,sans-serif" font-size="12" font-weight="700" fill="#fff"
+              text-anchor="middle">Entrepreneur India</text>
+          </svg>
         </div>
 
         <!-- BusinessWire -->
         <div class="t-item">
-          <img class="t-logo" src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/2e/BusinessWire_Logo.svg/320px-BusinessWire_Logo.svg.png" alt="BusinessWire" style="height:28px;width:auto;object-fit:contain">
+          <svg class="t-logo" viewBox="0 0 145 32" fill="none" xmlns="http://www.w3.org/2000/svg"
+            style="width:auto;height:28px">
+            <rect width="145" height="32" rx="4" fill="#004990" />
+            <text x="72" y="21" font-family="Arial,sans-serif" font-size="13" font-weight="700" fill="#fff"
+              text-anchor="middle">BusinessWire</text>
+          </svg>
         </div>
 
-        <!-- GlobeNewswire -->
+        <!-- Globe Newswire -->
         <div class="t-item">
-          <img class="t-logo" src="https://logo.clearbit.com/globenewswire.com" alt="GlobeNewswire" style="height:28px;width:auto;object-fit:contain">
+          <svg class="t-logo" viewBox="0 0 158 32" fill="none" xmlns="http://www.w3.org/2000/svg"
+            style="width:auto;height:28px">
+            <rect width="158" height="32" rx="4" fill="#00539B" />
+            <text x="79" y="21" font-family="Arial,sans-serif" font-size="12" font-weight="700" fill="#fff"
+              text-anchor="middle">Globe Newswire</text>
+          </svg>
         </div>
 
         <!-- BW Businessworld -->
         <div class="t-item">
-          <img class="t-logo" src="https://logo.clearbit.com/businessworld.in" alt="BW Businessworld" style="height:28px;width:auto;object-fit:contain">
+          <svg class="t-logo" viewBox="0 0 165 32" fill="none" xmlns="http://www.w3.org/2000/svg"
+            style="width:auto;height:28px">
+            <rect width="165" height="32" rx="4" fill="#222" />
+            <text x="82" y="21" font-family="Georgia,serif" font-size="12" font-weight="700" fill="#F0A500"
+              text-anchor="middle">BW Businessworld</text>
+          </svg>
         </div>
 
         <!-- The Print -->
         <div class="t-item">
-          <img class="t-logo" src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/0e/ThePrint_logo.png/320px-ThePrint_logo.png" alt="The Print" style="height:28px;width:auto;object-fit:contain">
+          <svg class="t-logo" viewBox="0 0 110 32" fill="none" xmlns="http://www.w3.org/2000/svg"
+            style="width:auto;height:28px">
+            <rect width="110" height="32" rx="4" fill="#1A1A1A" />
+            <text x="55" y="21" font-family="Georgia,serif" font-size="14" font-weight="700" fill="#fff"
+              text-anchor="middle">The Print</text>
+          </svg>
         </div>
 
         <!-- Digital Journal -->
         <div class="t-item">
-          <img class="t-logo" src="https://logo.clearbit.com/digitaljournal.com" alt="Digital Journal" style="height:28px;width:auto;object-fit:contain">
+          <svg class="t-logo" viewBox="0 0 148 32" fill="none" xmlns="http://www.w3.org/2000/svg"
+            style="width:auto;height:28px">
+            <rect width="148" height="32" rx="4" fill="#0072BC" />
+            <text x="74" y="21" font-family="Arial,sans-serif" font-size="12" font-weight="700" fill="#fff"
+              text-anchor="middle">Digital Journal</text>
+          </svg>
         </div>
 
         <!-- NewsVoir -->
         <div class="t-item">
-          <img class="t-logo" src="https://logo.clearbit.com/newsvoir.com" alt="NewsVoir" style="height:28px;width:auto;object-fit:contain">
+          <svg class="t-logo" viewBox="0 0 110 32" fill="none" xmlns="http://www.w3.org/2000/svg"
+            style="width:auto;height:28px">
+            <rect width="110" height="32" rx="4" fill="#2E7D32" />
+            <text x="55" y="21" font-family="Arial,sans-serif" font-size="13" font-weight="700" fill="#fff"
+              text-anchor="middle">NewsVoir</text>
+          </svg>
         </div>
 
         <!-- === DUPLICATE SET for seamless loop === -->
 
         <div class="t-item">
-          <img class="t-logo" src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a4/ANI_Logo.svg/320px-ANI_Logo.svg.png" alt="ANI News" style="height:28px;width:auto;object-fit:contain">
+          <svg class="t-logo" viewBox="0 0 110 32" fill="none" xmlns="http://www.w3.org/2000/svg"
+            style="width:auto;height:28px">
+            <rect width="110" height="32" rx="4" fill="#C8102E" />
+            <text x="55" y="21" font-family="Georgia,serif" font-size="14" font-weight="700" fill="#fff"
+              text-anchor="middle" letter-spacing="2">ANI NEWS</text>
+          </svg>
         </div>
         <div class="t-item">
-          <img class="t-logo" src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/54/Yahoo_Finance_Logo_2021.svg/320px-Yahoo_Finance_Logo_2021.svg.png" alt="Yahoo Finance" style="height:28px;width:auto;object-fit:contain">
+          <svg class="t-logo" viewBox="0 0 140 32" fill="none" xmlns="http://www.w3.org/2000/svg"
+            style="width:auto;height:28px">
+            <rect width="140" height="32" rx="4" fill="#6001D2" />
+            <text x="70" y="21" font-family="Arial,sans-serif" font-size="13" font-weight="700" fill="#fff"
+              text-anchor="middle">Yahoo Finance</text>
+          </svg>
         </div>
         <div class="t-item">
-          <img class="t-logo" src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/7e/The_Financial_Express_%28India%29_Logo.svg/320px-The_Financial_Express_%28India%29_Logo.svg.png" alt="Financial Express" style="height:28px;width:auto;object-fit:contain">
+          <svg class="t-logo" viewBox="0 0 160 32" fill="none" xmlns="http://www.w3.org/2000/svg"
+            style="width:auto;height:28px">
+            <rect width="160" height="32" rx="4" fill="#003580" />
+            <text x="80" y="21" font-family="Georgia,serif" font-size="12" font-weight="700" fill="#fff"
+              text-anchor="middle">Financial Express</text>
+          </svg>
         </div>
         <div class="t-item">
-          <img class="t-logo" src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e0/PR_Newswire_logo_%282017%29.png/320px-PR_Newswire_logo_%282017%29.png" alt="PR Newswire" style="height:28px;width:auto;object-fit:contain">
+          <svg class="t-logo" viewBox="0 0 145 32" fill="none" xmlns="http://www.w3.org/2000/svg"
+            style="width:auto;height:28px">
+            <rect width="145" height="32" rx="4" fill="#003087" />
+            <text x="72" y="21" font-family="Arial,sans-serif" font-size="12" font-weight="700" fill="#fff"
+              text-anchor="middle">PR Newswire</text>
+          </svg>
         </div>
         <div class="t-item">
-          <img class="t-logo" src="https://logo.clearbit.com/inc42.com" alt="Inc42" style="height:28px;width:auto;object-fit:contain">
+          <svg class="t-logo" viewBox="0 0 90 32" fill="none" xmlns="http://www.w3.org/2000/svg"
+            style="width:auto;height:28px">
+            <rect width="90" height="32" rx="4" fill="#1C1C1C" />
+            <text x="45" y="21" font-family="Arial,sans-serif" font-size="15" font-weight="800" fill="#FF6600"
+              text-anchor="middle">Inc42</text>
+          </svg>
         </div>
         <div class="t-item">
-          <img class="t-logo" src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a8/Entrepreneur_magazine_logo.svg/320px-Entrepreneur_magazine_logo.svg.png" alt="Entrepreneur India" style="height:28px;width:auto;object-fit:contain">
+          <svg class="t-logo" viewBox="0 0 175 32" fill="none" xmlns="http://www.w3.org/2000/svg"
+            style="width:auto;height:28px">
+            <rect width="175" height="32" rx="4" fill="#E31837" />
+            <text x="87" y="21" font-family="Arial,sans-serif" font-size="12" font-weight="700" fill="#fff"
+              text-anchor="middle">Entrepreneur India</text>
+          </svg>
         </div>
         <div class="t-item">
-          <img class="t-logo" src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/2e/BusinessWire_Logo.svg/320px-BusinessWire_Logo.svg.png" alt="BusinessWire" style="height:28px;width:auto;object-fit:contain">
+          <svg class="t-logo" viewBox="0 0 145 32" fill="none" xmlns="http://www.w3.org/2000/svg"
+            style="width:auto;height:28px">
+            <rect width="145" height="32" rx="4" fill="#004990" />
+            <text x="72" y="21" font-family="Arial,sans-serif" font-size="13" font-weight="700" fill="#fff"
+              text-anchor="middle">BusinessWire</text>
+          </svg>
         </div>
         <div class="t-item">
-          <img class="t-logo" src="https://logo.clearbit.com/globenewswire.com" alt="GlobeNewswire" style="height:28px;width:auto;object-fit:contain">
+          <svg class="t-logo" viewBox="0 0 158 32" fill="none" xmlns="http://www.w3.org/2000/svg"
+            style="width:auto;height:28px">
+            <rect width="158" height="32" rx="4" fill="#00539B" />
+            <text x="79" y="21" font-family="Arial,sans-serif" font-size="12" font-weight="700" fill="#fff"
+              text-anchor="middle">Globe Newswire</text>
+          </svg>
         </div>
         <div class="t-item">
-          <img class="t-logo" src="https://logo.clearbit.com/businessworld.in" alt="BW Businessworld" style="height:28px;width:auto;object-fit:contain">
+          <svg class="t-logo" viewBox="0 0 165 32" fill="none" xmlns="http://www.w3.org/2000/svg"
+            style="width:auto;height:28px">
+            <rect width="165" height="32" rx="4" fill="#222" />
+            <text x="82" y="21" font-family="Georgia,serif" font-size="12" font-weight="700" fill="#F0A500"
+              text-anchor="middle">BW Businessworld</text>
+          </svg>
         </div>
         <div class="t-item">
-          <img class="t-logo" src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/0e/ThePrint_logo.png/320px-ThePrint_logo.png" alt="The Print" style="height:28px;width:auto;object-fit:contain">
+          <svg class="t-logo" viewBox="0 0 110 32" fill="none" xmlns="http://www.w3.org/2000/svg"
+            style="width:auto;height:28px">
+            <rect width="110" height="32" rx="4" fill="#1A1A1A" />
+            <text x="55" y="21" font-family="Georgia,serif" font-size="14" font-weight="700" fill="#fff"
+              text-anchor="middle">The Print</text>
+          </svg>
         </div>
         <div class="t-item">
-          <img class="t-logo" src="https://logo.clearbit.com/digitaljournal.com" alt="Digital Journal" style="height:28px;width:auto;object-fit:contain">
+          <svg class="t-logo" viewBox="0 0 148 32" fill="none" xmlns="http://www.w3.org/2000/svg"
+            style="width:auto;height:28px">
+            <rect width="148" height="32" rx="4" fill="#0072BC" />
+            <text x="74" y="21" font-family="Arial,sans-serif" font-size="12" font-weight="700" fill="#fff"
+              text-anchor="middle">Digital Journal</text>
+          </svg>
         </div>
         <div class="t-item">
-          <img class="t-logo" src="https://logo.clearbit.com/newsvoir.com" alt="NewsVoir" style="height:28px;width:auto;object-fit:contain">
+          <svg class="t-logo" viewBox="0 0 110 32" fill="none" xmlns="http://www.w3.org/2000/svg"
+            style="width:auto;height:28px">
+            <rect width="110" height="32" rx="4" fill="#2E7D32" />
+            <text x="55" y="21" font-family="Arial,sans-serif" font-size="13" font-weight="700" fill="#fff"
+              text-anchor="middle">NewsVoir</text>
+          </svg>
         </div>
 
       </div>
     </div>
   </div>
-
-  <!-- STATS -->
-  <section id="stats">
-    <div class="stats-grid">
-      <div class="stat-cell reveal">
-        <div class="stat-num" data-target="1200" data-suffix="+">0</div>
-        <div class="stat-sub">Press Releases Published</div>
-      </div>
-      <div class="stat-cell reveal">
-        <div class="stat-num" data-target="500" data-suffix="+">0</div>
-        <div class="stat-sub">Media Platforms</div>
-      </div>
-      <div class="stat-cell reveal">
-        <div class="stat-num" data-target="200" data-suffix="+">0</div>
-        <div class="stat-sub">Brands Served</div>
-      </div>
-      <div class="stat-cell reveal">
-        <div class="stat-num" data-target="95" data-suffix="%">0</div>
-        <div class="stat-sub">Client Satisfaction</div>
-      </div>
-    </div>
-  </section>
 
   <!-- SERVICES -->
   <section id="services">
@@ -2444,7 +2520,7 @@
       <span class="s-label">TAILORED SOLUTIONS</span>
       <h2 class="s-title">Want to get your custom PR package?</h2>
       <p class="s-sub" style="margin-bottom: 40px;">Our team will craft a tailored press release distribution strategy that fits your brand's unique needs.</p>
-      <a class="btn-primary" href="https://wa.me/919660966608?text=I+want+to+get+my+custom+PR+package" target="_blank">
+      <a class="btn-primary" href="https://wa.me/919999999999?text=I+want+to+get+my+custom+PR+package" target="_blank">
         <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" style="margin-right: 8px;">
           <path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.025 3.129l-.651 2.375 2.446-.641c.821.45 1.761.689 2.946.69h.002c3.18 0 5.77-2.586 5.772-5.766 0-3.18-2.592-5.764-5.772-5.764zm3.376 8.21c-.139.39-.705.712-1.025.75-.32.039-.64.06-1.103-.139-.463-.199-1.135-.419-1.844-.734-1.123-.507-1.848-1.656-1.907-1.734-.059-.077-.479-.636-.479-1.22s.306-.871.415-.991c.109-.12.24-.15.319-.15.08 0 .159.001.23.001.076.001.171-.027.268.209.1.24.341.83.371.89.03.06.05.13.01.21-.04.08-.12.18-.24.28-.112.1-.23.18-.32.279-.088.1-.19.21-.08.4.11.19.49.808 1.05 1.304.72.64 1.32.84 1.51.93.19.09.3.08.41-.05.11-.13.48-.56.6-.75.12-.19.24-.16.4-.1.16.05 1.03.48 1.21.57.18.09.3.13.34.19.04.06.04.34-.09.73zM12 2C6.477 2 2 6.477 2 12c0 1.891.524 3.662 1.435 5.176L2 22l4.957-1.303A9.954 9.954 0 0012 22c5.523 0 10-4.477 10-10S17.523 2 12 2z"/>
         </svg>
@@ -2453,241 +2529,27 @@
     </div>
   </section>
 
-  <!-- PORTFOLIO -->
-  <section id="portfolio">
-    <div class="tc reveal">
-      <span class="s-label" style="color:var(--p)">Our Work</span>
-      <h2 class="s-title">Featured Article Publications</h2>
-      <p class="s-sub">Discover some of the recent press releases and premium media coverage we have secured for our clients.</p>
-    </div>
-    
-    <div class="port-grid">
-      <!-- Article 1 -->
-      <a href="https://www.moneycontrol.com/entertainment/bollywood/vivek-oberoi-to-receive-dadasaheb-phalke-international-film-festival-award-for-indian-police-force-article-13642529.html" target="_blank" class="port-card reveal">
-        <div class="port-thumb">
-          <img src="https://images.unsplash.com/photo-1603190287605-e6ade32fa852?w=600&h=400&fit=crop" alt="Article Thumbnail">
-        </div>
-        <div class="port-content">
-          <span class="port-pub">Moneycontrol</span>
-          <h3 class="port-title">Vivek Oberoi to Receive Dadasaheb Phalke International Film Festival Award for Indian Police Force</h3>
-          <div class="port-meta">
-            <span class="port-date">
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                <rect x="3" y="4" width="18" height="18" rx="2" ry="2"/>
-                <line x1="16" y1="2" x2="16" y2="6"/>
-                <line x1="8" y1="2" x2="8" y2="6"/>
-                <line x1="3" y1="10" x2="21" y2="10"/>
-              </svg>
-              30 Oct 2025
-            </span>
-            <div class="port-link-icon">
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                <line x1="7" y1="17" x2="17" y2="7"/>
-                <polyline points="7 7 17 7 17 17"/>
-              </svg>
-            </div>
-          </div>
-        </div>
-      </a>
-
-      <!-- Article 2 -->
-      <a href="https://news.abplive.com/entertainment/celebrities/meet-ajayraj-the-face-reading-specialist-bridging-ancient-wisdom-modern-psychology-1818683" target="_blank" class="port-card reveal">
-        <div class="port-thumb">
-          <img src="https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?w=600&h=400&fit=crop" alt="Article Thumbnail">
-        </div>
-        <div class="port-content">
-          <span class="port-pub">ABP Live</span>
-          <h3 class="port-title">Meet Ajayraj: The Face Reading Specialist Bridging Ancient Wisdom & Modern Psychology</h3>
-          <div class="port-meta">
-            <span class="port-date">
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                <rect x="3" y="4" width="18" height="18" rx="2" ry="2"/>
-                <line x1="16" y1="2" x2="16" y2="6"/>
-                <line x1="8" y1="2" x2="8" y2="6"/>
-                <line x1="3" y1="10" x2="21" y2="10"/>
-              </svg>
-              23 Dec 2025
-            </span>
-            <div class="port-link-icon">
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                <line x1="7" y1="17" x2="17" y2="7"/>
-                <polyline points="7 7 17 7 17 17"/>
-              </svg>
-            </div>
-          </div>
-        </div>
-      </a>
-
-      <!-- Article 3 -->
-      <a href="https://www.dnainindia.com/lifestyle/report-meet-dr-kriti-bharti-the-fearless-savior-changing-india-s-child-marriage-narrative-13642533" target="_blank" class="port-card reveal">
-        <div class="port-thumb">
-          <img src="https://images.unsplash.com/photo-1532629345422-7515f3d16bb6?w=600&h=400&fit=crop" alt="Article Thumbnail">
-        </div>
-        <div class="port-content">
-          <span class="port-pub">DNA India</span>
-          <h3 class="port-title">Meet Dr Kriti Bharti: The Fearless Savior Changing India's Child Marriage Narrative</h3>
-          <div class="port-meta">
-            <span class="port-date">
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                <rect x="3" y="4" width="18" height="18" rx="2" ry="2"/>
-                <line x1="16" y1="2" x2="16" y2="6"/>
-                <line x1="8" y1="2" x2="8" y2="6"/>
-                <line x1="3" y1="10" x2="21" y2="10"/>
-              </svg>
-              20 Dec 2025
-            </span>
-            <div class="port-link-icon">
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                <line x1="7" y1="17" x2="17" y2="7"/>
-                <polyline points="7 7 17 7 17 17"/>
-              </svg>
-            </div>
-          </div>
-        </div>
-      </a>
-
-      <!-- Article 4 -->
-      <a href="https://www.india.com/money/alongside-ananya-panday-and-ishaan-khatter-22-year-old-founder-makes-the-35-under-35-8312046/" target="_blank" class="port-card reveal">
-        <div class="port-thumb">
-          <img src="https://images.unsplash.com/photo-1519389950473-47ba0277781c?w=600&h=400&fit=crop" alt="Article Thumbnail">
-        </div>
-        <div class="port-content">
-          <span class="port-pub">India.com</span>
-          <h3 class="port-title">22-Year-Old Founder Featured Alongside Ananya Panday & Ishaan Khatter</h3>
-          <div class="port-meta">
-            <span class="port-date">
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                <rect x="3" y="4" width="18" height="18" rx="2" ry="2"/>
-                <line x1="16" y1="2" x2="16" y2="6"/>
-                <line x1="8" y1="2" x2="8" y2="6"/>
-                <line x1="3" y1="10" x2="21" y2="10"/>
-              </svg>
-              25 Feb 2026
-            </span>
-            <div class="port-link-icon">
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                <line x1="7" y1="17" x2="17" y2="7"/>
-                <polyline points="7 7 17 7 17 17"/>
-              </svg>
-            </div>
-          </div>
-        </div>
-      </a>
-
-      <!-- Article 5 -->
-      <a href="https://timesofindia.indiatimes.com/small-town-dreams-supreme-success-advocate-sarthak-chaturvedis-inspiring-rise-from-mathura/articleshow/125022211.cms" target="_blank" class="port-card reveal">
-        <div class="port-thumb">
-          <img src="https://images.unsplash.com/photo-1589829085413-56de8ae18c73?w=600&h=400&fit=crop" alt="Article Thumbnail">
-        </div>
-        <div class="port-content">
-          <span class="port-pub">The Times of India</span>
-          <h3 class="port-title">Small-Town Dreams, Supreme Success: Advocate Sarthak Chaturvedi's Inspiring Rise</h3>
-          <div class="port-meta">
-            <span class="port-date">
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                <rect x="3" y="4" width="18" height="18" rx="2" ry="2"/>
-                <line x1="16" y1="2" x2="16" y2="6"/>
-                <line x1="8" y1="2" x2="8" y2="6"/>
-                <line x1="3" y1="10" x2="21" y2="10"/>
-              </svg>
-              01 Nov 2025
-            </span>
-            <div class="port-link-icon">
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                <line x1="7" y1="17" x2="17" y2="7"/>
-                <polyline points="7 7 17 7 17 17"/>
-              </svg>
-            </div>
-          </div>
-        </div>
-      </a>
-
-      <!-- Article 6 -->
-      <a href="https://timesofindia.indiatimes.com/how-bangladeshi-ai-educator-robin-rafan-is-supporting-digital-skill-development-across-south-asia/articleshow/125034828.cms" target="_blank" class="port-card reveal">
-        <div class="port-thumb">
-          <img src="https://images.unsplash.com/photo-1677442136019-21780ecad995?w=600&h=400&fit=crop" alt="Article Thumbnail">
-        </div>
-        <div class="port-content">
-          <span class="port-pub">The Times of India</span>
-          <h3 class="port-title">AI Educator Robin Rafan Supporting Digital Skill Development Across South Asia</h3>
-          <div class="port-meta">
-            <span class="port-date">
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                <rect x="3" y="4" width="18" height="18" rx="2" ry="2"/>
-                <line x1="16" y1="2" x2="16" y2="6"/>
-                <line x1="8" y1="2" x2="8" y2="6"/>
-                <line x1="3" y1="10" x2="21" y2="10"/>
-              </svg>
-              05 Nov 2025
-            </span>
-            <div class="port-link-icon">
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                <line x1="7" y1="17" x2="17" y2="7"/>
-                <polyline points="7 7 17 7 17 17"/>
-              </svg>
-            </div>
-          </div>
-        </div>
-      </a>
-
-      <!-- Article 7 -->
-      <a href="https://www.bwhealthcareworld.com/article/experts-point-to-need-for-navigation-based-care-models-584373-584374" target="_blank" class="port-card reveal">
-        <div class="port-thumb">
-          <img src="https://images.unsplash.com/photo-1579684385127-1ef15d508118?w=600&h=400&fit=crop" alt="Article Thumbnail">
-        </div>
-        <div class="port-content">
-          <span class="port-pub">BW Healthcare World</span>
-          <h3 class="port-title">Experts Point to Need for Navigation-Based Care Models</h3>
-          <div class="port-meta">
-            <span class="port-date">
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                <rect x="3" y="4" width="18" height="18" rx="2" ry="2"/>
-                <line x1="16" y1="2" x2="16" y2="6"/>
-                <line x1="8" y1="2" x2="8" y2="6"/>
-                <line x1="3" y1="10" x2="21" y2="10"/>
-              </svg>
-              20 Dec 2025
-            </span>
-            <div class="port-link-icon">
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                <line x1="7" y1="17" x2="17" y2="7"/>
-                <polyline points="7 7 17 7 17 17"/>
-              </svg>
-            </div>
-          </div>
-        </div>
-      </a>
-
-      <!-- Article 8 -->
-      <a href="https://www.republicworld.com/business/meet-xanfi-made-in-india-genai-chatbot-supporting-100-languages-pearl-kapur" target="_blank" class="port-card reveal">
-        <div class="port-thumb">
-          <img src="https://images.unsplash.com/photo-1531297172867-4f541366d7ad?w=600&h=400&fit=crop" alt="Article Thumbnail">
-        </div>
-        <div class="port-content">
-          <span class="port-pub">Republic World</span>
-          <h3 class="port-title">Meet Xanfi: Made-in-India GenAI Chatbot Supporting 100+ Languages</h3>
-          <div class="port-meta">
-            <span class="port-date">
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                <rect x="3" y="4" width="18" height="18" rx="2" ry="2"/>
-                <line x1="16" y1="2" x2="16" y2="6"/>
-                <line x1="8" y1="2" x2="8" y2="6"/>
-                <line x1="3" y1="10" x2="21" y2="10"/>
-              </svg>
-              20 Apr 2025
-            </span>
-            <div class="port-link-icon">
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                <line x1="7" y1="17" x2="17" y2="7"/>
-                <polyline points="7 7 17 7 17 17"/>
-              </svg>
-            </div>
-          </div>
-        </div>
-      </a>
+  <!-- STATS -->
+  <section id="stats">
+    <div class="stats-grid">
+      <div class="stat-cell reveal">
+        <div class="stat-num" data-target="1200" data-suffix="+">0</div>
+        <div class="stat-sub">Press Releases Published</div>
+      </div>
+      <div class="stat-cell reveal">
+        <div class="stat-num" data-target="500" data-suffix="+">0</div>
+        <div class="stat-sub">Media Platforms</div>
+      </div>
+      <div class="stat-cell reveal">
+        <div class="stat-num" data-target="200" data-suffix="+">0</div>
+        <div class="stat-sub">Brands Served</div>
+      </div>
+      <div class="stat-cell reveal">
+        <div class="stat-num" data-target="95" data-suffix="%">0</div>
+        <div class="stat-sub">Client Satisfaction</div>
+      </div>
     </div>
   </section>
-
 
   <!-- TESTIMONIALS -->
   <section id="testimonials">
@@ -2798,13 +2660,13 @@
     <p class="s-sub tc reveal">Publish your press release and reach hundreds of media platforms. Your story deserves to
       be heard — and we'll make sure it is.</p>
     <div class="cta-btns reveal">
-      <a class="btn-white" href="https://wa.me/919660966608?text=I+am+ready+to+start+my+PR+campaign" target="_blank">
+      <a class="btn-white" href="https://wa.me/919999999999?text=I+am+ready+to+start+my+PR+campaign" target="_blank">
         <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
           <path d="M5 12h14M12 5l7 7-7 7" />
         </svg>
         Start Your PR Campaign
       </a>
-      <a class="btn-ghost-w" href="https://wa.me/919660966608?text=I+want+to+speak+to+the+PR+team" target="_blank">Talk
+      <a class="btn-ghost-w" href="https://wa.me/919999999999?text=I+want+to+speak+to+the+PR+team" target="_blank">Talk
         to Our PR Team</a>
     </div>
   </section>
@@ -2813,7 +2675,7 @@
   <footer>
     <div class="footer-grid">
       <div class="f-brand">
-        <a class="logo logo-white" href="#"><img src="logo.png" alt="Infusion Bizz"></a>
+        <a class="logo logo-white" href="#"><img src="new_logo.png" alt="Infusion Bizz"></a>
         <p>India's most affordable press release distribution and corporate PR. Helping brands get featured where it
           matters most.</p>
         <div class="f-social">
@@ -2823,20 +2685,17 @@
               <circle cx="12" cy="12" r="4" />
               <circle cx="17.5" cy="6.5" r="1" fill="rgba(255,255,255,.5)" stroke="none" />
             </svg></a>
-          <a class="f-soc-a" href="https://www.linkedin.com/company/infusion-bizz/" target="_blank"><svg width="15" height="15" viewBox="0 0 24 24" fill="none"
+          <a class="f-soc-a" href="#"><svg width="15" height="15" viewBox="0 0 24 24" fill="none"
               stroke="rgba(255,255,255,.5)" stroke-width="1.7">
               <rect x="2" y="2" width="20" height="20" rx="3" />
               <path d="M7 10v7M7 7v.01M12 17v-4a2 2 0 0 1 4 0v4M12 10v7" />
             </svg></a>
-          <a class="f-soc-a" href="https://www.instagram.com/infusionbizz?igsh=MTQxeDhpMDJzdWYzbQ==" target="_blank"><svg width="15" height="15" viewBox="0 0 24 24" fill="none"
+          <a class="f-soc-a" href="#"><svg width="15" height="15" viewBox="0 0 24 24" fill="none"
               stroke="rgba(255,255,255,.5)" stroke-width="1.7">
-              <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+              <path
+                d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z" />
             </svg></a>
-          <a class="f-soc-a" href="https://www.facebook.com/share/1BDQwVegn7/" target="_blank"><svg width="15" height="15" viewBox="0 0 24 24" fill="none"
-              stroke="rgba(255,255,255,.5)" stroke-width="1.7">
-              <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path>
-            </svg></a>
-          <a class="f-soc-a" href="https://wa.me/919660966608" target="_blank"><svg width="15" height="15"
+          <a class="f-soc-a" href="https://wa.me/919999999999" target="_blank"><svg width="15" height="15"
               viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,.5)" stroke-width="1.7">
               <path
                 d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z" />
@@ -2846,12 +2705,12 @@
       <div class="f-col">
         <h5>Services</h5>
         <ul>
-          <li><a href="https://wa.me/919660966608?text=Press+Release+Distribution" target="_blank">Press Release
+          <li><a href="https://wa.me/919999999999?text=Press+Release+Distribution" target="_blank">Press Release
               Distribution</a></li>
-          <li><a href="https://wa.me/919660966608?text=Corporate+PR+Packages" target="_blank">Corporate PR Packages</a>
+          <li><a href="https://wa.me/919999999999?text=Corporate+PR+Packages" target="_blank">Corporate PR Packages</a>
           </li>
-          <li><a href="https://wa.me/919660966608?text=Media+Coverage" target="_blank">Media Coverage</a></li>
-          <li><a href="https://wa.me/919660966608?text=PR+Strategy" target="_blank">PR Strategy</a></li>
+          <li><a href="https://wa.me/919999999999?text=Media+Coverage" target="_blank">Media Coverage</a></li>
+          <li><a href="https://wa.me/919999999999?text=PR+Strategy" target="_blank">PR Strategy</a></li>
         </ul>
       </div>
       <div class="f-col">
@@ -2866,11 +2725,11 @@
       <div class="f-col">
         <h5>Contact</h5>
         <ul>
-          <li><a href="mailto:bizzinfusion@gmail.com">bizzinfusion@gmail.com</a></li>
-          <li><a href="mailto:rohit@infusionbizz.com">rohit@infusionbizz.com</a></li>
-          <li><a href="https://wa.me/919660966608" target="_blank">WhatsApp Us</a></li>
-          <li><a href="tel:+919660966608">+91 96609 66608</a></li>
-          <li><a href="https://maps.app.goo.gl/9Jn1XZbHShzJh4ZQ8" target="_blank">C-309, Jana Path, Nirman Nagar, Jaipur</a></li>
+          <li><a href="/cdn-cgi/l/email-protection#e58d8089898aa58c8b8390968c8a8b878c9f9fcb868a88"><span
+                class="__cf_email__"
+                data-cfemail="670f020b0b08270e090112140e0809050e1d1d4904080a">[email&#160;protected]</span></a></li>
+          <li><a href="https://wa.me/919999999999" target="_blank">WhatsApp Us</a></li>
+          <li><a href="#">+91 99999 99999</a></li>
         </ul>
       </div>
     </div>
@@ -2880,7 +2739,7 @@
     </div>
   </footer>
 
-  <a id="floatcta" href="https://wa.me/919660966608?text=I+want+to+publish+my+PR" target="_blank">
+  <a id="floatcta" href="https://wa.me/919999999999?text=I+want+to+publish+my+PR" target="_blank">
     <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
       <path
         d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z" />
@@ -2902,7 +2761,7 @@
         <input type="email" placeholder="Email Address">
         <input type="text" placeholder="Brand / Company Name">
         <a class="btn-primary" style="justify-content:center"
-          href="https://wa.me/919660966608?text=I+want+a+free+PR+consultation" target="_blank" onclick="closePop()">Get
+          href="https://wa.me/919999999999?text=I+want+a+free+PR+consultation" target="_blank" onclick="closePop()">Get
           Free PR Consultation <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"
             stroke-width="2.5">
             <path d="M5 12h14M12 5l7 7-7 7" />
