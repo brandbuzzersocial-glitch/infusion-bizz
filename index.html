@@ -99,55 +99,41 @@
       pointer-events: none
     }
 
-    #loader-canvas {
-      width: 340px;
-      height: 340px
-    }
-
-    .l-tag {
-      color: rgba(255, 255, 255, .45);
-      font-size: 12px;
-      letter-spacing: .18em;
-      text-transform: uppercase;
-      margin-top: 28px;
-      animation: fadeUp 1s .4s both
-    }
-
     .l-brand {
-      margin-top: 8px;
-      animation: fadeUp 1s .55s both
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
     }
 
     .l-brand img {
-      height: 80px;
+      height: 400px;
       width: auto;
-      filter: brightness(0) invert(1)
+      filter: brightness(0) invert(1);
+      animation: logoPulse 2.5s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+      position: relative;
+      z-index: 2;
     }
 
-    .l-bar {
-      width: 220px;
-      height: 1px;
-      background: rgba(255, 255, 255, .1);
-      margin-top: 22px;
-      border-radius: 1px;
-      overflow: hidden;
-      animation: fadeUp 1s .65s both
+    .l-brand::after {
+      content: '';
+      position: absolute;
+      width: 600px;
+      height: 600px;
+      background: radial-gradient(circle, rgba(108, 59, 255, 0.4) 0%, rgba(108, 59, 255, 0) 70%);
+      border-radius: 50%;
+      z-index: 1;
+      animation: glowPulse 2.5s cubic-bezier(0.4, 0, 0.2, 1) infinite;
     }
 
-    .l-fill {
-      height: 100%;
-      background: linear-gradient(90deg, var(--p), var(--ps));
-      animation: fillW 2.7s ease forwards
+    @keyframes logoPulse {
+      0%, 100% { transform: scale(0.9); opacity: 0.8; }
+      50% { transform: scale(1.1); opacity: 1; }
     }
 
-    @keyframes fillW {
-      from {
-        width: 0
-      }
-
-      to {
-        width: 100%
-      }
+    @keyframes glowPulse {
+      0%, 100% { transform: scale(0.8); opacity: 0.5; }
+      50% { transform: scale(1.5); opacity: 1; }
     }
 
     @keyframes fadeUp {
@@ -417,10 +403,34 @@
       height: 560px
     }
 
-    #hero-canvas {
-      width: 100%;
-      height: 100%
-    }
+    .glass-anim { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; perspective: 1000px; transform-style: preserve-3d; overflow: hidden; }
+    .center-doc { width: 80px; height: 110px; background: rgba(255,255,255,0.7); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); border: 1px solid rgba(255,255,255,0.9); border-radius: 8px; box-shadow: 0 16px 40px rgba(108,59,255,0.2); display: flex; flex-direction: column; overflow: hidden; position: relative; z-index: 10; transform: translateZ(20px); animation: floatDoc 4s ease-in-out infinite; }
+    @keyframes floatDoc { 0%, 100% { transform: translateZ(20px) translateY(0); } 50% { transform: translateZ(20px) translateY(-12px); } }
+    .doc-header { height: 26px; background: var(--p); display: flex; align-items: center; justify-content: flex-end; padding: 0 8px; }
+    .doc-dot { width: 7px; height: 7px; border-radius: 50%; background: #fff; opacity: 0.9; }
+    .doc-body { padding: 12px; display: flex; flex-direction: column; gap: 8px; }
+    .doc-line { height: 3px; background: var(--p); opacity: 0.35; border-radius: 2px; width: 100%; }
+    .orbit { position: absolute; top: 50%; left: 50%; border: 1.5px solid rgba(108,59,255,0.12); border-radius: 50%; transform-style: preserve-3d; }
+    .o1 { width: 260px; height: 260px; margin: -130px 0 0 -130px; animation: spin1 20s linear infinite; }
+    .o2 { width: 400px; height: 400px; margin: -200px 0 0 -200px; animation: spin2 30s linear infinite; }
+    .o3 { width: 560px; height: 560px; margin: -280px 0 0 -280px; animation: spin3 45s linear infinite; }
+    @keyframes spin1 { from { transform: rotateX(65deg) rotateZ(0deg); } to { transform: rotateX(65deg) rotateZ(360deg); } }
+    @keyframes spin2 { from { transform: rotateX(65deg) rotateZ(0deg); } to { transform: rotateX(65deg) rotateZ(-360deg); } }
+    @keyframes spin3 { from { transform: rotateX(65deg) rotateZ(0deg); } to { transform: rotateX(65deg) rotateZ(360deg); } }
+    .point { position: absolute; top: 50%; left: 50%; width: 0; height: 0; transform-style: preserve-3d; }
+    .p1 { transform: rotateZ(0deg) translateX(130px); } .p2 { transform: rotateZ(120deg) translateX(130px); } .p3 { transform: rotateZ(240deg) translateX(130px); }
+    .p4 { transform: rotateZ(45deg) translateX(200px); } .p5 { transform: rotateZ(135deg) translateX(200px); } .p6 { transform: rotateZ(225deg) translateX(200px); } .p7 { transform: rotateZ(315deg) translateX(200px); }
+    .p8 { transform: rotateZ(30deg) translateX(280px); } .p9 { transform: rotateZ(150deg) translateX(280px); } .p10 { transform: rotateZ(270deg) translateX(280px); } .p11 { transform: rotateZ(330deg) translateX(280px); }
+    .node { width: 14px; height: 14px; background: var(--p); border-radius: 50%; margin: -7px 0 0 -7px; box-shadow: 0 0 0 4px rgba(108,59,255,0.2), 0 0 12px rgba(108,59,255,0.5); position: relative; }
+    .p2 .node, .p6 .node, .p9 .node { background: var(--ps); box-shadow: 0 0 0 4px rgba(138,102,255,0.2), 0 0 12px rgba(138,102,255,0.5); }
+    .p3 .node, .p7 .node, .p11 .node { background: var(--pd); box-shadow: 0 0 0 4px rgba(74,31,212,0.2), 0 0 12px rgba(74,31,212,0.5); }
+    .rev1 { animation: rev1 20s linear infinite; } .rev2 { animation: rev2 30s linear infinite; } .rev3 { animation: rev3 45s linear infinite; }
+    @keyframes rev1 { from { transform: rotateZ(0deg) rotateX(-65deg); } to { transform: rotateZ(-360deg) rotateX(-65deg); } }
+    @keyframes rev2 { from { transform: rotateZ(0deg) rotateX(-65deg); } to { transform: rotateZ(360deg) rotateX(-65deg); } }
+    @keyframes rev3 { from { transform: rotateZ(0deg) rotateX(-65deg); } to { transform: rotateZ(-360deg) rotateX(-65deg); } }
+    .glow-dot { position: absolute; width: 4px; height: 4px; background: #fff; border-radius: 50%; box-shadow: 0 0 8px 2px rgba(255,255,255,0.8); animation: floatDot 8s ease-in-out infinite alternate; z-index: 5; }
+    .gd1 { top: 20%; left: 30%; animation-delay: 0s; } .gd2 { top: 70%; left: 75%; animation-delay: -2s; } .gd3 { top: 80%; left: 20%; animation-delay: -4s; } .gd4 { top: 30%; left: 80%; animation-delay: -6s; }
+    @keyframes floatDot { 0% { transform: translateY(0) scale(1); opacity: 0.3; } 100% { transform: translateY(-20px) scale(1.5); opacity: 0.8; } }
 
     /* TICKER */
     #ticker {
@@ -852,10 +862,9 @@
     /* NETWORK */
     #network {
       background: #05030f;
-      text-align: center;
       position: relative;
       overflow: hidden;
-      padding: 90px 5% 70px
+      padding: 60px 5%
     }
 
     #network::before {
@@ -868,6 +877,19 @@
       pointer-events: none
     }
 
+    .net-split {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 48px;
+      align-items: center;
+      position: relative;
+      z-index: 1
+    }
+
+    .net-left {
+      text-align: left
+    }
+
     #network .s-label {
       color: var(--ps);
       margin-bottom: 14px
@@ -875,22 +897,24 @@
 
     #network .s-title {
       color: #fff;
-      margin-bottom: 10px;
-      font-size: clamp(28px, 3.5vw, 40px)
+      margin-bottom: 12px;
+      font-size: clamp(26px, 2.8vw, 36px);
+      text-align: left
     }
 
     #network .s-sub {
-      color: rgba(255, 255, 255, .45);
-      margin: 0 auto 32px;
-      max-width: 540px
+      color: rgba(255, 255, 255, .55);
+      margin: 0 0 28px;
+      max-width: 420px;
+      text-align: left
     }
 
     .net-pills {
       display: flex;
-      justify-content: center;
-      gap: 12px;
+      justify-content: flex-start;
+      gap: 10px;
       flex-wrap: wrap;
-      margin-bottom: 38px
+      margin-bottom: 32px
     }
 
     .net-pill {
@@ -900,8 +924,8 @@
       background: rgba(255, 255, 255, .05);
       border: 1px solid rgba(255, 255, 255, .1);
       border-radius: 100px;
-      padding: 7px 16px;
-      font-size: 12.5px;
+      padding: 6px 14px;
+      font-size: 12px;
       font-weight: 600;
       color: rgba(255, 255, 255, .7)
     }
@@ -924,29 +948,29 @@
 
     .net-canvas-wrap {
       position: relative;
-      border-radius: 24px;
+      border-radius: 20px;
       overflow: hidden;
       border: 1px solid rgba(108,59,255,.2);
-      box-shadow: 0 0 80px rgba(108,59,255,.15), inset 0 0 40px rgba(0,0,0,.4);
+      box-shadow: 0 0 60px rgba(108,59,255,.15), inset 0 0 30px rgba(0,0,0,.4);
       background: #070515
     }
 
     #net-canvas {
       width: 100%;
-      height: 520px;
+      height: 380px;
       display: block
     }
 
     .net-bottom-stats {
       display: flex;
-      justify-content: center;
-      gap: 40px;
-      margin-top: 32px;
+      justify-content: flex-start;
+      gap: 28px;
+      margin-top: 28px;
       flex-wrap: wrap
     }
 
     .net-stat {
-      text-align: center
+      text-align: left
     }
 
     .net-stat-num {
@@ -1865,9 +1889,37 @@
         display: none
       }
 
-      /* Network canvas */
+      /* Network — stack on mobile */
+      .net-split {
+        grid-template-columns: 1fr;
+        gap: 28px
+      }
+
+      .net-left {
+        text-align: center
+      }
+
+      #network .s-title,
+      #network .s-sub {
+        text-align: center;
+        margin-left: auto;
+        margin-right: auto
+      }
+
+      .net-pills {
+        justify-content: center
+      }
+
+      .net-bottom-stats {
+        justify-content: center
+      }
+
+      .net-stat {
+        text-align: center
+      }
+
       #net-canvas {
-        height: 280px
+        height: 220px
       }
 
       .net-live {
@@ -2080,12 +2132,7 @@
 
   <!-- LOADER -->
   <div id="loader">
-    <canvas id="loader-canvas"></canvas>
-    <p class="l-tag">Initialising Global Media Network</p>
-    <p class="l-brand"><img src="logo.png" alt="Infusion Bizz"></p>
-    <div class="l-bar">
-      <div class="l-fill"></div>
-    </div>
+    <div class="l-brand"><img src="logo.png" alt="Infusion Bizz"></div>
   </div>
 
   <!-- NAV -->
@@ -2157,7 +2204,41 @@
           <p class="proof-txt"><strong>200+ brands</strong> trust Infusion Bizz for affordable PR</p>
         </div>
       </div>
-      <div class="hero-right"><canvas id="hero-canvas"></canvas></div>
+      <div class="hero-right">
+        <div class="glass-anim">
+          <div class="orbit o1">
+            <div class="point p1"><div class="node rev1"></div></div>
+            <div class="point p2"><div class="node rev1"></div></div>
+            <div class="point p3"><div class="node rev1"></div></div>
+          </div>
+          <div class="orbit o2">
+            <div class="point p4"><div class="node rev2"></div></div>
+            <div class="point p5"><div class="node rev2"></div></div>
+            <div class="point p6"><div class="node rev2"></div></div>
+            <div class="point p7"><div class="node rev2"></div></div>
+          </div>
+          <div class="orbit o3">
+            <div class="point p8"><div class="node rev3"></div></div>
+            <div class="point p9"><div class="node rev3"></div></div>
+            <div class="point p10"><div class="node rev3"></div></div>
+            <div class="point p11"><div class="node rev3"></div></div>
+          </div>
+          <div class="center-doc">
+            <div class="doc-header"><div class="doc-dot"></div></div>
+            <div class="doc-body">
+              <div class="doc-line" style="width:80%"></div>
+              <div class="doc-line" style="width:100%"></div>
+              <div class="doc-line" style="width:100%"></div>
+              <div class="doc-line" style="width:100%"></div>
+              <div class="doc-line" style="width:60%"></div>
+            </div>
+          </div>
+          <div class="glow-dot gd1"></div>
+          <div class="glow-dot gd2"></div>
+          <div class="glow-dot gd3"></div>
+          <div class="glow-dot gd4"></div>
+        </div>
+      </div>
     </div>
   </section>
 
@@ -2492,28 +2573,28 @@
               <p>Draft your story or use our professional copywriting support.</p>
             </div>
           </div>
-          <div class="p-step">
+          <div class="p-step lit">
             <div class="p-num">2</div>
             <div class="p-body">
               <h4>Choose Your Package</h4>
               <p>Select the distribution plan that fits your goals and budget.</p>
             </div>
           </div>
-          <div class="p-step">
+          <div class="p-step lit">
             <div class="p-num">3</div>
             <div class="p-body">
               <h4>Submit Content</h4>
               <p>Send via WhatsApp or email — we review and optimise it.</p>
             </div>
           </div>
-          <div class="p-step">
+          <div class="p-step lit">
             <div class="p-num">4</div>
             <div class="p-body">
               <h4>Media Distribution</h4>
               <p>Published across our full network of 500+ portals simultaneously.</p>
             </div>
           </div>
-          <div class="p-step">
+          <div class="p-step lit">
             <div class="p-num">5</div>
             <div class="p-body">
               <h4>Receive Coverage Report</h4>
@@ -2571,25 +2652,40 @@
 
   <!-- NETWORK -->
   <section id="network">
-    <span class="s-label">Media Reach</span>
-    <h2 class="s-title reveal">Your Story Travels Across<br>Our Media Network</h2>
-    <p class="s-sub reveal">A single press release. Hundreds of journalists. Thousands of readers. Watch your story travel the globe in real time.</p>
+    <div class="net-split">
+      <!-- LEFT: text + stats -->
+      <div class="net-left">
+        <span class="s-label">Media Reach</span>
+        <h2 class="s-title reveal">Your Story Travels Across<br>Our Media Network</h2>
+        <p class="s-sub reveal">A single press release. Hundreds of journalists. Thousands of readers. Watch your story travel the globe in real time.</p>
 
-    <div class="net-pills reveal">
-      <div class="net-pill"><span class="dot dot-green"></span> Press Releases Distributed Today: <strong id="live-count">18</strong></div>
-      <div class="net-pill"><span class="dot dot-blue"></span> 1,500+ Media Platforms</div>
-      <div class="net-pill"><span class="dot dot-purple"></span> Live Global Reach</div>
-    </div>
+        <div class="net-pills reveal">
+          <div class="net-pill"><span class="dot dot-green"></span> Distributed Today: <strong id="live-count">18</strong></div>
+          <div class="net-pill"><span class="dot dot-blue"></span> 1,500+ Platforms</div>
+          <div class="net-pill"><span class="dot dot-purple"></span> Live Global Reach</div>
+        </div>
 
-    <div class="net-canvas-wrap reveal">
-      <canvas id="net-canvas"></canvas>
-    </div>
+        <div class="net-bottom-stats reveal">
+          <div class="net-stat"><div class="net-stat-num">14</div><div class="net-stat-lbl">Major Cities</div></div>
+          <div class="net-stat"><div class="net-stat-num">500+</div><div class="net-stat-lbl">Media Portals</div></div>
+          <div class="net-stat"><div class="net-stat-num">&lt;24h</div><div class="net-stat-lbl">Turnaround</div></div>
+          <div class="net-stat"><div class="net-stat-num">10K+</div><div class="net-stat-lbl">Releases</div></div>
+        </div>
 
-    <div class="net-bottom-stats reveal">
-      <div class="net-stat"><div class="net-stat-num">14</div><div class="net-stat-lbl">Major Cities Covered</div></div>
-      <div class="net-stat"><div class="net-stat-num">500+</div><div class="net-stat-lbl">Media Portals</div></div>
-      <div class="net-stat"><div class="net-stat-num">&lt; 24h</div><div class="net-stat-lbl">Turnaround Time</div></div>
-      <div class="net-stat"><div class="net-stat-num">10K+</div><div class="net-stat-lbl">Press Releases Published</div></div>
+        <div style="margin-top:28px">
+          <a href="https://wa.me/919660966608?text=I+want+to+get+my+PR+published" target="_blank" class="btn-primary" style="display:inline-flex;border-radius:100px;padding:12px 24px;font-size:14px">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" style="margin-right:8px"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg>
+            Get PR Published
+          </a>
+        </div>
+      </div>
+
+      <!-- RIGHT: canvas -->
+      <div class="net-right">
+        <div class="net-canvas-wrap reveal">
+          <canvas id="net-canvas"></canvas>
+        </div>
+      </div>
     </div>
   </section>
 
@@ -2631,10 +2727,7 @@
     <div class="port-grid">
       <!-- Article 1 -->
       <a href="https://www.moneycontrol.com/entertainment/bollywood/vivek-oberoi-to-receive-dadasaheb-phalke-international-film-festival-award-for-indian-police-force-article-13642529.html" target="_blank" class="port-card reveal">
-        <div class="port-thumb" style="background:linear-gradient(135deg,#001f3f 0%,#003366 100%);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px">
-          <img src="https://t3.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=http://moneycontrol.com&size=64" style="width:40px;height:40px;border-radius:8px" alt="">
-          <span style="font-size:13px;font-weight:700;color:rgba(255,255,255,.8)">Moneycontrol</span>
-        </div>
+        <div class="port-thumb" style="padding:0; overflow:hidden;"><img src="thumbnails/thumb_1.png" style="width:100%;height:100%;object-fit:cover;display:block" alt=""></div>
         <div class="port-content">
           <span class="port-pub">Moneycontrol</span>
           <h3 class="port-title">Vivek Oberoi to Receive Dadasaheb Phalke International Film Festival Award for Indian Police Force</h3>
@@ -2660,10 +2753,7 @@
 
       <!-- Article 2 -->
       <a href="https://news.abplive.com/entertainment/celebrities/meet-ajayraj-the-face-reading-specialist-bridging-ancient-wisdom-modern-psychology-1818683" target="_blank" class="port-card reveal">
-        <div class="port-thumb" style="background:linear-gradient(135deg,#1a0a2e 0%,#3d1a6e 100%);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px">
-          <img src="https://t3.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=http://abplive.com&size=64" style="width:40px;height:40px;border-radius:8px" alt="">
-          <span style="font-size:13px;font-weight:700;color:rgba(255,255,255,.8)">ABP Live</span>
-        </div>
+        <div class="port-thumb" style="padding:0; overflow:hidden;"><img src="thumbnails/thumb_2.jpg" style="width:100%;height:100%;object-fit:cover;display:block" alt=""></div>
         <div class="port-content">
           <span class="port-pub">ABP Live</span>
           <h3 class="port-title">Meet Ajayraj: The Face Reading Specialist Bridging Ancient Wisdom & Modern Psychology</h3>
@@ -2718,10 +2808,7 @@
 
       <!-- Article 4 -->
       <a href="https://www.india.com/money/alongside-ananya-panday-and-ishaan-khatter-22-year-old-founder-makes-the-35-under-35-8312046/" target="_blank" class="port-card reveal">
-        <div class="port-thumb" style="background:linear-gradient(135deg,#0d2137 0%,#1565c0 100%);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px">
-          <img src="https://t3.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=http://india.com&size=64" style="width:40px;height:40px;border-radius:8px" alt="">
-          <span style="font-size:13px;font-weight:700;color:rgba(255,255,255,.8)">India.com</span>
-        </div>
+        <div class="port-thumb" style="padding:0; overflow:hidden;"><img src="thumbnails/thumb_4.jpg" style="width:100%;height:100%;object-fit:cover;display:block" alt=""></div>
         <div class="port-content">
           <span class="port-pub">India.com</span>
           <h3 class="port-title">22-Year-Old Founder Featured Alongside Ananya Panday & Ishaan Khatter</h3>
@@ -2747,10 +2834,7 @@
 
       <!-- Article 5 -->
       <a href="https://timesofindia.indiatimes.com/small-town-dreams-supreme-success-advocate-sarthak-chaturvedis-inspiring-rise-from-mathura/articleshow/125022211.cms" target="_blank" class="port-card reveal">
-        <div class="port-thumb" style="background:linear-gradient(135deg,#1a0000 0%,#8b0000 100%);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px">
-          <img src="https://t3.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=http://timesofindia.indiatimes.com&size=64" style="width:40px;height:40px;border-radius:8px" alt="">
-          <span style="font-size:13px;font-weight:700;color:rgba(255,255,255,.8)">Times of India</span>
-        </div>
+        <div class="port-thumb" style="padding:0; overflow:hidden;"><img src="thumbnails/thumb_5.jpg" style="width:100%;height:100%;object-fit:cover;display:block" alt=""></div>
         <div class="port-content">
           <span class="port-pub">The Times of India</span>
           <h3 class="port-title">Small-Town Dreams, Supreme Success: Advocate Sarthak Chaturvedi's Inspiring Rise</h3>
@@ -2834,10 +2918,7 @@
 
       <!-- Article 8 -->
       <a href="https://www.republicworld.com/business/meet-xanfi-made-in-india-genai-chatbot-supporting-100-languages-pearl-kapur" target="_blank" class="port-card reveal">
-        <div class="port-thumb" style="background:linear-gradient(135deg,#1a0000 0%,#b71c1c 100%);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px">
-          <img src="https://t3.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=http://republicworld.com&size=64" style="width:40px;height:40px;border-radius:8px" alt="">
-          <span style="font-size:13px;font-weight:700;color:rgba(255,255,255,.8)">Republic World</span>
-        </div>
+        <div class="port-thumb" style="padding:0; overflow:hidden;"><img src="thumbnails/thumb_8.webp" style="width:100%;height:100%;object-fit:cover;display:block" alt=""></div>
         <div class="port-content">
           <span class="port-pub">Republic World</span>
           <h3 class="port-title">Meet Xanfi: Made-in-India GenAI Chatbot Supporting 100+ Languages</h3>
@@ -2890,15 +2971,14 @@
             <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
           </svg>
         </div>
-        <p class="q-txt">"Infusion Bizz gave our startup instant media visibility at an unbeatable price. We appeared on
-          80+ portals within 48 hours. I recommend them to every founder I know."</p>
+        <p class="q-txt">"Had a great experience with InfusionBizz. Their PR services are highly effective and the team is very responsive and professional."</p>
         <div class="t-author">
           <div class="t-av"><img
-              src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=88&h=88&fit=crop&crop=face"
-              alt="Rahul"></div>
+              src="https://ui-avatars.com/api/?name=Tanisha+Rathore&background=D81B60&color=fff&rounded=true"
+              alt="Tanisha Rathore"></div>
           <div>
-            <div class="t-name">Rahul Mehta</div>
-            <div class="t-co">Founder, TechLaunch India</div>
+            <div class="t-name">Tanisha Rathore</div>
+            <div class="t-co">1 review • 3 weeks ago</div>
           </div>
         </div>
       </div>
@@ -2920,15 +3000,14 @@
             <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
           </svg>
         </div>
-        <p class="q-txt">"Our corporate PR campaign through Infusion Bizz delivered 150+ placements in one month. The
-          ROI versus traditional agencies is simply incomparable."</p>
+        <p class="q-txt">"Really impressed with the work InfusionBizz is doing. The team is supportive, hardworking, and delivers what they promise."</p>
         <div class="t-author">
           <div class="t-av"><img
-              src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=88&h=88&fit=crop&crop=face"
-              alt="Priya"></div>
+              src="https://ui-avatars.com/api/?name=Aspirantupsc&background=E65100&color=fff&rounded=true"
+              alt="Aspirantupsc"></div>
           <div>
-            <div class="t-name">Priya Sharma</div>
-            <div class="t-co">CMO, GrowthBridge Ventures</div>
+            <div class="t-name">Aspirantupsc</div>
+            <div class="t-co">1 review • 3 weeks ago</div>
           </div>
         </div>
       </div>
@@ -2950,15 +3029,14 @@
             <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
           </svg>
         </div>
-        <p class="q-txt">"Fast, strategic, and incredibly affordable. They handled our product launch PR end-to-end.
-          Sales inquiries increased 3x in the weeks following the campaign."</p>
+        <p class="q-txt">"Being an athlete I always wanted to have team who could take care of my brand deals , shoots, and travels. When I connected with Team INFUSION BIZZ i am having Great experience working with this PR company. Very professional, responsive, and they deliver real results. Highly recommended! Kudos to INFUSION BIZZ."</p>
         <div class="t-author">
           <div class="t-av"><img
-              src="https://images.unsplash.com/photo-1560250097-0b93528c311a?w=88&h=88&fit=crop&crop=face" alt="Arjun">
+              src="https://ui-avatars.com/api/?name=Lakshay+Jangid&background=424242&color=fff&rounded=true" alt="Lakshay Jangid">
           </div>
           <div>
-            <div class="t-name">Arjun Kapoor</div>
-            <div class="t-co">Co-founder, RetailNext</div>
+            <div class="t-name">Lakshay Jangid</div>
+            <div class="t-co">Local Guide • 3 weeks ago</div>
           </div>
         </div>
       </div>
@@ -3063,29 +3141,6 @@
     Get PR Published
   </a>
 
-  <div id="pop">
-    <div class="pop-box">
-      <button class="pop-x" onclick="closePop()"><svg width="14" height="14" viewBox="0 0 14 14" fill="none"
-          stroke="currentColor" stroke-width="2">
-          <path d="M1 1l12 12M13 1L1 13" />
-        </svg></button>
-      <span class="pop-pill">Free Consultation</span>
-      <h3>Want Your Brand Featured in Media?</h3>
-      <p>Drop your details and our PR team will respond within 2 hours with a custom strategy.</p>
-      <div class="pop-fields">
-        <input type="text" placeholder="Your Name">
-        <input type="email" placeholder="Email Address">
-        <input type="text" placeholder="Brand / Company Name">
-        <a class="btn-primary" style="justify-content:center"
-          href="https://wa.me/919660966608?text=I+want+a+free+PR+consultation" target="_blank" onclick="closePop()">Get
-          Free PR Consultation <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-            stroke-width="2.5">
-            <path d="M5 12h14M12 5l7 7-7 7" />
-          </svg></a>
-      </div>
-    </div>
-  </div>
-
 
   <script>
     /* CURSOR */
@@ -3101,7 +3156,7 @@
     /* ═══ LOADER — Press Release Document → Explodes into orbiting media network ═══ */
     (function () {
       const c = document.getElementById('loader-canvas');
-      const R = new THREE.WebGLRenderer({ canvas: c, alpha: true, antialias: true });
+      if (!c) return; // logo-only loader — canvas removed
       R.setSize(340, 340); R.setPixelRatio(Math.min(devicePixelRatio, 2));
       const S = new THREE.Scene(), CAM = new THREE.PerspectiveCamera(60, 1, .1, 100);
       CAM.position.z = 5;
@@ -3236,10 +3291,10 @@
       loaderFrame();
     })();
 
-    // Dismiss loader: try window load, but use a hard timeout fallback in case external resources fail
-    function dismissLoader() { document.getElementById('loader').classList.add('hidden'); }
-    window.addEventListener('load', () => setTimeout(dismissLoader, 2900));
-    setTimeout(dismissLoader, 5000); // hard fallback
+    // Dismiss loader
+    function dismissLoader() { const l = document.getElementById('loader'); if (l) l.classList.add('hidden'); }
+    window.addEventListener('load', () => setTimeout(dismissLoader, 800));
+    setTimeout(dismissLoader, 2000); // hard fallback
 
     /* ═══ HERO — Press release at centre, media nodes orbit with data packets flying ═══ */
     (function () {
@@ -3631,3 +3686,4 @@
 </body>
 
 </html>
+
