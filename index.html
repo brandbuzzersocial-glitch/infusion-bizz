@@ -484,15 +484,15 @@
     .metric .m-val { font-size: 18px; font-weight: 800; color: var(--p); font-family: 'Inter Tight', sans-serif; }
     .metric .m-lbl { font-size: 11px; color: var(--muted); font-weight: 500; }
 
-    .brand-tile { position: absolute; background: #fff; border: 2px solid var(--p); border-radius: 50%; width: 64px; height: 64px; display: flex; align-items: center; justify-content: center; box-shadow: 0 10px 25px rgba(108, 59, 255, 0.25); z-index: 4; transform-style: preserve-3d; animation: orbit var(--speed) linear infinite; padding: 12px; }
+    .brand-tile { position: absolute; top: 50%; left: 50%; background: #fff; border: 2px solid var(--p); border-radius: 50%; width: 64px; height: 64px; display: flex; align-items: center; justify-content: center; box-shadow: 0 10px 25px rgba(108, 59, 255, 0.25); z-index: 4; transform-style: preserve-3d; animation: orbit var(--speed) linear infinite; padding: 12px; margin-top: -32px; margin-left: -32px; }
     .brand-tile img { width: 100%; height: 100%; object-fit: contain; border-radius: 50%; }
     
-    .bt-1 { --speed: 20s; --radius: 260px; animation-delay: 0s; }
-    .bt-2 { --speed: 25s; --radius: 280px; animation-delay: -4s; }
-    .bt-3 { --speed: 22s; --radius: 300px; animation-delay: -8s; }
-    .bt-4 { --speed: 28s; --radius: 270px; animation-delay: -12s; }
-    .bt-5 { --speed: 24s; --radius: 290px; animation-delay: -16s; }
-    .bt-6 { --speed: 26s; --radius: 310px; animation-delay: -20s; }
+    .bt-1 { --speed: 24s; --radius: 200px; animation-delay: 0s; }
+    .bt-2 { --speed: 32s; --radius: 220px; animation-delay: -5s; }
+    .bt-3 { --speed: 28s; --radius: 240px; animation-delay: -10s; }
+    .bt-4 { --speed: 36s; --radius: 210px; animation-delay: -15s; }
+    .bt-5 { --speed: 30s; --radius: 230px; animation-delay: -20s; }
+    .bt-6 { --speed: 34s; --radius: 250px; animation-delay: -25s; }
 
     @keyframes orbit {
       from { transform: rotate(0deg) translateX(var(--radius)) rotate(0deg); }
