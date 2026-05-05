@@ -516,83 +516,70 @@
     @keyframes pulse-dot { 0% { opacity: 0.3; transform: scale(0.8); } 100% { opacity: 1; transform: scale(1.5); } }
 
     /* BENEFITS */
-    .benefits-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 20px;
-    }
-    .benefit-card--wide {
-      grid-column: span 3;
-    }
-    .benefit-card {
+    #benefits { padding: 56px 0 48px; background: linear-gradient(160deg,#0a0118 0%,#130630 50%,#0a0118 100%); position: relative; overflow: hidden; }
+    .ben-header { text-align: center; margin-bottom: 40px; }
+    .ben-scroll-wrap { overflow-x: auto; padding: 12px 32px 28px; scrollbar-width: none; -ms-overflow-style: none; cursor: grab; }
+    .ben-scroll-wrap::-webkit-scrollbar { display: none; }
+    .ben-scroll-wrap:active { cursor: grabbing; }
+    .ben-track { display: flex; gap: 18px; width: max-content; }
+    .ben-card {
       position: relative;
-      background: rgba(255,255,255,0.04);
-      border: 1px solid rgba(108,59,255,0.18);
+      width: 260px;
+      flex-shrink: 0;
+      background: rgba(255,255,255,0.035);
+      border: 1px solid rgba(108,59,255,0.2);
       border-radius: 20px;
-      padding: 32px 28px;
+      padding: 28px 24px 24px;
       overflow: hidden;
-      transition: transform 0.3s, border-color 0.3s, box-shadow 0.3s;
-      cursor: default;
+      transition: transform 0.2s, box-shadow 0.2s, border-color 0.2s;
+      transform-style: preserve-3d;
+      transform: perspective(800px) rotateX(0) rotateY(0);
     }
-    .benefit-card::before {
+    .ben-card:hover {
+      border-color: rgba(108,59,255,0.55);
+      box-shadow: 0 24px 60px rgba(108,59,255,0.25);
+    }
+    .ben-card::after {
       content: '';
       position: absolute;
-      inset: 0;
-      background: linear-gradient(135deg, rgba(108,59,255,0.08) 0%, transparent 60%);
-      opacity: 0;
-      transition: opacity 0.3s;
-      border-radius: 20px;
+      top: 0; left: 0; right: 0;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, rgba(168,139,250,0.6), transparent);
     }
-    .benefit-card:hover {
-      transform: translateY(-6px);
-      border-color: rgba(108,59,255,0.5);
-      box-shadow: 0 20px 60px rgba(108,59,255,0.2);
-    }
-    .benefit-card:hover::before { opacity: 1; }
-    .bc-icon {
-      font-size: 36px;
-      margin-bottom: 12px;
-      display: block;
-      filter: drop-shadow(0 0 12px rgba(108,59,255,0.4));
-    }
-    .bc-num {
+    .ben-num {
+      position: absolute;
+      top: 16px; right: 20px;
       font-family: 'Inter Tight', sans-serif;
-      font-size: 11px;
-      font-weight: 800;
-      color: #7c3aed;
-      letter-spacing: 2px;
-      margin-bottom: 10px;
-      text-transform: uppercase;
+      font-size: 52px;
+      font-weight: 900;
+      color: rgba(108,59,255,0.1);
+      line-height: 1;
+      user-select: none;
     }
-    .bc-title {
+    .ben-icon {
+      width: 44px; height: 44px;
+      background: rgba(108,59,255,0.15);
+      border-radius: 12px;
+      display: flex; align-items: center; justify-content: center;
+      margin-bottom: 16px;
+    }
+    .ben-icon svg { width: 22px; height: 22px; stroke: #a78bfa; fill: none; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
+    .ben-title {
       font-family: 'Inter Tight', sans-serif;
-      font-size: 18px;
+      font-size: 15px;
       font-weight: 800;
       color: #fff;
-      margin: 0 0 10px;
+      margin: 0 0 8px;
       line-height: 1.3;
     }
-    .bc-desc {
-      font-size: 13.5px;
-      color: rgba(255,255,255,0.55);
-      line-height: 1.7;
-      margin: 0 0 20px;
+    .ben-desc {
+      font-size: 12.5px;
+      color: rgba(255,255,255,0.45);
+      line-height: 1.65;
+      margin: 0;
     }
-    .bc-bar {
-      height: 3px;
-      width: 40px;
-      background: linear-gradient(90deg, #7c3aed, #c084fc);
-      border-radius: 2px;
-    }
-    .benefit-card--wide .bc-desc { max-width: 700px; }
-    @media(max-width:900px) {
-      .benefits-grid { grid-template-columns: repeat(2,1fr); }
-      .benefit-card--wide { grid-column: span 2; }
-    }
-    @media(max-width:600px) {
-      .benefits-grid { grid-template-columns: 1fr; }
-      .benefit-card--wide { grid-column: span 1; }
-    }
+    .ben-line { position: absolute; bottom: 0; left: 0; height: 3px; width: 100%; background: linear-gradient(90deg, #7c3aed, transparent); border-radius: 0 0 20px 20px; opacity: 0; transition: opacity 0.3s; }
+    .ben-card:hover .ben-line { opacity: 1; }
 
     /* TICKER */
 
@@ -2448,7 +2435,78 @@
   </section>
 
   <!-- BENEFITS SECTION -->
-  <section id="benefits" style="padding:80px 0 60px;background:linear-gradient(160deg,#0a0118 0%,#130630 50%,#0a0118 100%);position:relative;overflow:hidden;">
+  <section id="benefits">
+    <div class="ben-header">
+      <div style="display:inline-block;background:rgba(108,59,255,0.15);border:1px solid rgba(108,59,255,0.3);border-radius:50px;padding:6px 18px;margin-bottom:14px;">
+        <span style="font-size:11px;font-weight:700;color:#a78bfa;letter-spacing:1.5px;text-transform:uppercase;">Why Press Releases Work</span>
+      </div>
+      <h2 style="font-family:'Inter Tight',sans-serif;font-size:clamp(26px,4vw,44px);font-weight:900;line-height:1.15;color:#fff;margin:0 0 10px;">One Press Release. <span style="background:linear-gradient(90deg,#a78bfa,#7c3aed,#c084fc);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;">Seven Outcomes.</span></h2>
+      <p style="font-size:15px;color:rgba(255,255,255,0.45);margin:0;">Scroll to explore every advantage →</p>
+    </div>
+
+    <div class="ben-scroll-wrap" id="benScroll">
+      <div class="ben-track">
+
+        <div class="ben-card">
+          <div class="ben-num">01</div>
+          <div class="ben-icon"><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></div>
+          <h3 class="ben-title">Builds Credibility & Trust</h3>
+          <p class="ben-desc">Being featured in Forbes or TOI instantly signals authority. Customers trust brands in top media — no questions asked.</p>
+          <div class="ben-line"></div>
+        </div>
+
+        <div class="ben-card">
+          <div class="ben-num">02</div>
+          <div class="ben-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg></div>
+          <h3 class="ben-title">Increases Brand Visibility</h3>
+          <p class="ben-desc">Your story reaches millions across India's top digital and print publications — all in under 24 hours.</p>
+          <div class="ben-line"></div>
+        </div>
+
+        <div class="ben-card">
+          <div class="ben-num">03</div>
+          <div class="ben-icon"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg></div>
+          <h3 class="ben-title">Improves SEO & Rankings</h3>
+          <p class="ben-desc">High-authority backlinks push your site up Google. Your brand becomes the first result — not a competitor's.</p>
+          <div class="ben-line"></div>
+        </div>
+
+        <div class="ben-card">
+          <div class="ben-num">04</div>
+          <div class="ben-icon"><svg viewBox="0 0 24 24"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg></div>
+          <h3 class="ben-title">Cost-Effective Marketing</h3>
+          <p class="ben-desc">One article drives traffic for years. Ads stop the moment you stop paying — a press release never does.</p>
+          <div class="ben-line"></div>
+        </div>
+
+        <div class="ben-card">
+          <div class="ben-num">05</div>
+          <div class="ben-icon"><svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg></div>
+          <h3 class="ben-title">Controls Brand Narrative</h3>
+          <p class="ben-desc">You decide what the world reads about your brand. Shape your story and stay ahead of competitors.</p>
+          <div class="ben-line"></div>
+        </div>
+
+        <div class="ben-card">
+          <div class="ben-num">06</div>
+          <div class="ben-icon"><svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg></div>
+          <h3 class="ben-title">Attracts Media & Partners</h3>
+          <p class="ben-desc">Investors and collaborators look for press-covered companies. One release can open doors you never imagined.</p>
+          <div class="ben-line"></div>
+        </div>
+
+        <div class="ben-card">
+          <div class="ben-num">07</div>
+          <div class="ben-icon"><svg viewBox="0 0 24 24"><polyline points="22 7 13.5 15.5 8.5 10.5 2 17"/><polyline points="16 7 22 7 22 13"/></svg></div>
+          <h3 class="ben-title">Drives Traffic & Leads</h3>
+          <p class="ben-desc">Articles flood search results, sending high-intent visitors to your site. Every feature is a 24/7 lead magnet.</p>
+          <div class="ben-line"></div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
     
     <!-- Background glow blobs -->
     <div style="position:absolute;top:-100px;left:-100px;width:500px;height:500px;background:radial-gradient(circle,rgba(108,59,255,0.15) 0%,transparent 70%);pointer-events:none;"></div>
@@ -3957,7 +4015,32 @@
     /* LIVE COUNTER */
     let lc = 18; setInterval(() => { if (Math.random() > .65) { lc++; const el = document.getElementById('live-count'); if (el) el.textContent = lc; } }, 3200);
 
+    /* BENEFIT CARDS — 3D tilt + drag scroll */
+    (function() {
+      /* Drag scroll */
+      const wrap = document.getElementById('benScroll');
+      if (wrap) {
+        let isDown = false, startX, scrollLeft;
+        wrap.addEventListener('mousedown', e => { isDown = true; startX = e.pageX - wrap.offsetLeft; scrollLeft = wrap.scrollLeft; });
+        wrap.addEventListener('mouseleave', () => isDown = false);
+        wrap.addEventListener('mouseup', () => isDown = false);
+        wrap.addEventListener('mousemove', e => { if (!isDown) return; e.preventDefault(); wrap.scrollLeft = scrollLeft - (e.pageX - wrap.offsetLeft - startX); });
+      }
+      /* 3D tilt */
+      document.querySelectorAll('.ben-card').forEach(card => {
+        card.addEventListener('mousemove', e => {
+          const r = card.getBoundingClientRect();
+          const x = e.clientX - r.left, y = e.clientY - r.top;
+          const rx = ((y - r.height / 2) / (r.height / 2)) * -8;
+          const ry = ((x - r.width / 2) / (r.width / 2)) * 8;
+          card.style.transform = `perspective(800px) rotateX(${rx}deg) rotateY(${ry}deg) translateY(-4px)`;
+        });
+        card.addEventListener('mouseleave', () => { card.style.transform = 'perspective(800px) rotateX(0) rotateY(0)'; });
+      });
+    })();
+
     /* MOBILE MENU */
+
     function toggleMenu() {
       document.getElementById('hamburger').classList.toggle('open');
       document.getElementById('mobile-menu').classList.toggle('open');
