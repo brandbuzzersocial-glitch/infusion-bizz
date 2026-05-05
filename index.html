@@ -484,15 +484,21 @@
     .metric .m-val { font-size: 18px; font-weight: 800; color: var(--p); font-family: 'Inter Tight', sans-serif; }
     .metric .m-lbl { font-size: 11px; color: var(--muted); font-weight: 500; }
 
-    .brand-tile { position: absolute; top: 50%; left: 50%; background: #fff; border: 2px solid var(--p); border-radius: 50%; width: 64px; height: 64px; display: flex; align-items: center; justify-content: center; box-shadow: 0 10px 25px rgba(108, 59, 255, 0.25); z-index: 4; transform-style: preserve-3d; animation: orbit var(--speed) linear infinite; padding: 12px; margin-top: -32px; margin-left: -32px; }
-    .brand-tile img { width: 100%; height: 100%; object-fit: contain; border-radius: 50%; }
+    .brand-tile { position: absolute; top: 50%; left: 50%; background: rgba(255, 255, 255, 0.9); backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px); border: 1.5px solid rgba(255, 255, 255, 0.8); border-radius: 50%; width: 56px; height: 56px; display: flex; align-items: center; justify-content: center; box-shadow: 0 0 20px rgba(108, 59, 255, 0.3), inset 0 0 10px rgba(255,255,255,0.8); z-index: 4; transform-style: preserve-3d; animation: orbit var(--speed) linear infinite; padding: 10px; margin-top: -28px; margin-left: -28px; }
+    .brand-tile::after { content: ''; position: absolute; inset: 0; border-radius: 50%; background: linear-gradient(135deg, rgba(255,255,255,0.4) 0%, transparent 50%); pointer-events: none; }
+    .brand-tile img { width: 100%; height: 100%; object-fit: contain; border-radius: 50%; filter: drop-shadow(0 2px 4px rgba(0,0,0,0.1)); }
     
-    .bt-1 { --speed: 24s; --radius: 200px; animation-delay: 0s; }
-    .bt-2 { --speed: 32s; --radius: 220px; animation-delay: -5s; }
-    .bt-3 { --speed: 28s; --radius: 240px; animation-delay: -10s; }
-    .bt-4 { --speed: 36s; --radius: 210px; animation-delay: -15s; }
-    .bt-5 { --speed: 30s; --radius: 230px; animation-delay: -20s; }
-    .bt-6 { --speed: 34s; --radius: 250px; animation-delay: -25s; }
+    .orbit-ring { position: absolute; top: 50%; left: 50%; border: 1px solid rgba(108, 59, 255, 0.08); border-radius: 50%; transform: translate(-50%, -50%); pointer-events: none; z-index: 1; }
+    .ring-1 { width: 400px; height: 400px; }
+    .ring-2 { width: 480px; height: 480px; border-color: rgba(108, 59, 255, 0.05); }
+    .ring-3 { width: 560px; height: 560px; border-color: rgba(108, 59, 255, 0.03); }
+
+    .bt-1 { --speed: 20s; --radius: 200px; animation-delay: 0s; }
+    .bt-2 { --speed: 28s; --radius: 240px; animation-delay: -4s; }
+    .bt-3 { --speed: 24s; --radius: 200px; animation-delay: -8s; }
+    .bt-4 { --speed: 32s; --radius: 280px; animation-delay: -12s; }
+    .bt-5 { --speed: 26s; --radius: 240px; animation-delay: -16s; }
+    .bt-6 { --speed: 30s; --radius: 280px; animation-delay: -20s; }
 
     @keyframes orbit {
       from { transform: rotate(0deg) translateX(var(--radius)) rotate(0deg); }
@@ -2323,6 +2329,10 @@
                 </div>
               </div>
             </div>
+
+            <div class="orbit-ring ring-1"></div>
+            <div class="orbit-ring ring-2"></div>
+            <div class="orbit-ring ring-3"></div>
 
             <div class="brand-tile bt-1" title="Forbes">
               <img src="https://t3.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=http://forbes.com&size=128" alt="Forbes">
