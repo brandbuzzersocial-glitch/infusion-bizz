@@ -2344,12 +2344,16 @@
       }
       .gr-res { font-size: 11px; }
       .hero-stats-bar {
-        gap: 12px !important;
+        gap: 16px 12px !important;
         padding-top: 20px !important;
         margin-top: 24px !important;
       }
       .hero-stats-bar > div {
-        min-width: 78px !important;
+        flex: 1 1 40% !important;
+        min-width: 120px !important;
+      }
+      .hero-stats-bar .stat-num {
+        font-size: 32px !important;
       }
       section { padding-left: max(5%, env(safe-area-inset-left)); padding-right: max(5%, env(safe-area-inset-right)); }
       footer  { padding-left: max(5%, env(safe-area-inset-left)); padding-right: max(5%, env(safe-area-inset-right)); }
@@ -2408,8 +2412,8 @@
       .p-card    { padding: 22px 14px; }
       .p-price   { font-size: 34px; }
       .stat-num  { font-size: 32px; }
-      .hero-stats-bar > div { min-width: 64px !important; }
-      .hero-stats-bar .stat-num { font-size: 28px !important; }
+      .hero-stats-bar > div { flex: 1 1 40% !important; min-width: 110px !important; }
+      .hero-stats-bar .stat-num { font-size: 26px !important; }
     }
 
     /* ── REDUCED MOTION ── */
