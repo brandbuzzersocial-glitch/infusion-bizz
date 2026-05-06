@@ -3,7 +3,9 @@
 
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <meta name="theme-color" content="#6C3BFF">
+  <meta name="color-scheme" content="light">
   <title>Best Press Release Distribution & Corporate PR Agency | Infusion Bizz</title>
   <meta name="description"
     content="Get your brand featured on leading media platforms with Infusion Bizz. We provide affordable press release distribution, corporate PR, and brand visibility solutions.">
@@ -38,7 +40,9 @@
     }
 
     html {
-      scroll-behavior: smooth
+      scroll-behavior: smooth;
+      -webkit-text-size-adjust: 100%;
+      text-size-adjust: 100%
     }
 
     body {
@@ -48,7 +52,13 @@
       background: #fff;
       color: var(--text);
       overflow-x: hidden;
-      cursor: none
+      cursor: none;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale
+    }
+
+    a, button, [role="button"] {
+      touch-action: manipulation
     }
 
     h1, h2, h3, h4, h5, h6, .s-title, .hero-h1 {
@@ -160,15 +170,18 @@
       align-items: center;
       justify-content: space-between;
       padding: 0 5%;
-      height: 76px;
+      padding-left: max(5%, env(safe-area-inset-left));
+      padding-right: max(5%, env(safe-area-inset-right));
+      height: 110px;
       background: rgba(255, 255, 255, .88);
+      -webkit-backdrop-filter: blur(24px);
       backdrop-filter: blur(24px);
       border-bottom: 1px solid var(--border);
       transition: height .3s, box-shadow .3s
     }
 
     nav.scrolled {
-      height: 64px;
+      height: 80px;
       box-shadow: 0 4px 40px rgba(108, 59, 255, .08)
     }
 
@@ -179,18 +192,28 @@
     }
 
     .logo img {
-      height: 72px;
+      height: 98px;
       width: auto;
       display: block;
-      object-fit: contain
+      object-fit: contain;
+      transition: height .3s
+    }
+
+    nav.scrolled .logo img {
+      height: 72px;
     }
 
     .logo-white img {
-      height: 72px;
+      height: 98px;
       width: auto;
       display: block;
       filter: brightness(0) invert(1);
-      object-fit: contain
+      object-fit: contain;
+      transition: height .3s
+    }
+
+    nav.scrolled .logo-white img {
+      height: 72px;
     }
 
     .nav-links {
@@ -519,7 +542,7 @@
     /* BENEFITS */
     #benefits { padding: 56px 0 48px; background: linear-gradient(160deg,#0a0118 0%,#130630 50%,#0a0118 100%); position: relative; overflow: hidden; }
     .ben-header { text-align: center; margin-bottom: 40px; }
-    .ben-scroll-wrap { overflow-x: auto; padding: 12px 32px 28px; scrollbar-width: none; -ms-overflow-style: none; cursor: grab; }
+    .ben-scroll-wrap { overflow-x: auto; padding: 12px 32px 28px; scrollbar-width: none; -ms-overflow-style: none; cursor: grab; -webkit-overflow-scrolling: touch; overscroll-behavior-x: contain; }
     .ben-scroll-wrap::-webkit-scrollbar { display: none; }
     .ben-scroll-wrap:active { cursor: grabbing; }
     .ben-track { display: flex; gap: 18px; width: max-content; }
@@ -765,6 +788,7 @@
       background: rgba(255, 255, 255, .95);
       border-radius: 16px;
       padding: 20px 22px;
+      -webkit-backdrop-filter: blur(16px);
       backdrop-filter: blur(16px)
     }
 
@@ -1664,6 +1688,7 @@
       opacity: 0;
       pointer-events: none;
       transition: opacity .35s;
+      -webkit-backdrop-filter: blur(6px);
       backdrop-filter: blur(6px)
     }
 
@@ -1854,7 +1879,10 @@
       align-items: center;
       justify-content: center;
       gap: 32px;
-      padding: 40px
+      padding: 40px;
+      overflow-y: auto;
+      -webkit-overflow-scrolling: touch;
+      overscroll-behavior: contain
     }
 
     .mobile-menu.open {
@@ -2290,6 +2318,204 @@
       .port-title { font-size: 15px; }
       .port-thumb { height: 200px; }
     }
+
+    /* ── HERO SCENE — MOBILE SCALE-DOWN ── */
+    @media(max-width:768px) {
+      .hero-digital-scene { overflow: hidden; }
+      .central-composition {
+        width: 240px;
+        height: 240px;
+      }
+      .main-img-wrapper {
+        width: 180px;
+        height: 180px;
+      }
+      .central-glow {
+        width: 240px;
+        height: 240px;
+      }
+      .orbit-ring  { display: none; }
+      .brand-tile  { display: none; }
+      .pr-floating-ui { display: none; }
+      .digi-dot    { display: none; }
+      .google-rank-badge {
+        width: 140px;
+        padding: 7px 10px;
+      }
+      .gr-res { font-size: 11px; }
+      .hero-stats-bar {
+        gap: 12px !important;
+        padding-top: 20px !important;
+        margin-top: 24px !important;
+      }
+      .hero-stats-bar > div {
+        min-width: 78px !important;
+      }
+      section { padding-left: max(5%, env(safe-area-inset-left)); padding-right: max(5%, env(safe-area-inset-right)); }
+      footer  { padding-left: max(5%, env(safe-area-inset-left)); padding-right: max(5%, env(safe-area-inset-right)); }
+      #floatcta { bottom: max(16px, env(safe-area-inset-bottom)); right: max(16px, env(safe-area-inset-right)); }
+    }
+
+    /* ── LANDSCAPE PHONES (≤ 900px wide, landscape) ── */
+    @media(max-width:900px) and (orientation:landscape) {
+      #hero {
+        min-height: auto;
+        padding: 64px 5% 24px;
+      }
+      .hero-grid {
+        grid-template-columns: 1fr 1fr;
+        gap: 24px;
+        padding: 16px 0 16px;
+      }
+      .hero-left  { order: 1; }
+      .hero-right {
+        order: 2;
+        height: 320px;
+      }
+      .hero-h1 {
+        font-size: clamp(22px, 3.5vw, 34px);
+        margin-bottom: 10px;
+      }
+      .hero-sub {
+        font-size: 13px;
+        margin-bottom: 16px;
+      }
+      .hero-kicker { margin-bottom: 10px; }
+      .hero-stats-bar { margin-top: 14px !important; padding-top: 14px !important; }
+      /* Restore 2-col layouts that mobile breaks to 1-col */
+      .split         { grid-template-columns: 1fr 1fr; gap: 28px; }
+      .net-split     { grid-template-columns: 1fr 1fr; gap: 24px; }
+      .why-grid      { grid-template-columns: repeat(2,1fr); gap: 12px; }
+      .testi-grid    { grid-template-columns: repeat(2,1fr); gap: 14px; }
+      .price-grid    { grid-template-columns: repeat(2,1fr); gap: 14px; }
+      .stats-grid    { grid-template-columns: repeat(4,1fr); }
+      .footer-grid   { grid-template-columns: 1fr 1fr; gap: 24px; }
+      .net-left      { text-align: left; }
+      #network .s-title, #network .s-sub { text-align: left; margin-left: 0; }
+      .net-pills     { justify-content: flex-start; }
+      .net-bottom-stats { justify-content: flex-start; }
+      .net-stat      { text-align: left; }
+      section        { padding: 40px 5%; }
+      #imgstrip      { height: 160px; }
+    }
+
+    /* ── VERY SMALL PHONES (< 360px) ── */
+    @media(max-width:360px) {
+      .hero-h1   { font-size: 26px; }
+      .s-title   { font-size: 22px !important; }
+      section    { padding: 48px 4%; }
+      nav        { padding: 0 4%; }
+      .p-card    { padding: 22px 14px; }
+      .p-price   { font-size: 34px; }
+      .stat-num  { font-size: 32px; }
+      .hero-stats-bar > div { min-width: 64px !important; }
+      .hero-stats-bar .stat-num { font-size: 28px !important; }
+    }
+
+    /* ── REDUCED MOTION ── */
+    @media(prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        animation-duration:        0.01ms !important;
+        animation-iteration-count: 1      !important;
+        transition-duration:       0.01ms !important;
+      }
+      html { scroll-behavior: auto; }
+      .ticker-track { animation: none; }
+    }
+  /* ── HERO DASHBOARD SCENE ── */
+  .hd-scene{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;}
+  .hd-glow{position:absolute;width:500px;height:500px;background:radial-gradient(circle,rgba(108,59,255,.18) 0%,transparent 65%);filter:blur(40px);pointer-events:none;z-index:0;}
+  /* Device */
+  .hd-device{position:relative;width:400px;background:#0d0820;border-radius:18px;border:1px solid rgba(108,59,255,.28);box-shadow:0 40px 80px rgba(0,0,0,.35),0 0 0 1px rgba(255,255,255,.05),inset 0 1px 0 rgba(255,255,255,.08);overflow:hidden;z-index:2;animation:hd-float 7s ease-in-out infinite;}
+  @keyframes hd-float{0%,100%{transform:translateY(0)}50%{transform:translateY(-12px)}}
+  /* Browser chrome */
+  .hd-chrome{background:#170d2e;padding:9px 14px;display:flex;align-items:center;gap:6px;border-bottom:1px solid rgba(255,255,255,.06);}
+  .hd-chrome-dots{display:flex;gap:5px;}
+  .hd-chrome-dots span{display:block;width:9px;height:9px;border-radius:50%;}
+  .hd-chrome-dots span:nth-child(1){background:#ff5f57;}
+  .hd-chrome-dots span:nth-child(2){background:#ffbd2e;}
+  .hd-chrome-dots span:nth-child(3){background:#28c840;}
+  .hd-url{flex:1;margin-left:10px;background:rgba(255,255,255,.06);border-radius:6px;height:20px;display:flex;align-items:center;padding:0 10px;font-size:10px;color:rgba(255,255,255,.3);font-family:'Inter',sans-serif;}
+  /* Tabs */
+  .hd-tabs{display:flex;gap:2px;padding:10px 12px 0;background:#0d0820;}
+  .hd-tab{flex:1;padding:7px 3px;font-size:9.5px;font-weight:700;font-family:'Inter Tight',sans-serif;text-align:center;background:transparent;border:none;border-radius:8px 8px 0 0;color:rgba(255,255,255,.32);cursor:pointer;transition:all .25s;white-space:nowrap;letter-spacing:.3px;}
+  .hd-tab.hd-active{background:rgba(108,59,255,.18);color:#c4b5fd;border:1px solid rgba(108,59,255,.25);border-bottom:none;}
+  /* Progress */
+  .hd-prog-wrap{height:2px;background:rgba(255,255,255,.06);margin:0 12px;}
+  .hd-prog{height:100%;background:linear-gradient(90deg,var(--p),var(--ps));width:0%;transition:width .1s linear;}
+  /* Screens */
+  .hd-screen{display:none;padding:14px 14px 16px;animation:hd-in .35s cubic-bezier(.34,1.56,.64,1);}
+  .hd-screen.hd-active{display:block;}
+  @keyframes hd-in{from{opacity:0;transform:translateX(18px)}to{opacity:1;transform:translateX(0)}}
+  /* Screen 0 – Google Ranking */
+  .hd-gsearch{display:flex;align-items:center;gap:8px;background:rgba(255,255,255,.06);border-radius:8px;padding:7px 10px;margin-bottom:10px;}
+  .hd-gsearch svg{flex-shrink:0;}
+  .hd-gq{font-size:11px;color:rgba(255,255,255,.55);font-family:'Inter',sans-serif;}
+  .hd-serp-r{display:flex;align-items:flex-start;gap:10px;background:rgba(108,59,255,.1);border:1px solid rgba(108,59,255,.22);border-radius:10px;padding:10px 12px;margin-bottom:10px;}
+  .hd-serp-badge{background:linear-gradient(135deg,var(--p),var(--ps));color:#fff;font-size:11px;font-weight:900;font-family:'Inter Tight',sans-serif;padding:4px 8px;border-radius:6px;flex-shrink:0;}
+  .hd-serp-url{font-size:9.5px;color:#4ade80;margin-bottom:3px;font-family:'Inter',sans-serif;}
+  .hd-serp-title{font-size:11.5px;font-weight:700;color:#e2d9ff;font-family:'Inter Tight',sans-serif;line-height:1.35;margin-bottom:3px;}
+  .hd-serp-desc{font-size:9.5px;color:rgba(255,255,255,.4);font-family:'Inter',sans-serif;line-height:1.4;}
+  /* Ranking chart */
+  .hd-chart{margin-top:6px;}
+  .hd-chart-lbl{font-size:9px;color:rgba(255,255,255,.3);letter-spacing:.08em;text-transform:uppercase;margin-bottom:8px;font-family:'Inter',sans-serif;}
+  .hd-bars{display:flex;align-items:flex-end;gap:5px;height:52px;}
+  .hd-bar{flex:1;border-radius:4px 4px 0 0;background:var(--bc,rgba(108,59,255,.4));height:var(--bh,40%);transition:height 1s cubic-bezier(.34,1.56,.64,1);position:relative;}
+  .hd-bar-top{background:linear-gradient(135deg,var(--p),var(--ps));box-shadow:0 0 12px rgba(108,59,255,.5);}
+  .hd-bar-lbl{position:absolute;bottom:-14px;left:50%;transform:translateX(-50%);font-size:7.5px;color:rgba(255,255,255,.3);white-space:nowrap;font-family:'Inter',sans-serif;}
+  .hd-chart-mets{display:flex;gap:10px;margin-top:18px;padding-top:10px;border-top:1px solid rgba(255,255,255,.06);}
+  .hd-cm{font-size:9px;color:rgba(255,255,255,.4);font-family:'Inter',sans-serif;}.hd-cm strong{color:#a78bfa;font-size:11px;}
+  /* Screen 1 – Media Coverage */
+  .hd-cov-title{font-size:10px;color:rgba(255,255,255,.35);letter-spacing:.1em;text-transform:uppercase;margin-bottom:10px;font-family:'Inter',sans-serif;}
+  .hd-med-row{display:flex;align-items:center;gap:10px;padding:8px 0;border-bottom:1px solid rgba(255,255,255,.05);}
+  .hd-med-row:last-child{border:none;}
+  .hd-med-row img{width:20px;height:20px;border-radius:4px;object-fit:contain;background:#fff;padding:2px;}
+  .hd-med-name{flex:1;font-size:11.5px;font-weight:600;color:rgba(255,255,255,.75);font-family:'Inter Tight',sans-serif;}
+  .hd-pub{font-size:10px;font-weight:700;color:#22c55e;display:flex;align-items:center;gap:4px;}
+  .hd-proc{font-size:10px;font-weight:600;color:#fbbf24;}
+  .hd-pub::before{content:'';display:inline-block;width:6px;height:6px;border-radius:50%;background:#22c55e;animation:hd-pulse 1.5s infinite;}
+  @keyframes hd-pulse{0%,100%{opacity:1}50%{opacity:.4}}
+  .hd-more{font-size:10px;color:rgba(108,59,255,.7);font-weight:600;margin-top:6px;font-family:'Inter',sans-serif;}
+  /* Screen 2 – PR Impact */
+  .hd-dist-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:12px;}
+  .hd-dist-cell{background:rgba(255,255,255,.04);border:1px solid rgba(108,59,255,.15);border-radius:10px;padding:12px;text-align:center;}
+  .hd-dist-val{font-family:'Inter Tight',sans-serif;font-size:20px;font-weight:900;color:#a78bfa;line-height:1;}
+  .hd-dist-lbl{font-size:9.5px;color:rgba(255,255,255,.4);margin-top:4px;font-family:'Inter',sans-serif;}
+  .hd-dp-row{display:flex;align-items:center;gap:8px;margin-bottom:8px;}
+  .hd-dp-lbl{font-size:10px;color:rgba(255,255,255,.5);min-width:90px;font-family:'Inter',sans-serif;}
+  .hd-dp-track{flex:1;height:5px;background:rgba(255,255,255,.07);border-radius:3px;overflow:hidden;}
+  .hd-dp-fill{height:100%;border-radius:3px;background:linear-gradient(90deg,var(--p),var(--ps));width:0%;transition:width 1.2s cubic-bezier(.34,1.56,.64,1);}
+  .hd-dp-val{font-size:10px;font-weight:700;color:#a78bfa;min-width:28px;text-align:right;font-family:'Inter Tight',sans-serif;}
+  /* Floating notification cards */
+  .hf{position:absolute;background:rgba(255,255,255,.97);border-radius:14px;padding:12px 16px;box-shadow:0 12px 32px rgba(108,59,255,.18),0 0 0 1px rgba(108,59,255,.1);z-index:6;backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);}
+  .hf-tl{top:4%;left:-8%;animation:hf-float-a 5s ease-in-out infinite;}
+  .hf-tr{top:8%;right:-10%;animation:hf-float-b 6s ease-in-out infinite;}
+  .hf-bl{bottom:12%;left:-10%;animation:hf-float-c 5.5s ease-in-out infinite;}
+  .hf-br{bottom:6%;right:-8%;animation:hf-float-d 7s ease-in-out infinite;}
+  @keyframes hf-float-a{0%,100%{transform:translateY(0) rotate(-1deg)}50%{transform:translateY(-8px) rotate(1deg)}}
+  @keyframes hf-float-b{0%,100%{transform:translateY(0) rotate(1deg)}50%{transform:translateY(-10px) rotate(-1deg)}}
+  @keyframes hf-float-c{0%,100%{transform:translateY(0) rotate(1deg)}50%{transform:translateY(-7px) rotate(-2deg)}}
+  @keyframes hf-float-d{0%,100%{transform:translateY(0) rotate(-1deg)}50%{transform:translateY(-9px) rotate(2deg)}}
+  .hf-row{display:flex;align-items:center;gap:9px;}
+  .hf-icon{width:28px;height:28px;border-radius:8px;display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+  .hf-icon-g{background:rgba(34,197,94,.12);}
+  .hf-icon-p{background:rgba(108,59,255,.1);}
+  .hf-title{font-size:12px;font-weight:700;color:var(--black);font-family:'Inter Tight',sans-serif;}
+  .hf-sub{font-size:10px;color:var(--muted);margin-top:1px;}
+  .hf-stat-val{font-size:22px;font-weight:900;color:var(--p);font-family:'Inter Tight',sans-serif;line-height:1;}
+  .hf-stat-lbl{font-size:9.5px;color:var(--muted);margin-top:2px;}
+  .hf-pulse-dot{width:7px;height:7px;border-radius:50%;background:#22c55e;animation:hd-pulse 1.2s infinite;display:inline-block;margin-right:4px;}
+  .hf-live-row{display:flex;align-items:center;font-size:12px;font-weight:700;color:var(--black);font-family:'Inter Tight',sans-serif;}
+  /* Mobile overrides for dashboard */
+  @media(max-width:768px){
+    .hd-device{width:calc(100% - 16px);max-width:340px;}
+    .hf{display:none;}
+    .hd-scene{overflow:hidden;}
+  }
+  @media(max-width:900px) and (orientation:landscape){
+    .hd-device{width:320px;}
+    .hf{display:none;}
+  }
   </style>
 </head>
 
@@ -2373,76 +2599,142 @@
         </div>
       </div>
       <div class="hero-right">
-        <div class="hero-digital-scene">
-          <div class="central-composition">
-            <div class="central-glow"></div>
-            
-            <div class="main-img-wrapper">
-              <video src="assets/videos/press_hologram.mp4" autoplay loop muted playsinline></video>
-              <div class="google-rank-badge">
-                <div class="gr-top">Google Search</div>
-                <div class="gr-res">#1 Ranking Achieved</div>
-                <div class="gr-bar"></div>
+        <div class="hd-scene">
+          <div class="hd-glow"></div>
+
+          <!-- Floating card TL: PR Published -->
+          <div class="hf hf-tl">
+            <div class="hf-row">
+              <div class="hf-icon hf-icon-g">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#22c55e" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+              </div>
+              <div>
+                <div class="hf-title">PR Published ✓</div>
+                <div class="hf-sub">Forbes · ANI · TOI · +498</div>
               </div>
             </div>
-
-            <div class="pr-floating-ui">
-              <span class="pr-tag">PRESS RELEASE</span>
-              <div class="pr-ui-title">Global Reach Achieved</div>
-              <div class="pr-ui-line highlight"></div>
-              <div class="pr-ui-line" style="width: 100%"></div>
-              <div class="pr-ui-line" style="width: 85%"></div>
-              <div class="pr-ui-line" style="width: 90%"></div>
-              <div class="pr-ui-line" style="width: 60%"></div>
-              
-              <div class="pr-ui-metrics">
-                <div class="metric">
-                  <div class="m-val">2.5M+</div>
-                  <div class="m-lbl">Impressions</div>
-                </div>
-                <div class="metric">
-                  <div class="m-val">Top Tier</div>
-                  <div class="m-lbl">Publishers</div>
-                </div>
-              </div>
-            </div>
-
-            <div class="orbit-ring ring-1"></div>
-            <div class="orbit-ring ring-2"></div>
-            <div class="orbit-ring ring-3"></div>
-
-            <div class="brand-tile bt-1" title="Forbes">
-              <img src="https://t3.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=http://forbes.com&size=128" alt="Forbes">
-            </div>
-            
-            <div class="brand-tile bt-2" title="Bloomberg">
-              <img src="https://t3.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=http://bloomberg.com&size=128" alt="Bloomberg">
-            </div>
-            
-            <div class="brand-tile bt-3" title="Times of India">
-              <img src="https://t3.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=http://timesofindia.indiatimes.com&size=128" alt="Times of India">
-            </div>
-            
-            <div class="brand-tile bt-4" title="Business Insider">
-              <img src="https://t3.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=http://businessinsider.com&size=128" alt="Business Insider">
-            </div>
-            
-            <div class="brand-tile bt-5" title="Financial Express">
-              <img src="https://t3.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=http://financialexpress.com&size=128" alt="Financial Express">
-            </div>
-
-            <div class="brand-tile bt-6" title="ANI News">
-              <img src="https://t3.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=http://aninews.in&size=128" alt="ANI News">
-            </div>
-
-            <div class="digi-dot dd-1"></div>
-            <div class="digi-dot dd-2"></div>
-            <div class="digi-dot dd-3"></div>
           </div>
-        </div>
-      </div>
-    </div>
-  </section>
+
+          <!-- Floating card TR: Media portals -->
+          <div class="hf hf-tr" style="text-align:center;min-width:100px;">
+            <div class="hf-stat-val">500+</div>
+            <div class="hf-stat-lbl">Media Portals</div>
+            <div style="margin-top:6px;display:flex;align-items:center;justify-content:center;gap:4px;font-size:9.5px;color:#22c55e;font-weight:700;font-family:'Inter Tight',sans-serif;">
+              <span class="hf-pulse-dot"></span>Live Now
+            </div>
+          </div>
+
+          <!-- Floating card BL: SEO Backlinks -->
+          <div class="hf hf-bl">
+            <div style="display:flex;align-items:center;gap:6px;">
+              <span style="font-size:18px;font-weight:900;color:var(--p);font-family:'Inter Tight',sans-serif;">↑ +127</span>
+            </div>
+            <div class="hf-stat-lbl" style="margin-top:3px;">New SEO Backlinks</div>
+          </div>
+
+          <!-- Floating card BR: Live brands -->
+          <div class="hf hf-br">
+            <div class="hf-live-row">
+              <span class="hf-pulse-dot"></span>
+              <span id="hd-live-num">18</span>&nbsp;Live
+            </div>
+            <div class="hf-stat-lbl">Brands Publishing Now</div>
+          </div>
+
+          <!-- Central device mockup -->
+          <div class="hd-device">
+            <!-- Browser chrome -->
+            <div class="hd-chrome">
+              <div class="hd-chrome-dots"><span></span><span></span><span></span></div>
+              <div class="hd-url">infusionbizz.com/live-dashboard</div>
+            </div>
+
+            <!-- Tabs -->
+            <div class="hd-tabs">
+              <button class="hd-tab hd-active" data-hdtab="0">📈 Google Ranking</button>
+              <button class="hd-tab" data-hdtab="1">📰 Media Coverage</button>
+              <button class="hd-tab" data-hdtab="2">🚀 PR Impact</button>
+            </div>
+            <div class="hd-prog-wrap"><div class="hd-prog" id="hd-prog"></div></div>
+
+            <!-- Screen 0: Google Ranking -->
+            <div class="hd-screen hd-active" id="hds-0">
+              <div class="hd-gsearch">
+                <svg width="14" height="14" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8" fill="none" stroke="#4285F4" stroke-width="2"/><path d="m21 21-4.35-4.35" stroke="#4285F4" stroke-width="2" stroke-linecap="round"/></svg>
+                <span class="hd-gq">your brand press release india</span>
+              </div>
+              <div class="hd-serp-r">
+                <div class="hd-serp-badge">#1</div>
+                <div>
+                  <div class="hd-serp-url">forbes.com › brand-launch-announcement</div>
+                  <div class="hd-serp-title">YourBrand Announces Expansion — Featured on Forbes</div>
+                  <div class="hd-serp-desc">Covered across 500+ platforms · 2.5M+ impressions · #1 on Google in 6 weeks...</div>
+                </div>
+              </div>
+              <div class="hd-chart">
+                <div class="hd-chart-lbl">Keyword Ranking After PR Campaign</div>
+                <div class="hd-bars">
+                  <div class="hd-bar" style="--bh:18%;--bc:#ef444466"><div class="hd-bar-lbl">Wk1</div></div>
+                  <div class="hd-bar" style="--bh:33%;--bc:#f9731666"><div class="hd-bar-lbl">Wk2</div></div>
+                  <div class="hd-bar" style="--bh:52%;--bc:#eab30866"><div class="hd-bar-lbl">Wk3</div></div>
+                  <div class="hd-bar" style="--bh:68%;--bc:#84cc1666"><div class="hd-bar-lbl">Wk4</div></div>
+                  <div class="hd-bar" style="--bh:84%;--bc:#22c55e99"><div class="hd-bar-lbl">Wk5</div></div>
+                  <div class="hd-bar hd-bar-top" style="--bh:98%"><div class="hd-bar-lbl">Wk6</div></div>
+                </div>
+                <div class="hd-chart-mets">
+                  <span class="hd-cm"><strong>2.5M+</strong> Impressions</span>
+                  <span class="hd-cm"><strong>Top 3</strong> Rankings</span>
+                  <span class="hd-cm"><strong>+127</strong> Backlinks</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Screen 1: Media Coverage -->
+            <div class="hd-screen" id="hds-1">
+              <div class="hd-cov-title">Press Release Live On</div>
+              <div class="hd-med-row">
+                <img src="https://t3.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=http://forbes.com&size=64" alt="Forbes">
+                <span class="hd-med-name">Forbes</span>
+                <span class="hd-pub">Published</span>
+              </div>
+              <div class="hd-med-row">
+                <img src="https://t3.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=http://aninews.in&size=64" alt="ANI">
+                <span class="hd-med-name">ANI News</span>
+                <span class="hd-pub">Published</span>
+              </div>
+              <div class="hd-med-row">
+                <img src="https://t3.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=http://timesofindia.indiatimes.com&size=64" alt="TOI">
+                <span class="hd-med-name">Times of India</span>
+                <span class="hd-pub">Published</span>
+              </div>
+              <div class="hd-med-row">
+                <img src="https://t3.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=http://financialexpress.com&size=64" alt="FE">
+                <span class="hd-med-name">Financial Express</span>
+                <span class="hd-proc">⏳ Processing</span>
+              </div>
+              <div class="hd-med-row">
+                <span class="hd-more">+ 496 more portals publishing simultaneously →</span>
+              </div>
+            </div>
+
+            <!-- Screen 2: PR Impact -->
+            <div class="hd-screen" id="hds-2">
+              <div class="hd-dist-grid">
+                <div class="hd-dist-cell"><div class="hd-dist-val">500+</div><div class="hd-dist-lbl">Portals</div></div>
+                <div class="hd-dist-cell"><div class="hd-dist-val">24h</div><div class="hd-dist-lbl">Turnaround</div></div>
+                <div class="hd-dist-cell"><div class="hd-dist-val">2.5M</div><div class="hd-dist-lbl">Reach</div></div>
+                <div class="hd-dist-cell"><div class="hd-dist-val">100%</div><div class="hd-dist-lbl">Digital</div></div>
+              </div>
+              <div class="hd-dp-row"><span class="hd-dp-lbl">Google News</span><div class="hd-dp-track"><div class="hd-dp-fill" data-w="95"></div></div><span class="hd-dp-val">95%</span></div>
+              <div class="hd-dp-row"><span class="hd-dp-lbl">Tier-1 Media</span><div class="hd-dp-track"><div class="hd-dp-fill" data-w="88"></div></div><span class="hd-dp-val">88%</span></div>
+              <div class="hd-dp-row"><span class="hd-dp-lbl">Business Portals</span><div class="hd-dp-track"><div class="hd-dp-fill" data-w="100"></div></div><span class="hd-dp-val">100%</span></div>
+            </div>
+          </div><!-- /hd-device -->
+
+        </div><!-- /hd-scene -->
+      </div><!-- /hero-right -->
+    </div><!-- /hero-grid -->
+  </section><!-- /hero -->
 
   <!-- BENEFITS SECTION -->
   <!-- SERVICES -->
@@ -3918,14 +4210,18 @@
 
     /* BENEFIT CARDS — 3D tilt + drag scroll */
     (function() {
-      /* Drag scroll */
+      /* Drag scroll — mouse + touch */
       const wrap = document.getElementById('benScroll');
       if (wrap) {
         let isDown = false, startX, scrollLeft;
-        wrap.addEventListener('mousedown', e => { isDown = true; startX = e.pageX - wrap.offsetLeft; scrollLeft = wrap.scrollLeft; });
+        wrap.addEventListener('mousedown',  e => { isDown = true; startX = e.pageX - wrap.offsetLeft; scrollLeft = wrap.scrollLeft; });
         wrap.addEventListener('mouseleave', () => isDown = false);
-        wrap.addEventListener('mouseup', () => isDown = false);
-        wrap.addEventListener('mousemove', e => { if (!isDown) return; e.preventDefault(); wrap.scrollLeft = scrollLeft - (e.pageX - wrap.offsetLeft - startX); });
+        wrap.addEventListener('mouseup',    () => isDown = false);
+        wrap.addEventListener('mousemove',  e => { if (!isDown) return; e.preventDefault(); wrap.scrollLeft = scrollLeft - (e.pageX - wrap.offsetLeft - startX); });
+        /* Touch support */
+        wrap.addEventListener('touchstart', e => { isDown = true; startX = e.touches[0].pageX - wrap.offsetLeft; scrollLeft = wrap.scrollLeft; }, { passive: true });
+        wrap.addEventListener('touchend',   () => isDown = false, { passive: true });
+        wrap.addEventListener('touchmove',  e => { if (!isDown) return; wrap.scrollLeft = scrollLeft - (e.touches[0].pageX - wrap.offsetLeft - startX); }, { passive: true });
       }
       /* 3D tilt */
       document.querySelectorAll('.ben-card').forEach(card => {
@@ -3988,20 +4284,88 @@
         });
       });
     }
-    /* REDUCE ANIMATIONS ON MOBILE */
-    const isMobile = window.innerWidth <= 768;
-    if (isMobile) {
-      // Disable custom cursor
-      document.getElementById('cursor').style.display = 'none';
-      document.getElementById('cursor-ring').style.display = 'none';
+    /* REDUCE ANIMATIONS ON MOBILE / TOUCH */
+    const isMobile = window.innerWidth <= 768 || ('ontouchstart' in window);
+    if (isMobile || window.innerWidth <= 768) {
+      // Disable custom cursor on touch/mobile
+      const cur = document.getElementById('cursor');
+      const curR = document.getElementById('cursor-ring');
+      if (cur)  cur.style.display  = 'none';
+      if (curR) curR.style.display = 'none';
       document.body.style.cursor = 'auto';
       // Reduce loader canvas size
-      const lc = document.getElementById('loader-canvas');
-      if (lc) { lc.style.width = '220px'; lc.style.height = '220px'; }
+      const lc2 = document.getElementById('loader-canvas');
+      if (lc2) { lc2.style.width = '220px'; lc2.style.height = '220px'; }
       // Reduce network canvas height
       const nc = document.getElementById('net-canvas');
       if (nc) { nc.style.height = '250px'; }
     }
+    /* Respect prefers-reduced-motion in JS animations */
+    const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (prefersReduced) {
+      document.querySelectorAll('[style*="animation"]').forEach(el => el.style.animation = 'none');
+    }
+
+    /* ── DASHBOARD TAB CYCLING ── */
+    (function(){
+      const DURATION = 4200; // ms per tab
+      const tabs   = document.querySelectorAll('.hd-tab');
+      const screens= document.querySelectorAll('.hd-screen');
+      const prog   = document.getElementById('hd-prog');
+      if(!tabs.length) return;
+      let current = 0, startTime = null, raf = null;
+
+      function activateTab(idx){
+        tabs.forEach((t,i)=>{ t.classList.toggle('hd-active', i===idx); });
+        screens.forEach((s,i)=>{ s.classList.toggle('hd-active', i===idx); });
+        // Animate progress bar fills on screen 2
+        if(idx===2){
+          setTimeout(()=>{
+            document.querySelectorAll('.hd-dp-fill').forEach(el=>{
+              el.style.width = (el.dataset.w||'0')+'%';
+            });
+          }, 100);
+        } else {
+          document.querySelectorAll('.hd-dp-fill').forEach(el=>{ el.style.width='0%'; });
+        }
+      }
+
+      function tick(ts){
+        if(!startTime) startTime = ts;
+        const elapsed = ts - startTime;
+        const pct = Math.min((elapsed / DURATION) * 100, 100);
+        if(prog) prog.style.width = pct + '%';
+        if(elapsed >= DURATION){
+          current = (current + 1) % tabs.length;
+          activateTab(current);
+          startTime = ts;
+        }
+        raf = requestAnimationFrame(tick);
+      }
+
+      // Manual tab click
+      tabs.forEach((btn, idx)=>{
+        btn.addEventListener('click', ()=>{
+          cancelAnimationFrame(raf);
+          current = idx;
+          activateTab(current);
+          startTime = null;
+          raf = requestAnimationFrame(tick);
+        });
+      });
+
+      // Start
+      activateTab(0);
+      raf = requestAnimationFrame(tick);
+
+      // Live counter
+      let liveN = 18;
+      setInterval(()=>{
+        if(Math.random() > .6){ liveN += Math.random()>.5?1:-1; liveN = Math.max(12, Math.min(28, liveN)); }
+        const el = document.getElementById('hd-live-num');
+        if(el) el.textContent = liveN;
+      }, 3000);
+    })();
 
     /* POPUP */
     setTimeout(() => { if (document.getElementById('pop')) document.getElementById('pop').classList.add('show') }, 22000);
