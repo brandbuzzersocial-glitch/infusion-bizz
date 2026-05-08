@@ -305,7 +305,7 @@
       align-items: center;
       position: relative;
       overflow: hidden;
-      background: linear-gradient(155deg, #faf9ff 0%, #ede8ff 55%, #faf9ff 100%)
+      background: radial-gradient(circle at 70% 30%, #1a0b3c 0%, #05050a 100%);
     }
 
     .hero-grid {
@@ -379,7 +379,7 @@
       font-size: clamp(40px, 4.5vw, 52px);
       font-weight: 800;
       line-height: 1.15;
-      color: var(--black);
+      color: #fff;
       margin-bottom: 24px;
       letter-spacing: -1px;
       text-wrap: balance;
@@ -393,7 +393,7 @@
     .hero-sub {
       font-size: 16px;
       line-height: 1.65;
-      color: var(--muted);
+      color: rgba(255,255,255,0.7);
       margin-bottom: 40px;
       max-width: 480px
     }
@@ -2468,99 +2468,22 @@
       html { scroll-behavior: auto; }
       .ticker-track { animation: none; }
     }
-  /* ── HERO DASHBOARD SCENE ── */
-  .hd-scene{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;}
-  .hd-glow{position:absolute;width:500px;height:500px;background:radial-gradient(circle,rgba(108,59,255,.18) 0%,transparent 65%);filter:blur(40px);pointer-events:none;z-index:0;}
-  /* Device */
-  .hd-device{position:relative;width:400px;background:#0d0820;border-radius:18px;border:1px solid rgba(108,59,255,.28);box-shadow:0 40px 80px rgba(0,0,0,.35),0 0 0 1px rgba(255,255,255,.05),inset 0 1px 0 rgba(255,255,255,.08);overflow:hidden;z-index:2;animation:hd-float 7s ease-in-out infinite;}
-  @keyframes hd-float{0%,100%{transform:translateY(0)}50%{transform:translateY(-12px)}}
-  /* Browser chrome */
-  .hd-chrome{background:#170d2e;padding:9px 14px;display:flex;align-items:center;gap:6px;border-bottom:1px solid rgba(255,255,255,.06);}
-  .hd-chrome-dots{display:flex;gap:5px;}
-  .hd-chrome-dots span{display:block;width:9px;height:9px;border-radius:50%;}
-  .hd-chrome-dots span:nth-child(1){background:#ff5f57;}
-  .hd-chrome-dots span:nth-child(2){background:#ffbd2e;}
-  .hd-chrome-dots span:nth-child(3){background:#28c840;}
-  .hd-url{flex:1;margin-left:10px;background:rgba(255,255,255,.06);border-radius:6px;height:20px;display:flex;align-items:center;padding:0 10px;font-size:10px;color:rgba(255,255,255,.3);font-family:'Inter',sans-serif;}
-  /* Tabs */
-  .hd-tabs{display:flex;gap:2px;padding:10px 12px 0;background:#0d0820;}
-  .hd-tab{flex:1;padding:7px 3px;font-size:9.5px;font-weight:700;font-family:'Inter Tight',sans-serif;text-align:center;background:transparent;border:none;border-radius:8px 8px 0 0;color:rgba(255,255,255,.32);cursor:pointer;transition:all .25s;white-space:nowrap;letter-spacing:.3px;}
-  .hd-tab.hd-active{background:rgba(108,59,255,.18);color:#c4b5fd;border:1px solid rgba(108,59,255,.25);border-bottom:none;}
-  /* Progress */
-  .hd-prog-wrap{height:2px;background:rgba(255,255,255,.06);margin:0 12px;}
-  .hd-prog{height:100%;background:linear-gradient(90deg,var(--p),var(--ps));width:0%;transition:width .1s linear;}
-  /* Screens */
-  .hd-screen{display:none;padding:14px 14px 16px;animation:hd-in .35s cubic-bezier(.34,1.56,.64,1);}
-  .hd-screen.hd-active{display:block;}
-  @keyframes hd-in{from{opacity:0;transform:translateX(18px)}to{opacity:1;transform:translateX(0)}}
-  /* Screen 0 – Google Ranking */
-  .hd-gsearch{display:flex;align-items:center;gap:8px;background:rgba(255,255,255,.06);border-radius:8px;padding:7px 10px;margin-bottom:10px;}
-  .hd-gsearch svg{flex-shrink:0;}
-  .hd-gq{font-size:11px;color:rgba(255,255,255,.55);font-family:'Inter',sans-serif;}
-  .hd-serp-r{display:flex;align-items:flex-start;gap:10px;background:rgba(108,59,255,.1);border:1px solid rgba(108,59,255,.22);border-radius:10px;padding:10px 12px;margin-bottom:10px;}
-  .hd-serp-badge{background:linear-gradient(135deg,var(--p),var(--ps));color:#fff;font-size:11px;font-weight:900;font-family:'Inter Tight',sans-serif;padding:4px 8px;border-radius:6px;flex-shrink:0;}
-  .hd-serp-url{font-size:9.5px;color:#4ade80;margin-bottom:3px;font-family:'Inter',sans-serif;}
-  .hd-serp-title{font-size:11.5px;font-weight:700;color:#e2d9ff;font-family:'Inter Tight',sans-serif;line-height:1.35;margin-bottom:3px;}
-  .hd-serp-desc{font-size:9.5px;color:rgba(255,255,255,.4);font-family:'Inter',sans-serif;line-height:1.4;}
-  /* Ranking chart */
-  .hd-chart{margin-top:6px;}
-  .hd-chart-lbl{font-size:9px;color:rgba(255,255,255,.3);letter-spacing:.08em;text-transform:uppercase;margin-bottom:8px;font-family:'Inter',sans-serif;}
-  .hd-bars{display:flex;align-items:flex-end;gap:5px;height:52px;}
-  .hd-bar{flex:1;border-radius:4px 4px 0 0;background:var(--bc,rgba(108,59,255,.4));height:var(--bh,40%);transition:height 1s cubic-bezier(.34,1.56,.64,1);position:relative;}
-  .hd-bar-top{background:linear-gradient(135deg,var(--p),var(--ps));box-shadow:0 0 12px rgba(108,59,255,.5);}
-  .hd-bar-lbl{position:absolute;bottom:-14px;left:50%;transform:translateX(-50%);font-size:7.5px;color:rgba(255,255,255,.3);white-space:nowrap;font-family:'Inter',sans-serif;}
-  .hd-chart-mets{display:flex;gap:10px;margin-top:18px;padding-top:10px;border-top:1px solid rgba(255,255,255,.06);}
-  .hd-cm{font-size:9px;color:rgba(255,255,255,.4);font-family:'Inter',sans-serif;}.hd-cm strong{color:#a78bfa;font-size:11px;}
-  /* Screen 1 – Media Coverage */
-  .hd-cov-title{font-size:10px;color:rgba(255,255,255,.35);letter-spacing:.1em;text-transform:uppercase;margin-bottom:10px;font-family:'Inter',sans-serif;}
-  .hd-med-row{display:flex;align-items:center;gap:10px;padding:8px 0;border-bottom:1px solid rgba(255,255,255,.05);}
-  .hd-med-row:last-child{border:none;}
-  .hd-med-row img{width:20px;height:20px;border-radius:4px;object-fit:contain;background:#fff;padding:2px;}
-  .hd-med-name{flex:1;font-size:11.5px;font-weight:600;color:rgba(255,255,255,.75);font-family:'Inter Tight',sans-serif;}
-  .hd-pub{font-size:10px;font-weight:700;color:#22c55e;display:flex;align-items:center;gap:4px;}
-  .hd-proc{font-size:10px;font-weight:600;color:#fbbf24;}
-  .hd-pub::before{content:'';display:inline-block;width:6px;height:6px;border-radius:50%;background:#22c55e;animation:hd-pulse 1.5s infinite;}
-  @keyframes hd-pulse{0%,100%{opacity:1}50%{opacity:.4}}
-  .hd-more{font-size:10px;color:rgba(108,59,255,.7);font-weight:600;margin-top:6px;font-family:'Inter',sans-serif;}
-  /* Screen 2 – PR Impact */
-  .hd-dist-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:12px;}
-  .hd-dist-cell{background:rgba(255,255,255,.04);border:1px solid rgba(108,59,255,.15);border-radius:10px;padding:12px;text-align:center;}
-  .hd-dist-val{font-family:'Inter Tight',sans-serif;font-size:20px;font-weight:900;color:#a78bfa;line-height:1;}
-  .hd-dist-lbl{font-size:9.5px;color:rgba(255,255,255,.4);margin-top:4px;font-family:'Inter',sans-serif;}
-  .hd-dp-row{display:flex;align-items:center;gap:8px;margin-bottom:8px;}
-  .hd-dp-lbl{font-size:10px;color:rgba(255,255,255,.5);min-width:90px;font-family:'Inter',sans-serif;}
-  .hd-dp-track{flex:1;height:5px;background:rgba(255,255,255,.07);border-radius:3px;overflow:hidden;}
-  .hd-dp-fill{height:100%;border-radius:3px;background:linear-gradient(90deg,var(--p),var(--ps));width:0%;transition:width 1.2s cubic-bezier(.34,1.56,.64,1);}
-  .hd-dp-val{font-size:10px;font-weight:700;color:#a78bfa;min-width:28px;text-align:right;font-family:'Inter Tight',sans-serif;}
-  /* Floating notification cards */
-  .hf{position:absolute;background:rgba(255,255,255,.97);border-radius:14px;padding:12px 16px;box-shadow:0 12px 32px rgba(108,59,255,.18),0 0 0 1px rgba(108,59,255,.1);z-index:6;backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);}
-  .hf-tl{top:4%;left:-8%;animation:hf-float-a 5s ease-in-out infinite;}
-  .hf-tr{top:8%;right:-10%;animation:hf-float-b 6s ease-in-out infinite;}
-  .hf-bl{bottom:12%;left:-10%;animation:hf-float-c 5.5s ease-in-out infinite;}
-  .hf-br{bottom:6%;right:-8%;animation:hf-float-d 7s ease-in-out infinite;}
-  @keyframes hf-float-a{0%,100%{transform:translateY(0) rotate(-1deg)}50%{transform:translateY(-8px) rotate(1deg)}}
-  @keyframes hf-float-b{0%,100%{transform:translateY(0) rotate(1deg)}50%{transform:translateY(-10px) rotate(-1deg)}}
-  @keyframes hf-float-c{0%,100%{transform:translateY(0) rotate(1deg)}50%{transform:translateY(-7px) rotate(-2deg)}}
-  @keyframes hf-float-d{0%,100%{transform:translateY(0) rotate(-1deg)}50%{transform:translateY(-9px) rotate(2deg)}}
-  .hf-row{display:flex;align-items:center;gap:9px;}
-  .hf-icon{width:28px;height:28px;border-radius:8px;display:flex;align-items:center;justify-content:center;flex-shrink:0;}
-  .hf-icon-g{background:rgba(34,197,94,.12);}
-  .hf-icon-p{background:rgba(108,59,255,.1);}
-  .hf-title{font-size:12px;font-weight:700;color:var(--black);font-family:'Inter Tight',sans-serif;}
-  .hf-sub{font-size:10px;color:var(--muted);margin-top:1px;}
-  .hf-stat-val{font-size:22px;font-weight:900;color:var(--p);font-family:'Inter Tight',sans-serif;line-height:1;}
-  .hf-stat-lbl{font-size:9.5px;color:var(--muted);margin-top:2px;}
-  .hf-pulse-dot{width:7px;height:7px;border-radius:50%;background:#22c55e;animation:hd-pulse 1.2s infinite;display:inline-block;margin-right:4px;}
-  .hf-live-row{display:flex;align-items:center;font-size:12px;font-weight:700;color:var(--black);font-family:'Inter Tight',sans-serif;}
-  /* Mobile overrides for dashboard */
-  @media(max-width:768px){
-    .hd-device{width:calc(100% - 16px);max-width:340px;}
-    .hf{display:none;}
-    .hd-scene{overflow:hidden;}
+  /* ── HERO COSMIC SCENE ── */
+  #hero-cosmic-scene canvas {
+    display: block;
+    width: 100%;
+    height: 100%;
   }
-  @media(max-width:900px) and (orientation:landscape){
-    .hd-device{width:320px;}
-    .hf{display:none;}
+  .cosmic-label {
+    position: absolute;
+    color: rgba(108, 59, 255, 0.8);
+    font-family: 'Inter Tight', sans-serif;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    pointer-events: none;
+    z-index: 5;
   }
   </style>
 </head>
@@ -2620,164 +2543,32 @@
           </a>
         </div>
         <!-- Impactful Hero Stats -->
-        <div class="hero-stats-bar reveal" style="margin-top: 40px; padding-top: 32px; border-top: 1px solid rgba(0,0,0,0.1); display: flex; flex-wrap: wrap; gap: 24px; align-items: flex-start;">
+        <div class="hero-stats-bar reveal" style="margin-top: 40px; padding-top: 32px; border-top: 1px solid rgba(255,255,255,0.1); display: flex; flex-wrap: wrap; gap: 24px; align-items: flex-start;">
           
           <div style="flex: 1; min-width: 110px; animation: float-bt 6s ease-in-out infinite; animation-delay: 0s;">
             <div class="stat-num" data-target="10000" data-suffix="+" style="font-size: 38px; font-weight: 900; color: var(--p); line-height: 1;">0</div>
-            <div style="font-size: 13px; color: #0f172a; font-weight: 700; margin-top: 8px; line-height: 1.3;">Press Releases<br>Published</div>
+            <div style="font-size: 13px; color: rgba(255,255,255,0.7); font-weight: 700; margin-top: 8px; line-height: 1.3;">Press Releases<br>Published</div>
           </div>
           
           <div style="flex: 1; min-width: 110px; animation: float-bt 6s ease-in-out infinite; animation-delay: 1.5s;">
             <div class="stat-num" data-target="1500" data-suffix="+" style="font-size: 38px; font-weight: 900; color: var(--p); line-height: 1;">0</div>
-            <div style="font-size: 13px; color: #0f172a; font-weight: 700; margin-top: 8px; line-height: 1.3;">Media<br>Platforms</div>
+            <div style="font-size: 13px; color: rgba(255,255,255,0.7); font-weight: 700; margin-top: 8px; line-height: 1.3;">Media<br>Platforms</div>
           </div>
           
           <div style="flex: 1; min-width: 110px; animation: float-bt 6s ease-in-out infinite; animation-delay: 3s;">
             <div class="stat-num" data-target="1000" data-suffix="+" style="font-size: 38px; font-weight: 900; color: var(--p); line-height: 1;">0</div>
-            <div style="font-size: 13px; color: #0f172a; font-weight: 700; margin-top: 8px; line-height: 1.3;">Brands<br>Served</div>
+            <div style="font-size: 13px; color: rgba(255,255,255,0.7); font-weight: 700; margin-top: 8px; line-height: 1.3;">Brands<br>Served</div>
           </div>
           
           <div style="flex: 1; min-width: 110px; animation: float-bt 6s ease-in-out infinite; animation-delay: 4.5s;">
             <div class="stat-num" data-target="100" data-suffix="%" style="font-size: 38px; font-weight: 900; color: var(--p); line-height: 1;">0</div>
-            <div style="font-size: 13px; color: #0f172a; font-weight: 700; margin-top: 8px; line-height: 1.3;">Client<br>Satisfaction</div>
+            <div style="font-size: 13px; color: rgba(255,255,255,0.7); font-weight: 700; margin-top: 8px; line-height: 1.3;">Client<br>Satisfaction</div>
           </div>
           
         </div>
       </div>
       <div class="hero-right">
-        <div class="hd-scene">
-          <div class="hd-glow"></div>
-
-          <!-- Floating card TL: PR Published -->
-          <div class="hf hf-tl">
-            <div class="hf-row">
-              <div class="hf-icon hf-icon-g">
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#22c55e" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
-              </div>
-              <div>
-                <div class="hf-title">PR Published ✓</div>
-                <div class="hf-sub">Forbes · ANI · TOI · +498</div>
-              </div>
-            </div>
-          </div>
-
-          <!-- Floating card TR: Media portals -->
-          <div class="hf hf-tr" style="text-align:center;min-width:100px;">
-            <div class="hf-stat-val">500+</div>
-            <div class="hf-stat-lbl">Media Portals</div>
-            <div style="margin-top:6px;display:flex;align-items:center;justify-content:center;gap:4px;font-size:9.5px;color:#22c55e;font-weight:700;font-family:'Inter Tight',sans-serif;">
-              <span class="hf-pulse-dot"></span>Live Now
-            </div>
-          </div>
-
-          <!-- Floating card BL: SEO Backlinks -->
-          <div class="hf hf-bl">
-            <div style="display:flex;align-items:center;gap:6px;">
-              <span style="font-size:18px;font-weight:900;color:var(--p);font-family:'Inter Tight',sans-serif;">↑ +127</span>
-            </div>
-            <div class="hf-stat-lbl" style="margin-top:3px;">New SEO Backlinks</div>
-          </div>
-
-          <!-- Floating card BR: Live brands -->
-          <div class="hf hf-br">
-            <div class="hf-live-row">
-              <span class="hf-pulse-dot"></span>
-              <span id="hd-live-num">18</span>&nbsp;Live
-            </div>
-            <div class="hf-stat-lbl">Brands Publishing Now</div>
-          </div>
-
-          <!-- Central device mockup -->
-          <div class="hd-device">
-            <!-- Browser chrome -->
-            <div class="hd-chrome">
-              <div class="hd-chrome-dots"><span></span><span></span><span></span></div>
-              <div class="hd-url">infusionbizz.com/live-dashboard</div>
-            </div>
-
-            <!-- Tabs -->
-            <div class="hd-tabs">
-              <button class="hd-tab hd-active" data-hdtab="0">📈 Google Ranking</button>
-              <button class="hd-tab" data-hdtab="1">📰 Media Coverage</button>
-              <button class="hd-tab" data-hdtab="2">🚀 PR Impact</button>
-            </div>
-            <div class="hd-prog-wrap"><div class="hd-prog" id="hd-prog"></div></div>
-
-            <!-- Screen 0: Google Ranking -->
-            <div class="hd-screen hd-active" id="hds-0">
-              <div class="hd-gsearch">
-                <svg width="14" height="14" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8" fill="none" stroke="#4285F4" stroke-width="2"/><path d="m21 21-4.35-4.35" stroke="#4285F4" stroke-width="2" stroke-linecap="round"/></svg>
-                <span class="hd-gq">your brand press release india</span>
-              </div>
-              <div class="hd-serp-r">
-                <div class="hd-serp-badge">#1</div>
-                <div>
-                  <div class="hd-serp-url">forbes.com › brand-launch-announcement</div>
-                  <div class="hd-serp-title">YourBrand Announces Expansion — Featured on Forbes</div>
-                  <div class="hd-serp-desc">Covered across 500+ platforms · 2.5M+ impressions · #1 on Google in 6 weeks...</div>
-                </div>
-              </div>
-              <div class="hd-chart">
-                <div class="hd-chart-lbl">Keyword Ranking After PR Campaign</div>
-                <div class="hd-bars">
-                  <div class="hd-bar" style="--bh:18%;--bc:#ef444466"><div class="hd-bar-lbl">Wk1</div></div>
-                  <div class="hd-bar" style="--bh:33%;--bc:#f9731666"><div class="hd-bar-lbl">Wk2</div></div>
-                  <div class="hd-bar" style="--bh:52%;--bc:#eab30866"><div class="hd-bar-lbl">Wk3</div></div>
-                  <div class="hd-bar" style="--bh:68%;--bc:#84cc1666"><div class="hd-bar-lbl">Wk4</div></div>
-                  <div class="hd-bar" style="--bh:84%;--bc:#22c55e99"><div class="hd-bar-lbl">Wk5</div></div>
-                  <div class="hd-bar hd-bar-top" style="--bh:98%"><div class="hd-bar-lbl">Wk6</div></div>
-                </div>
-                <div class="hd-chart-mets">
-                  <span class="hd-cm"><strong>2.5M+</strong> Impressions</span>
-                  <span class="hd-cm"><strong>Top 3</strong> Rankings</span>
-                  <span class="hd-cm"><strong>+127</strong> Backlinks</span>
-                </div>
-              </div>
-            </div>
-
-            <!-- Screen 1: Media Coverage -->
-            <div class="hd-screen" id="hds-1">
-              <div class="hd-cov-title">Press Release Live On</div>
-              <div class="hd-med-row">
-                <img src="https://t3.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=http://forbes.com&size=64" alt="Forbes">
-                <span class="hd-med-name">Forbes</span>
-                <span class="hd-pub">Published</span>
-              </div>
-              <div class="hd-med-row">
-                <img src="https://t3.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=http://aninews.in&size=64" alt="ANI">
-                <span class="hd-med-name">ANI News</span>
-                <span class="hd-pub">Published</span>
-              </div>
-              <div class="hd-med-row">
-                <img src="https://t3.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=http://timesofindia.indiatimes.com&size=64" alt="TOI">
-                <span class="hd-med-name">Times of India</span>
-                <span class="hd-pub">Published</span>
-              </div>
-              <div class="hd-med-row">
-                <img src="https://t3.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=http://financialexpress.com&size=64" alt="FE">
-                <span class="hd-med-name">Financial Express</span>
-                <span class="hd-proc">⏳ Processing</span>
-              </div>
-              <div class="hd-med-row">
-                <span class="hd-more">+ 496 more portals publishing simultaneously →</span>
-              </div>
-            </div>
-
-            <!-- Screen 2: PR Impact -->
-            <div class="hd-screen" id="hds-2">
-              <div class="hd-dist-grid">
-                <div class="hd-dist-cell"><div class="hd-dist-val">500+</div><div class="hd-dist-lbl">Portals</div></div>
-                <div class="hd-dist-cell"><div class="hd-dist-val">24h</div><div class="hd-dist-lbl">Turnaround</div></div>
-                <div class="hd-dist-cell"><div class="hd-dist-val">2.5M</div><div class="hd-dist-lbl">Reach</div></div>
-                <div class="hd-dist-cell"><div class="hd-dist-val">100%</div><div class="hd-dist-lbl">Digital</div></div>
-              </div>
-              <div class="hd-dp-row"><span class="hd-dp-lbl">Google News</span><div class="hd-dp-track"><div class="hd-dp-fill" data-w="95"></div></div><span class="hd-dp-val">95%</span></div>
-              <div class="hd-dp-row"><span class="hd-dp-lbl">Tier-1 Media</span><div class="hd-dp-track"><div class="hd-dp-fill" data-w="88"></div></div><span class="hd-dp-val">88%</span></div>
-              <div class="hd-dp-row"><span class="hd-dp-lbl">Business Portals</span><div class="hd-dp-track"><div class="hd-dp-fill" data-w="100"></div></div><span class="hd-dp-val">100%</span></div>
-            </div>
-          </div><!-- /hd-device -->
-
-        </div><!-- /hd-scene -->
+        <div id="hero-cosmic-scene" style="position:absolute; inset:0; z-index:1; cursor:pointer;"></div>
       </div><!-- /hero-right -->
     </div><!-- /hero-grid -->
   </section><!-- /hero -->
@@ -3383,10 +3174,7 @@
 
       <!-- Article 3 -->
       <a href="https://www.dnainindia.com/lifestyle/report-meet-dr-kriti-bharti-the-fearless-savior-changing-india-s-child-marriage-narrative-13642533" target="_blank" class="port-card reveal">
-        <div class="port-thumb" style="background:linear-gradient(135deg,#0a1628 0%,#c0392b 100%);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px">
-          <img src="https://t3.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=http://dnaindia.com&size=64" style="width:40px;height:40px;border-radius:8px" alt="">
-          <span style="font-size:13px;font-weight:700;color:rgba(255,255,255,.8)">DNA India</span>
-        </div>
+        <div class="port-thumb" style="padding:0; overflow:hidden;"><img src="https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?w=600&q=80" style="width:100%;height:100%;object-fit:cover;display:block" alt="Social Activism Dr Kriti Bharti"></div>
         <div class="port-content">
           <span class="port-pub">DNA India</span>
           <h3 class="port-title">Meet Dr Kriti Bharti: The Fearless Savior Changing India's Child Marriage Narrative</h3>
@@ -3464,10 +3252,7 @@
 
       <!-- Article 6 -->
       <a href="https://timesofindia.indiatimes.com/how-bangladeshi-ai-educator-robin-rafan-is-supporting-digital-skill-development-across-south-asia/articleshow/125034828.cms" target="_blank" class="port-card reveal">
-        <div class="port-thumb" style="background:linear-gradient(135deg,#001a00 0%,#1b5e20 100%);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px">
-          <img src="https://t3.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=http://timesofindia.indiatimes.com&size=64" style="width:40px;height:40px;border-radius:8px" alt="">
-          <span style="font-size:13px;font-weight:700;color:rgba(255,255,255,.8)">Times of India</span>
-        </div>
+        <div class="port-thumb" style="padding:0; overflow:hidden;"><img src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?w=600&q=80" style="width:100%;height:100%;object-fit:cover;display:block" alt="Digital Skill Development"></div>
         <div class="port-content">
           <span class="port-pub">The Times of India</span>
           <h3 class="port-title">AI Educator Robin Rafan Supporting Digital Skill Development Across South Asia</h3>
@@ -3493,9 +3278,7 @@
 
       <!-- Article 7 -->
       <a href="https://www.bwhealthcareworld.com/article/experts-point-to-need-for-navigation-based-care-models-584373-584374" target="_blank" class="port-card reveal">
-        <div class="port-thumb" style="padding:0;overflow:hidden;">
-          <img src="https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?w=600&q=80" style="width:100%;height:100%;object-fit:cover;display:block;" alt="Healthcare World Cover" onerror="this.parentElement.style.background='linear-gradient(135deg,#001233 0%,#0d47a1 100%)';this.style.display='none'">
-        </div>
+        <div class="port-thumb" style="padding:0;overflow:hidden;"><img src="https://images.unsplash.com/photo-1532938911079-1b06ac7ceec7?w=600&q=80" style="width:100%;height:100%;object-fit:cover;display:block" alt="Healthcare Care Models"></div>
         <div class="port-content">
           <span class="port-pub">BW Healthcare World</span>
           <h3 class="port-title">Experts Point to Need for Navigation-Based Care Models</h3>
@@ -4352,65 +4135,258 @@
       document.querySelectorAll('[style*="animation"]').forEach(el => el.style.animation = 'none');
     }
 
-    /* ── DASHBOARD TAB CYCLING ── */
-    (function(){
-      const DURATION = 4200; // ms per tab
-      const tabs   = document.querySelectorAll('.hd-tab');
-      const screens= document.querySelectorAll('.hd-screen');
-      const prog   = document.getElementById('hd-prog');
-      if(!tabs.length) return;
-      let current = 0, startTime = null, raf = null;
+    /* ── HERO BUSINESS ORBIT V3 ── */
+    (function() {
+      const container = document.getElementById('hero-cosmic-scene');
+      if (!container) return;
 
-      function activateTab(idx){
-        tabs.forEach((t,i)=>{ t.classList.toggle('hd-active', i===idx); });
-        screens.forEach((s,i)=>{ s.classList.toggle('hd-active', i===idx); });
-        // Animate progress bar fills on screen 2
-        if(idx===2){
-          setTimeout(()=>{
-            document.querySelectorAll('.hd-dp-fill').forEach(el=>{
-              el.style.width = (el.dataset.w||'0')+'%';
-            });
-          }, 100);
+      const scene = new THREE.Scene();
+      const camera = new THREE.PerspectiveCamera(55, container.clientWidth / container.clientHeight, 0.1, 1000);
+      const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
+      renderer.setSize(container.clientWidth, container.clientHeight);
+      renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+      container.appendChild(renderer.domElement);
+
+      const theme = {
+        purple: 0x6C3BFF,
+        lightPurple: 0xA78BFA,
+        white: 0xffffff,
+        glass: 0xe2d9ff
+      };
+
+      // --- HELPERS ---
+      const textureLoader = new THREE.TextureLoader();
+      const faceTextures = [
+        textureLoader.load('assets/images/face1.png'),
+        textureLoader.load('assets/images/face2.png'),
+        textureLoader.load('assets/images/face3.png'),
+        textureLoader.load('assets/images/face4.png'),
+        textureLoader.load('assets/images/face5.png'),
+        textureLoader.load('assets/images/face6.png'),
+        textureLoader.load('logo.png')
+      ];
+
+      const articleColors = [0x6C3BFF, 0x4A1FD4, 0x8A66FF, 0x3b82f6, 0x0ea5e9];
+
+      const silhouettePaths = [
+        "M7.137,21.848l-0.355,7.025h10.137l0.777-3.23c0,0,0.439,0.738,3.06,0.96c2.619,0.222,2.3-2.976,2.3-2.976s1.744-0.77,1.744-1.346c0-0.578-1.032-1.322-1.032-1.322s1.109,0.199,1.512-0.268c0.399-0.467-0.49-2.154-0.49-2.154s1.368-0.035,2.175-0.922c0.805-0.887-2.539-3.509-2.539-5.199c1.892-9.269-5.64-13.511-13.998-12.176c-8.36,1.333-8.046,6.39-8.538,8.803C0.912,15.09,7.137,21.848,7.137,21.848z",
+        "M5.014,13.053c0.292-0.438,0.346-0.902,0.302-1.332c-0.408-0.006-1.155-0.102-1.022-0.745c0.317,0.447,0.712,0.446,0.965,0.396c-0.01-0.047-0.02-0.094-0.032-0.139c-0.243-0.627-0.55-2.017-0.401-3.476C3.959,7.521,1.657,6.522,5.115,3.028c4.152-4.195,11.984-3.724,14.98-0.472c2.996,3.253,1.199,7.747,1.199,7.747s0.685-0.899,0.983,0.385c4.366-1.155,4.665,5.606,4.323,6.464c-0.342,0.855,1.025,10.535-0.812,10.914c-1.354,0.279-3.867-5.488-4.963-9.713c-1.487,1.803-2.509,3.949-2.078,4.576c0.471,0.684,6.758,7.113,6.758,7.113l-15.108-0.472c0,0,0.88-1.01,1.455-1.669c0.575-0.658-1.083-4.174-1.455-5.607c-0.385-2.074-3.339-0.299-4.794-0.727c-1.456-0.428-0.466-2.373-0.466-2.373s-0.428-0.217-0.476-0.714c-0.048-0.498,0.974-0.875,0.974-0.875s-1.065,0.19-1.215-0.344c-0.112-0.402,0.417-0.915,0.417-0.915l-0.003-0.327c0,0-1.652-0.149-1.338-1.01C3.717,14.395,4.401,13.973,5.014,13.053z",
+        "M347.291,116.456c-10.813,16.763-20.879,9.692-20.879,9.692s25.725-18.018,14.911-35.417c-9.318,17.031-19.01,12.687-19.01,12.687s15.285-31.435,1.868-35.417c-5.582,13.68-24.23,2.978-24.23,2.978s10.93-9.079,17.516-4.46c0.129-9.208-26.46-11.192-26.46-11.192s3.468-7.952,0-11.561c-3.106,3.48-9.318,1.635-9.318,1.635s4.601-15.554-5.593-16.908c3.094,10.428-12.051,11.42-11.935,6.971c-11.934-25.608-30.933-18.532-30.933-18.532s-5.967-5.838,0-11.181c-4.718-3.731-27.569,8.945-27.569,8.945l-15.647-7.462c0,0-15.928-10.293-22.012-6.323c8.571,6.458,5.967,21.614,5.967,21.614S160.795,5.144,156.078,7.246c3.736,5.109,0,7.83,0,7.83s-8.314-11.187-17.516-10.807c-9.19,0.374-13.779,12.29-14.538,12.29s-2.371-7.818,0-12.29c-9.202,0.123-12.308,31.195-12.308,31.195s-6.972-10.819,0-19.653c-18.894,2.616-4.834,21.626-4.834,21.626s-8.711-2.615-15.659,0c-6.948,2.61-11.059,8.192-17.143,10.439c-6.083,2.225-14.036-5.103-13.417,7.824c3.597-0.759,10.813,0,10.813,0s-6.715,11.549-7.462,12.669c-0.759,1.127-9.447-9.931-20.143-7.817c-10.685,2.119-3.094,14.777,1.133,7.817c4.227-6.942,21.649,11.292,27.208,4.846c5.57-6.446,16.78-12.675,16.78-12.675s-5.722,15.414-11.561,17.147c-5.839,1.746-17.878,0.753-20.867,9.698c-2.989,8.944,1.857,24.977,1.857,24.977s-46.58-6.837-21.614,19.74c-4.227-19.373,25.222-5.956,25.222-5.956s-14.176,3.842-15.168,10.428c-0.993,6.592,8.944,11.304,5.593,19.758c-3.351,8.454-24.218,4.484-22.361-4.724c-13.043,13.914,26.962,18.257,29.823,6.586c2.849-11.683-0.631-13.919,2.113-18.642c1.95-3.393,10.755-5.559,15.578-6.516c0.666,10.906,2.989,20.23,4.962,25.281c0.141,0.526,0.245,1.063,0.374,1.612c-2.942,0.595-7.532,0.595-11.222-4.601c-1.542,7.485,7.123,8.595,11.875,8.665c0.514,4.975-0.117,10.369-3.503,15.46c-7.111,10.679-15.063,15.577-17.632,22.724c-3.644,9.984,15.554,11.724,15.554,11.724l0.047,3.783c0,0-6.166,5.967-4.846,10.626c1.74,6.225,14.106,4.018,14.106,4.018s-11.864,4.367-11.304,10.158c0.549,5.77,5.512,8.291,5.512,8.291s-11.49,22.584,5.406,27.559c16.897,4.951,51.181-15.672,55.653,8.43c4.32,16.641,23.576,57.464,16.908,65.101c-6.679,7.648-16.908,19.384-16.908,19.384l175.425,5.465c0,0-54.17-70.074-59.623-78.015c-5.465-7.94-28.27-40.018-8.396-61.865c0.923-1.027,1.927-2.23,2.931-3.409c5.874,3.082,17.68,7.449,26.705-0.877c12.483-11.571,12.483-21.812,12.483-21.812s22.735,5.22,16.955-1.296c-5.769-6.516,12.121-27.762,12.121-27.762s6.819,5.085,3.725,13.796c11.047-1.751,3.363-20.143,3.363-20.143s3.095,3.106,9.681,0c-6.972-3.24-4.1-21.988-4.1-21.988S355.733,141.183,347.291,116.456z"
+      ];
+
+      const createSilhouetteTexture = (i) => {
+        const canvas = document.createElement('canvas');
+        canvas.width = 512; canvas.height = 512;
+        const ctx = canvas.getContext('2d');
+        ctx.clearRect(0,0,512,512);
+        ctx.fillStyle = 'white';
+        
+        const pathData = silhouettePaths[i % silhouettePaths.length];
+        const p = new Path2D(pathData);
+        
+        ctx.save();
+        if (i === 2) {
+           // Path 3 is larger/translated differently
+           ctx.translate(100, 50);
+           ctx.scale(1.1, 1.1);
         } else {
-          document.querySelectorAll('.hd-dp-fill').forEach(el=>{ el.style.width='0%'; });
+           ctx.translate(100, 100);
+           ctx.scale(12, 12); // Scaling small paths up
         }
-      }
+        ctx.fill(p);
+        ctx.restore();
+        
+        return new THREE.CanvasTexture(canvas);
+      };
 
-      function tick(ts){
-        if(!startTime) startTime = ts;
-        const elapsed = ts - startTime;
-        const pct = Math.min((elapsed / DURATION) * 100, 100);
-        if(prog) prog.style.width = pct + '%';
-        if(elapsed >= DURATION){
-          current = (current + 1) % tabs.length;
-          activateTab(current);
-          startTime = ts;
+      const silhouetteTextures = [
+        createSilhouetteTexture(0),
+        createSilhouetteTexture(1),
+        createSilhouetteTexture(2)
+      ];
+
+      const createTexture = (type, text) => {
+        const canvas = document.createElement('canvas');
+        canvas.width = 512; canvas.height = 512;
+        const ctx = canvas.getContext('2d');
+        if (type === 'article') {
+          const hCol = text || '#6C3BFF';
+          ctx.fillStyle = '#fff'; ctx.fillRect(0, 0, 512, 512);
+          ctx.fillStyle = hCol; ctx.fillRect(40, 40, 120, 15);
+          ctx.fillStyle = '#080810'; ctx.font = 'bold 44px Arial'; ctx.fillText('PRESS RELEASE', 40, 100);
+          ctx.fillStyle = '#6b7280'; ctx.font = '28px Arial'; ctx.fillText('Strategic Media Coverage...', 40, 150);
+          ctx.fillStyle = '#f1f5f9'; ctx.fillRect(40, 180, 432, 200);
+          ctx.fillStyle = '#475569';
+          for(let i=0; i<8; i++) ctx.fillRect(40, 400 + i*12, 432, 6);
+        } else if (type === 'pub') {
+          ctx.fillStyle = '#6C3BFF'; ctx.fillRect(0, 0, 512, 512);
+          ctx.fillStyle = '#fff'; ctx.font = 'bold 300px Arial'; ctx.textAlign = 'center'; ctx.textBaseline = 'middle';
+          ctx.fillText(text, 256, 256);
         }
-        raf = requestAnimationFrame(tick);
-      }
+        return new THREE.CanvasTexture(canvas);
+      };
 
-      // Manual tab click
-      tabs.forEach((btn, idx)=>{
-        btn.addEventListener('click', ()=>{
-          cancelAnimationFrame(raf);
-          current = idx;
-          activateTab(current);
-          startTime = null;
-          raf = requestAnimationFrame(tick);
-        });
+      // --- 3D VECTOR AVATAR FACTORY ---
+      const createVectorAvatar = () => {
+        const group = new THREE.Group();
+        const texIndex = Math.floor(Math.random() * silhouetteTextures.length);
+        
+        // Silhouette Disc
+        const disc = new THREE.Mesh(
+          new THREE.CircleGeometry(1.4, 32),
+          new THREE.MeshBasicMaterial({ 
+            map: silhouetteTextures[texIndex],
+            side: THREE.DoubleSide,
+            transparent: true,
+            opacity: 0.9
+          })
+        );
+        group.add(disc);
+
+        // Glass Border Ring (Outer Glow)
+        const ring = new THREE.Mesh(
+          new THREE.TorusGeometry(1.7, 0.08, 16, 64),
+          new THREE.MeshPhysicalMaterial({ 
+            color: theme.purple,
+            transmission: 0.5,
+            thickness: 0.5,
+            roughness: 0.2,
+            emissive: theme.purple,
+            emissiveIntensity: 1.2
+          })
+        );
+        group.add(ring);
+
+        group.scale.setScalar(0.8 + Math.random() * 0.4);
+        return group;
+      };
+
+      // --- 3D ARTICLE FACTORY ---
+      const createArticle = (text) => {
+        const group = new THREE.Group();
+        const hCol = articleColors[Math.floor(Math.random() * articleColors.length)];
+        const box = new THREE.Mesh(
+          new THREE.BoxGeometry(2.5, 3.5, 0.4),
+          [
+            new THREE.MeshBasicMaterial({ color: 0xcccccc }), // right
+            new THREE.MeshBasicMaterial({ color: 0xcccccc }), // left
+            new THREE.MeshBasicMaterial({ color: 0xeeeeee }), // top
+            new THREE.MeshBasicMaterial({ color: 0xeeeeee }), // bottom
+            new THREE.MeshBasicMaterial({ map: createTexture('article', '#' + hCol.toString(16).padStart(6, '0')) }), // front
+            new THREE.MeshBasicMaterial({ color: 0xdddddd })  // back
+          ]
+        );
+        group.add(box);
+        group.scale.setScalar(0.7 + Math.random() * 0.6);
+        return group;
+      };
+
+      // --- CENTRAL DIGITAL ARTICLE ---
+      const centralArt = new THREE.Mesh(
+        new THREE.BoxGeometry(7, 10, 0.5),
+        [
+          new THREE.MeshPhysicalMaterial({ color: 0xeeeeee }), 
+          new THREE.MeshPhysicalMaterial({ color: 0xeeeeee }), 
+          new THREE.MeshPhysicalMaterial({ color: 0xffffff }), 
+          new THREE.MeshPhysicalMaterial({ color: 0xffffff }), 
+          new THREE.MeshPhysicalMaterial({ map: createTexture('article'), emissive: 0xffffff, emissiveIntensity: 0.1 }), 
+          new THREE.MeshPhysicalMaterial({ color: 0xeeeeee })
+        ]
+      );
+      scene.add(centralArt);
+
+      // --- REALISTIC SPACE BACKGROUND ---
+      // Starfield
+      const starGeo = new THREE.BufferGeometry();
+      const starPositions = [];
+      const starColors = [];
+      for(let i=0; i<4000; i++) {
+        starPositions.push((Math.random()-0.5)*500, (Math.random()-0.5)*500, (Math.random()-0.5)*500);
+        const r = 0.8 + Math.random() * 0.2;
+        const g = 0.8 + Math.random() * 0.2;
+        const b = 1.0;
+        starColors.push(r, g, b);
+      }
+      starGeo.setAttribute('position', new THREE.Float32BufferAttribute(starPositions, 3));
+      starGeo.setAttribute('color', new THREE.Float32BufferAttribute(starColors, 3));
+      
+      const starMat = new THREE.PointsMaterial({ 
+        size: 0.18, 
+        vertexColors: true, 
+        transparent: true, 
+        opacity: 0.4,
+        sizeAttenuation: true 
+      });
+      const stars = new THREE.Points(starGeo, starMat);
+      scene.add(stars);
+
+
+      // --- 4 VOLUMETRIC ORBITS ---
+      const orbitConfigs = [
+        { radius: 12, speed: 0.008, count: 4, type: 'article' },
+        { radius: 18, speed: -0.006, count: 6, type: 'vector' },
+        { radius: 24, speed: 0.004, count: 5, type: 'article' },
+        { radius: 32, speed: -0.003, count: 8, type: 'vector' }
+      ];
+
+      const orbitalItems = [];
+      orbitConfigs.forEach((config, i) => {
+        const ring = new THREE.Mesh(
+          new THREE.TorusGeometry(config.radius, 0.08, 16, 128),
+          new THREE.MeshBasicMaterial({ color: theme.purple, transparent: true, opacity: 0.25 })
+        );
+        ring.rotation.x = Math.PI/2;
+        scene.add(ring);
+
+        for(let j=0; j<config.count; j++) {
+          const pivot = new THREE.Group();
+          scene.add(pivot);
+          
+          const item = config.type === 'article' ? createArticle() : createVectorAvatar();
+          const angle = (j / config.count) * Math.PI * 2;
+          item.position.set(Math.cos(angle) * config.radius, 0, Math.sin(angle) * config.radius);
+          pivot.add(item);
+          orbitalItems.push({ pivot, item, speed: config.speed, type: config.type });
+        }
       });
 
-      // Start
-      activateTab(0);
-      raf = requestAnimationFrame(tick);
+      // --- LIGHTING ---
+      scene.add(new THREE.AmbientLight(0xffffff, 0.7));
+      const l1 = new THREE.PointLight(0xffffff, 1.2, 100); l1.position.set(20, 20, 20); scene.add(l1);
+      const l2 = new THREE.PointLight(theme.purple, 2, 100); l2.position.set(-20, -20, 20); scene.add(l2);
 
-      // Live counter
-      let liveN = 18;
-      setInterval(()=>{
-        if(Math.random() > .6){ liveN += Math.random()>.5?1:-1; liveN = Math.max(12, Math.min(28, liveN)); }
-        const el = document.getElementById('hd-live-num');
-        if(el) el.textContent = liveN;
-      }, 3000);
+      camera.position.set(0, 38, 65);
+      camera.lookAt(0, -5, 0);
+
+      const clock = new THREE.Clock();
+      function animate() {
+        const time = clock.getElapsedTime();
+        centralArt.rotation.y = Math.sin(time * 0.2) * 0.1;
+        centralArt.position.y = Math.sin(time * 0.5) * 0.5;
+        
+        orbitalItems.forEach(obj => {
+          obj.pivot.rotation.y += obj.speed;
+          
+          if(obj.type === 'vector') {
+            // Spinning vector face
+            obj.item.rotation.y += 0.02;
+            obj.item.rotation.x = Math.sin(time * 0.5) * 0.2;
+          } else {
+            obj.item.rotation.y = -obj.pivot.rotation.y; 
+            obj.item.rotation.y += 0.01;
+          }
+        });
+
+        renderer.render(scene, camera);
+        requestAnimationFrame(animate);
+      }
+      animate();
+
+      window.addEventListener('resize', () => {
+        camera.aspect = container.clientWidth / container.clientHeight;
+        camera.updateProjectionMatrix();
+        renderer.setSize(container.clientWidth, container.clientHeight);
+      });
     })();
 
     /* POPUP */
