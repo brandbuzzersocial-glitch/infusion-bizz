@@ -82,7 +82,9 @@
     html {
       scroll-behavior: smooth;
       -webkit-text-size-adjust: 100%;
-      text-size-adjust: 100%
+      text-size-adjust: 100%;
+      overflow-x: clip;
+      max-width: 100%;
     }
 
     body {
@@ -310,8 +312,8 @@
 
     .hero-grid {
       display: grid;
-      grid-template-columns: 0.92fr 1.35fr;
-      gap: 30px;
+      grid-template-columns: 1.1fr 0.95fr;
+      gap: 48px;
       align-items: center;
       width: 100%;
       padding: 80px 0 60px
@@ -503,33 +505,43 @@
 
     .hero-right {
       position: relative;
-      height: 560px
+      display: flex;
+      justify-content: center;
+      align-items: center;
     }
 
-    /* HERO PEOPLE ROW — grayscale cutout busts */
-    .bust-row {
-      position: absolute; inset: 0; z-index: 2;
-      display: flex; align-items: flex-end; justify-content: center;
-      overflow: hidden; pointer-events: none;
-    }
-    .bust-row::before {
-      content: ''; position: absolute; left: 50%; bottom: -6%; width: 88%; height: 84%;
-      transform: translateX(-50%);
-      background: radial-gradient(ellipse at center 66%, rgba(124,74,255,.36), rgba(108,59,255,.08) 52%, transparent 74%);
-      filter: blur(10px); z-index: 0;
-    }
-    .bust {
-      position: relative; z-index: 2; width: auto; display: block; flex: 0 0 auto;
-      filter: grayscale(1) contrast(1.08) brightness(1.05) drop-shadow(0 14px 26px rgba(0,0,0,.5));
-      -webkit-mask-image: linear-gradient(180deg, #000 80%, transparent 100%);
-      mask-image: linear-gradient(180deg, #000 80%, transparent 100%);
-      animation: bustFloat 8s ease-in-out infinite; will-change: transform;
-    }
-    .bust.b-far  { height: 70%; z-index: 1; margin: 0 -3%; filter: grayscale(1) contrast(1.05) brightness(.8) drop-shadow(0 14px 26px rgba(0,0,0,.5)); }
-    .bust.b-mid  { height: 86%; z-index: 3; margin: 0 -3%; }
-    .bust.b-lead { height: 78%; z-index: 5; margin: 0 -3%; align-self: flex-end; }
-    .bust.bust-rahul { height: 72%; z-index: 4; }
-    @keyframes bustFloat { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-7px); } }
+    /* HERO — Without PR / With PR comparison */
+    .pr-compare { position: relative; z-index: 2; width: 100%; max-width: 420px; display: flex; flex-direction: column; gap: 12px; }
+    .prc-card { border-radius: 18px; padding: 18px 20px; border: 1px solid rgba(255,255,255,.1); }
+    .prc-without { background: rgba(255,255,255,.045); }
+    .prc-with { position: relative; background: #fff; border-color: transparent; box-shadow: 0 26px 64px rgba(108,59,255,.42); }
+    .prc-with::before { content: ''; position: absolute; inset: -1.5px; border-radius: 19px; background: linear-gradient(135deg, var(--p), var(--ps)); z-index: -1; opacity: .45; filter: blur(16px); }
+    .prc-head { display: flex; align-items: center; gap: 8px; font-family: 'Inter Tight', sans-serif; font-weight: 800; font-size: 12.5px; letter-spacing: .06em; text-transform: uppercase; }
+    .prc-without .prc-head { color: rgba(255,255,255,.55); }
+    .prc-with .prc-head { color: var(--pd); }
+    .prc-dot { width: 9px; height: 9px; border-radius: 50%; flex-shrink: 0; }
+    .dot-red { background: #ff5a5a; box-shadow: 0 0 0 4px rgba(255,90,90,.15); }
+    .dot-green { background: #22c55e; box-shadow: 0 0 0 4px rgba(34,197,94,.18); }
+    .prc-brand { font-family: 'Courier New', monospace; font-size: 12px; color: rgba(255,255,255,.42); margin: 13px 0 10px; }
+    .prc-nocov { display: flex; align-items: center; gap: 8px; font-size: 13px; color: rgba(255,255,255,.42); margin-bottom: 13px; }
+    .prc-bars { display: flex; flex-direction: column; gap: 7px; margin-bottom: 15px; }
+    .prc-bar { height: 8px; border-radius: 4px; background: rgba(255,255,255,.08); }
+    .prc-bar:nth-child(1) { width: 72%; } .prc-bar:nth-child(2) { width: 46%; } .prc-bar:nth-child(3) { width: 60%; }
+    .prc-logos { display: flex; flex-wrap: wrap; gap: 7px; margin: 13px 0 12px; }
+    .prc-logo { display: inline-flex; align-items: center; gap: 5px; background: var(--pl); border-radius: 8px; padding: 5px 9px; font-size: 11px; font-weight: 800; color: var(--black); }
+    .prc-logo img { width: 14px; height: 14px; border-radius: 3px; }
+    .prc-feat { font-size: 12.5px; color: var(--muted); font-weight: 600; margin-bottom: 13px; }
+    .prc-metric { display: flex; align-items: baseline; gap: 9px; }
+    .prc-mnum { font-family: 'Inter Tight', sans-serif; font-weight: 900; line-height: 1; }
+    .prc-without .prc-mnum { color: rgba(255,255,255,.5); font-size: 26px; }
+    .prc-with .prc-mnum { font-size: 32px; background: linear-gradient(135deg, var(--p), var(--ps)); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; }
+    .prc-mlbl { font-size: 12px; font-weight: 600; }
+    .prc-without .prc-mlbl { color: rgba(255,255,255,.4); }
+    .prc-with .prc-mlbl { color: var(--muted); }
+    .prc-up { color: #22c55e; font-weight: 800; }
+    .prc-arrow { display: flex; align-items: center; justify-content: center; gap: 9px; font-size: 10.5px; font-weight: 800; letter-spacing: .08em; text-transform: uppercase; color: var(--ps); }
+    .prc-arrow::before, .prc-arrow::after { content: ''; height: 1px; flex: 1; max-width: 46px; background: linear-gradient(90deg, transparent, rgba(138,102,255,.5)); }
+    .prc-arrow::after { background: linear-gradient(90deg, rgba(138,102,255,.5), transparent); }
 
     .hero-digital-scene { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; perspective: 1200px; overflow: visible; }
     .central-composition { position: relative; width: 480px; height: 480px; transform-style: preserve-3d; animation: float-main 8s ease-in-out infinite; }
@@ -819,10 +831,16 @@
 
     .split {
       display: grid;
-      grid-template-columns: 1fr 1fr;
+      grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
       gap: 80px;
       align-items: center
     }
+
+    /* Prevent grid/flex children from forcing horizontal overflow on small screens */
+    .split > *, .net-split > *, .hero-grid > *, .why-grid > *, .price-grid > *,
+    .testi-grid > *, .stats-grid > *, .footer-grid > * { min-width: 0; }
+    .svc-img-wrap, .svc-list, .svc-row, .svc-txt { min-width: 0; max-width: 100%; }
+    img, svg, video, canvas { max-width: 100%; }
 
     /* SERVICES */
     #services {
@@ -950,6 +968,149 @@
       font-size: 14.5px;
       color: var(--muted);
       line-height: 1.7
+    }
+
+    /* ===== REELS SHOWCASE (services left column) ===== */
+    .reels-wrap { width: 100%; }
+    .reels {
+      display: flex;
+      gap: 14px;
+      overflow-x: auto;
+      scroll-snap-type: x mandatory;
+      -webkit-overflow-scrolling: touch;
+      padding-bottom: 4px;
+      scrollbar-width: none;
+    }
+    .reels::-webkit-scrollbar { display: none; }
+    .reel {
+      position: relative;
+      flex: 1 1 0;
+      min-width: 0;
+      aspect-ratio: 9 / 16;
+      border-radius: 20px;
+      overflow: hidden;
+      scroll-snap-align: center;
+      background: #0e0520;
+      box-shadow: 0 18px 44px rgba(20, 8, 60, .28);
+      cursor: pointer;
+      -webkit-tap-highlight-color: transparent;
+    }
+    .reel video {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+    .reel::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top, rgba(10, 4, 30, .55) 0%, transparent 42%);
+      pointer-events: none;
+      opacity: 1;
+      transition: opacity .35s;
+    }
+    .reel.playing::after { opacity: 0; }
+    .reel-play {
+      position: absolute;
+      top: 50%; left: 50%;
+      transform: translate(-50%, -50%);
+      width: 46px; height: 46px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, .92);
+      display: flex; align-items: center; justify-content: center;
+      box-shadow: 0 6px 20px rgba(0, 0, 0, .3);
+      transition: opacity .3s, transform .3s;
+      pointer-events: none;
+      z-index: 2;
+    }
+    .reel-play svg { width: 18px; height: 18px; margin-left: 2px; fill: var(--p); }
+    .reel.playing .reel-play { opacity: 0; transform: translate(-50%, -50%) scale(.6); }
+    .reel-tag {
+      position: absolute;
+      left: 12px; bottom: 12px; right: 12px;
+      z-index: 2;
+      font-size: 12px;
+      font-weight: 600;
+      color: #fff;
+      letter-spacing: -.2px;
+      text-shadow: 0 1px 6px rgba(0, 0, 0, .5);
+      pointer-events: none;
+    }
+    .reels-note {
+      margin-top: 14px;
+      font-size: 12.5px;
+      color: var(--muted);
+      display: flex;
+      align-items: center;
+      gap: 7px;
+    }
+    .reels-note .rn-dot {
+      width: 7px; height: 7px; border-radius: 50%;
+      background: #22c55e; flex-shrink: 0;
+      box-shadow: 0 0 0 4px rgba(34, 197, 94, .15);
+    }
+
+    /* ===== NUMBERED 6-SERVICE LIST (services right column) ===== */
+    .svc6-kicker {
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+      color: var(--p);
+      margin-bottom: 16px;
+    }
+    .svc6-list { display: flex; flex-direction: column; }
+    .svc6-row {
+      display: flex;
+      gap: 16px;
+      align-items: flex-start;
+      padding: 16px 10px;
+      border-bottom: 1px solid var(--border);
+      border-radius: 12px;
+      transition: background .3s, transform .3s;
+    }
+    .svc6-row:last-child { border-bottom: none; }
+    .svc6-row:hover { background: var(--pl); transform: translateX(4px); }
+    .svc6-num {
+      font-family: 'Inter Tight', sans-serif;
+      font-size: 15px;
+      font-weight: 800;
+      color: var(--p);
+      line-height: 1.5;
+      flex-shrink: 0;
+      min-width: 24px;
+      font-variant-numeric: tabular-nums;
+    }
+    .svc6-txt { min-width: 0; }
+    .svc6-txt h3 {
+      font-size: 16.5px;
+      font-weight: 700;
+      color: var(--black);
+      margin: 0 0 4px;
+      display: flex;
+      align-items: baseline;
+      gap: 9px;
+      flex-wrap: wrap;
+      line-height: 1.35;
+    }
+    .svc6-cnt {
+      font-size: 11.5px;
+      font-weight: 600;
+      color: var(--p);
+      background: var(--pl);
+      padding: 2px 9px;
+      border-radius: 20px;
+      white-space: nowrap;
+      letter-spacing: .2px;
+    }
+    .svc6-txt p {
+      font-size: 14px;
+      color: var(--muted);
+      line-height: 1.6;
+      margin: 0;
     }
 
     /* WHY */
@@ -1122,7 +1283,7 @@
 
     .net-split {
       display: grid;
-      grid-template-columns: 1fr 1fr;
+      grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
       gap: 48px;
       align-items: center;
       position: relative;
@@ -2021,15 +2182,15 @@
 
       .hero-right {
         order: 2;
-        height: 330px;
-        margin-top: 4px
+        height: auto;
+        margin-top: 20px
       }
 
-      .bust.b-lead { height: 92%; } .bust.b-mid { height: 76%; } .bust.b-far { height: 62%; }
+      .pr-compare { max-width: 460px; margin: 0 auto; }
 
       .hero-h1 {
-        font-size: clamp(36px, 9vw, 48px);
-        letter-spacing: -1px;
+        font-size: clamp(30px, 8vw, 44px);
+        letter-spacing: -0.5px;
         margin-bottom: 16px
       }
 
@@ -2070,15 +2231,30 @@
         padding-left: 0 !important
       }
 
+      .t-item { padding: 8px 28px; gap: 11px; }
+      .t-logo { height: 24px !important; width: 24px !important; }
+      .t-name { font-size: 16px !important; }
+
+      /* Reveal animations use vertical motion on mobile (avoid horizontal shift/overflow) */
+      .reveal-l, .reveal-r { transform: translateY(28px); }
+      .reveal-l.in, .reveal-r.in { transform: translateY(0); }
+
       /* Services */
       .split {
-        grid-template-columns: 1fr;
+        grid-template-columns: minmax(0, 1fr);
         gap: 40px
       }
 
       .svc-img-wrap {
         height: 320px
       }
+
+      /* Reels: swipeable strip on phones (portrait cards too small to fit 3) */
+      .reels { gap: 12px; }
+      .reel { flex: 0 0 64%; }
+      .svc6-row { padding: 15px 6px; }
+      .svc6-txt h3 { font-size: 17px; }
+      .svc6-txt p { font-size: 14.5px; }
 
       .svc-float-card {
         padding: 14px 16px
@@ -2594,12 +2770,32 @@
         </div>
       </div>
       <div class="hero-right">
-        <div class="bust-row" aria-label="Famous creators featured in the press by Infusion Bizz">
-          <img class="bust b-far"  src="assets/faces_v/bust/manoj.png" alt="Manoj Dey" style="animation-delay:.2s">
-          <img class="bust b-mid bust-rahul" src="assets/faces_v/bust/rahul.png" alt="Rahul Mishra (Jojo &amp; Johnny)" style="animation-delay:1s">
-          <img class="bust b-lead" src="assets/faces_v/bust/harsh.png" alt="Harsh Beniwal" style="animation-delay:.5s">
-          <img class="bust b-mid"  src="assets/faces_v/bust/purav.png" alt="Purav Jha" style="animation-delay:1.3s">
-          <img class="bust b-far"  src="assets/faces_v/bust/nita.png"  alt="Nita Shilimkar" style="animation-delay:.8s">
+        <div class="pr-compare" aria-label="Brand visibility without PR versus with PR">
+          <!-- Without PR -->
+          <div class="prc-card prc-without">
+            <div class="prc-head"><span class="prc-dot dot-red"></span> Without PR</div>
+            <div class="prc-brand">yourbrand.com</div>
+            <div class="prc-nocov">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg>
+              No media coverage found
+            </div>
+            <div class="prc-bars"><span class="prc-bar"></span><span class="prc-bar"></span><span class="prc-bar"></span></div>
+            <div class="prc-metric"><span class="prc-mnum">1.2K</span><span class="prc-mlbl">Monthly reach</span></div>
+          </div>
+          <!-- Connector -->
+          <div class="prc-arrow">With Infusion Bizz</div>
+          <!-- With PR -->
+          <div class="prc-card prc-with">
+            <div class="prc-head"><span class="prc-dot dot-green"></span> With PR</div>
+            <div class="prc-logos">
+              <span class="prc-logo"><img src="https://t3.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=http://aninews.in&size=64" alt="">ANI</span>
+              <span class="prc-logo"><img src="https://t3.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=http://zeenews.india.com&size=64" alt="">Zee News</span>
+              <span class="prc-logo"><img src="https://t3.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=http://forbes.com&size=64" alt="">Forbes</span>
+              <span class="prc-logo"><img src="https://t3.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=http://timesofindia.indiatimes.com&size=64" alt="">TOI</span>
+            </div>
+            <div class="prc-feat">Featured across 500+ leading outlets</div>
+            <div class="prc-metric"><span class="prc-mnum">4.8M+</span><span class="prc-mlbl">Monthly reach <span class="prc-up">&#9650; 400x</span></span></div>
+          </div>
         </div>
       </div><!-- /hero-right -->
     </div><!-- /hero-grid -->
@@ -2765,102 +2961,70 @@
   <section id="services" class="light-section">
     <div class="split">
       <div class="reveal-l">
-        <div class="svc-img-wrap" style="background:linear-gradient(145deg,#0e0520 0%,#1a0850 100%);display:flex;flex-direction:column;justify-content:space-between;padding:28px 24px 24px;gap:14px;">
-          <!-- Digital browser mockup -->
-          <div style="background:rgba(255,255,255,.04);border:1px solid rgba(108,59,255,.25);border-radius:14px;overflow:hidden;flex:1;display:flex;flex-direction:column;">
-            <div style="padding:10px 14px;background:rgba(0,0,0,.3);display:flex;align-items:center;gap:6px;border-bottom:1px solid rgba(255,255,255,.06)">
-              <span style="width:8px;height:8px;border-radius:50%;background:#ff5f57;display:block"></span>
-              <span style="width:8px;height:8px;border-radius:50%;background:#ffbd2e;display:block"></span>
-              <span style="width:8px;height:8px;border-radius:50%;background:#28c840;display:block"></span>
-              <span style="flex:1;background:rgba(255,255,255,.08);border-radius:20px;height:20px;margin-left:10px;display:flex;align-items:center;padding:0 10px;font-size:10px;color:rgba(255,255,255,.35)">infusionbizz.com/dashboard</span>
+        <div class="reels-wrap">
+          <div class="reels" id="svcReels">
+            <div class="reel">
+              <video src="assets/videos/reel1.mp4" poster="assets/videos/reel1.jpg" muted loop playsinline preload="none"></video>
+              <div class="reel-play"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
+              <div class="reel-tag">Press Conference</div>
             </div>
-            <div style="padding:20px;flex:1;display:flex;flex-direction:column;gap:12px;">
-              <div style="font-size:11px;color:rgba(255,255,255,.4);letter-spacing:.1em;text-transform:uppercase">Live Distribution Report</div>
-              <div style="display:flex;gap:10px;">
-                <div style="flex:1;background:rgba(108,59,255,.15);border:1px solid rgba(108,59,255,.3);border-radius:10px;padding:14px;text-align:center">
-                  <div style="font-size:22px;font-weight:800;color:#a78bfa;font-family:'Inter Tight',sans-serif">500+</div>
-                  <div style="font-size:11px;color:rgba(255,255,255,.45);margin-top:3px">Portals</div>
-                </div>
-                <div style="flex:1;background:rgba(34,197,94,.1);border:1px solid rgba(34,197,94,.25);border-radius:10px;padding:14px;text-align:center">
-                  <div style="font-size:22px;font-weight:800;color:#4ade80;font-family:'Inter Tight',sans-serif">24h</div>
-                  <div style="font-size:11px;color:rgba(255,255,255,.45);margin-top:3px">Turnaround</div>
-                </div>
-                <div style="flex:1;background:rgba(245,158,11,.1);border:1px solid rgba(245,158,11,.25);border-radius:10px;padding:14px;text-align:center">
-                  <div style="font-size:22px;font-weight:800;color:#fbbf24;font-family:'Inter Tight',sans-serif">100%</div>
-                  <div style="font-size:11px;color:rgba(255,255,255,.45);margin-top:3px">Digital</div>
-                </div>
-              </div>
-              <div style="background:rgba(255,255,255,.04);border-radius:10px;padding:12px;display:flex;flex-direction:column;gap:8px;">
-                <div style="display:flex;justify-content:space-between;align-items:center">
-                  <span style="font-size:12px;color:rgba(255,255,255,.6)">Yahoo Finance</span>
-                  <span style="font-size:11px;color:#4ade80;display:flex;align-items:center;gap:4px"><span style="width:6px;height:6px;border-radius:50%;background:#4ade80;display:inline-block"></span>Published</span>
-                </div>
-                <div style="display:flex;justify-content:space-between;align-items:center">
-                  <span style="font-size:12px;color:rgba(255,255,255,.6)">ANI News</span>
-                  <span style="font-size:11px;color:#4ade80;display:flex;align-items:center;gap:4px"><span style="width:6px;height:6px;border-radius:50%;background:#4ade80;display:inline-block"></span>Published</span>
-                </div>
-                <div style="display:flex;justify-content:space-between;align-items:center">
-                  <span style="font-size:12px;color:rgba(255,255,255,.6)">Times of India</span>
-                  <span style="font-size:11px;color:#fbbf24;display:flex;align-items:center;gap:4px"><span style="width:6px;height:6px;border-radius:50%;background:#fbbf24;display:inline-block"></span>Processing</span>
-                </div>
-              </div>
+            <div class="reel">
+              <video src="assets/videos/reel2.mp4" poster="assets/videos/reel2.jpg" muted loop playsinline preload="none"></video>
+              <div class="reel-play"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
+              <div class="reel-tag">On Ground</div>
+            </div>
+            <div class="reel">
+              <video src="assets/videos/reel3.mp4" poster="assets/videos/reel3.jpg" muted loop playsinline preload="none"></video>
+              <div class="reel-play"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
+              <div class="reel-tag">Coverage</div>
             </div>
           </div>
-          <div class="svc-float-card" style="position:relative;inset:auto;margin:0;box-shadow:none">
-            <div class="sfc-row">
-              <div class="sfc-dot" style="background:var(--p)"></div>
-              <div>
-                <div class="sfc-label">Press Release Published</div>
-                <div class="sfc-sub">Distributed to 500+ portals · 24h turnaround</div>
-              </div>
-            </div>
-            <div class="sfc-row">
-              <div class="sfc-dot" style="background:#22c55e"></div>
-              <div>
-                <div class="sfc-label">Media Coverage Live</div>
-                <div class="sfc-sub">Yahoo Finance · ANI · Digital Journal +497 more</div>
-              </div>
-            </div>
-          </div>
+          <div class="reels-note"><span class="rn-dot"></span>Hover to play &middot; tap on mobile &middot; swipe for more</div>
         </div>
       </div>
       <div class="reveal-r">
-        <h2 class="s-title">PR Distribution That Gets Real Media Coverage</h2>
-        <p class="s-sub">From startup launches to corporate announcements, Infusion Bizz delivers strategic PR solutions that build visibility, credibility, and brand authority.</p>
-        <div class="svc-list">
-          <div class="svc-row">
-            <div class="svc-icon-box">
-              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--p)" stroke-width="1.8">
-                <rect x="3" y="3" width="18" height="18" rx="3" />
-                <path d="M7 8h10M7 12h10M7 16h6" />
-              </svg>
-            </div>
-            <div class="svc-txt">
-              <h3>Press Release Distribution</h3>
-              <p>Get your press release published across 500+ leading digital media platforms with fast turnaround and strategic reach.</p>
+        <div class="svc6-kicker">What We Do</div>
+        <div class="svc6-list">
+          <div class="svc6-row">
+            <span class="svc6-num">01</span>
+            <div class="svc6-txt">
+              <h3>Press &amp; Publications <span class="svc6-cnt">70+ magazines</span></h3>
+              <p>We get your brand featured in top newspapers and magazines.</p>
             </div>
           </div>
-          <div class="svc-row">
-            <div class="svc-icon-box">
-              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--p)" stroke-width="1.8">
-                <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" />
-                <polyline points="9 22 9 12 15 12 15 22" />
-              </svg>
-            </div>
-            <div class="svc-txt">
-              <h3>Corporate PR Packages</h3>
-              <p>Monthly PR solutions for brands seeking consistent media presence, stronger authority, and long-term brand visibility.</p>
+          <div class="svc6-row">
+            <span class="svc6-num">02</span>
+            <div class="svc6-txt">
+              <h3>Press Conferences</h3>
+              <p>We get your launch covered by top media through a press conference we organise for you.</p>
             </div>
           </div>
-          <div class="svc-row">
-            <div class="svc-icon-box">
-              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--p)" stroke-width="1.8">
-                <polyline points="22 12 18 12 15 21 9 3 6 12 2 12" />
-              </svg>
+          <div class="svc6-row">
+            <span class="svc6-num">03</span>
+            <div class="svc6-txt">
+              <h3>News Page Features</h3>
+              <p>We get your brand featured on the official Instagram pages of big news channels.</p>
             </div>
-            <div class="svc-txt">
-              <h3>Media Coverage Solutions</h3>
-              <p>Custom campaigns including journalist outreach, founder interviews, media placements, and strategic storytelling.</p>
+          </div>
+          <div class="svc6-row">
+            <span class="svc6-num">04</span>
+            <div class="svc6-txt">
+              <h3>Meme Marketing</h3>
+              <p>We get your brand featured on India's biggest meme pages.</p>
+            </div>
+          </div>
+          <div class="svc6-row">
+            <span class="svc6-num">05</span>
+            <div class="svc6-txt">
+              <h3>Podcasts</h3>
+              <p>We get you featured as a guest on the most popular podcasts.</p>
+            </div>
+          </div>
+          <div class="svc6-row">
+            <span class="svc6-num">06</span>
+            <div class="svc6-txt">
+              <h3>Influencer Collaborations</h3>
+              <p>We get your brand featured by big influencers to their followers.</p>
             </div>
           </div>
         </div>
@@ -2881,7 +3045,7 @@
           <div class="ben-num">01</div>
           <div class="ben-icon"><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></div>
           <h3 class="ben-title">Builds Credibility & Trust</h3>
-          <p class="ben-desc">Being featured in Forbes or TOI instantly signals authority. Customers trust brands in top media — no questions asked.</p>
+          <p class="ben-desc">Being featured in Forbes or TOI instantly signals authority. Customers trust brands in top media, no questions asked.</p>
           <div class="ben-line"></div>
         </div>
 
@@ -2889,7 +3053,7 @@
           <div class="ben-num">02</div>
           <div class="ben-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg></div>
           <h3 class="ben-title">Increases Brand Visibility</h3>
-          <p class="ben-desc">Your story reaches millions across India's top digital and print publications — all in under 24 hours.</p>
+          <p class="ben-desc">Your story reaches millions across India's top digital and print publications, all in under 24 hours.</p>
           <div class="ben-line"></div>
         </div>
 
@@ -2897,7 +3061,7 @@
           <div class="ben-num">03</div>
           <div class="ben-icon"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg></div>
           <h3 class="ben-title">Improves SEO & Rankings</h3>
-          <p class="ben-desc">High-authority backlinks push your site up Google. Your brand becomes the first result — not a competitor's.</p>
+          <p class="ben-desc">High-authority backlinks push your site up Google. Your brand becomes the first result, not a competitor's.</p>
           <div class="ben-line"></div>
         </div>
 
@@ -2905,7 +3069,7 @@
           <div class="ben-num">04</div>
           <div class="ben-icon"><svg viewBox="0 0 24 24"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg></div>
           <h3 class="ben-title">Cost-Effective Marketing</h3>
-          <p class="ben-desc">One article drives traffic for years. Ads stop the moment you stop paying — a press release never does.</p>
+          <p class="ben-desc">One article drives traffic for years. Ads stop the moment you stop paying. A press release never does.</p>
           <div class="ben-line"></div>
         </div>
 
@@ -4680,6 +4844,43 @@ scene.add(centralArt);
     window.addEventListener('load', () => {
       window.scrollTo(0, 0);
     });
+  </script>
+
+  <!-- Services reels: hover to play (cursor devices) / tap to play (touch) -->
+  <script>
+    (function () {
+      var reels = document.querySelectorAll('#svcReels .reel');
+      if (!reels.length) return;
+      var canHover = window.matchMedia('(hover: hover) and (pointer: fine)').matches;
+      var vids = [];
+      reels.forEach(function (card) {
+        var v = card.querySelector('video');
+        if (!v) return;
+        v.muted = true;
+        vids.push(v);
+        function play() {
+          vids.forEach(function (o) {
+            if (o !== v) { o.pause(); o.closest('.reel').classList.remove('playing'); }
+          });
+          var p = v.play();
+          if (p && p.then) { p.then(function () { card.classList.add('playing'); }).catch(function () {}); }
+          else { card.classList.add('playing'); }
+        }
+        function stop(reset) {
+          v.pause();
+          if (reset) { try { v.currentTime = 0; } catch (e) {} }
+          card.classList.remove('playing');
+        }
+        if (canHover) {
+          card.addEventListener('mouseenter', play);
+          card.addEventListener('mouseleave', function () { stop(true); });
+        } else {
+          card.addEventListener('click', function () {
+            if (v.paused) { play(); } else { stop(false); }
+          });
+        }
+      });
+    })();
   </script>
 </body>
 
