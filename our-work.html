@@ -123,6 +123,13 @@
     .wh-nav { display: flex; flex-wrap: wrap; gap: 10px; justify-content: center; margin-top: 40px; }
     .wh-nav a { font-size: 13px; font-weight: 600; color: rgba(255,255,255,.8); text-decoration: none; border: 1px solid rgba(255,255,255,.16); background: rgba(255,255,255,.05); border-radius: 100px; padding: 9px 18px; transition: all .25s; }
     .wh-nav a:hover { background: #fff; color: var(--black); border-color: #fff; }
+    .wh-cats { margin-top: 22px; }
+    .wh-cats-label { display: block; font-size: 11px; letter-spacing: .16em; text-transform: uppercase; color: rgba(255,255,255,.5); margin-bottom: 13px; }
+    .wh-cats-row { display: flex; flex-wrap: wrap; gap: 8px; justify-content: center; }
+    .wh-cat { font-family: 'Inter Tight', sans-serif; font-size: 12.5px; font-weight: 600; color: rgba(255,255,255,.82); background: rgba(255,255,255,.05); border: 1px solid rgba(255,255,255,.16); border-radius: 100px; padding: 7px 14px; cursor: pointer; display: inline-flex; align-items: center; gap: 7px; transition: all .25s; white-space: nowrap; }
+    .wh-cat:hover { background: #fff; color: var(--black); border-color: #fff; transform: translateY(-2px); }
+    .wh-cat span { font-size: 10.5px; font-weight: 700; background: rgba(255,255,255,.16); color: #fff; border-radius: 100px; padding: 1px 7px; min-width: 18px; text-align: center; transition: all .25s; }
+    .wh-cat:hover span { background: var(--pl); color: var(--p); }
 
     /* PROFILE SECTIONS */
     .pf-section { padding: 80px 5%; }
@@ -294,6 +301,21 @@
         <a href="#pf-igpage">Instagram Pages</a>
         <a href="#pf-meme">Meme Pages</a>
         <a href="#portfolio">Brand Coverage</a>
+      </div>
+      <div class="wh-cats">
+        <span class="wh-cats-label">Brand coverage by category</span>
+        <div class="wh-cats-row">
+          <button class="wh-cat" data-filter="all">All <span>70</span></button>
+          <button class="wh-cat" data-filter="lifestyle">Lifestyle <span>7</span></button>
+          <button class="wh-cat" data-filter="f-b">F&amp;B <span>7</span></button>
+          <button class="wh-cat" data-filter="fitness">Fitness <span>2</span></button>
+          <button class="wh-cat" data-filter="lifestyle-tech">Lifestyle &amp; Tech <span>3</span></button>
+          <button class="wh-cat" data-filter="fmcg">FMCG <span>5</span></button>
+          <button class="wh-cat" data-filter="entertainment">Entertainment <span>4</span></button>
+          <button class="wh-cat" data-filter="beauty">Beauty <span>5</span></button>
+          <button class="wh-cat" data-filter="fashion">Fashion <span>17</span></button>
+          <button class="wh-cat" data-filter="jewellery">Jewellery <span>20</span></button>
+        </div>
       </div>
     </div>
   </header>
@@ -1423,6 +1445,17 @@
         });
         if (empty) empty.style.display = shown ? 'none' : 'block';
       }));
+
+      // Hero brand-category shortcuts: apply the filter, then scroll to the portfolio
+      document.querySelectorAll('.wh-cat').forEach(function (btn) {
+        btn.addEventListener('click', function () {
+          var f = btn.dataset.filter;
+          var target = document.querySelector('.filter-chip[data-filter="' + f + '"]');
+          if (target) target.click();
+          var portfolio = document.getElementById('portfolio');
+          if (portfolio) portfolio.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        });
+      });
     })();
 
     /* 3D TILT & GLOW */
