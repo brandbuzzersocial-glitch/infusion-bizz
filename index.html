@@ -1053,6 +1053,49 @@
       box-shadow: 0 0 0 4px rgba(34, 197, 94, .15);
     }
 
+    /* ===== ARTICLES / COVERAGE FEED CARD ===== */
+    .reel-articles { background: #fff; cursor: default; }
+    .reel-articles::after { display: none; }
+    .artfeed { position: absolute; inset: 0; overflow: hidden; }
+    .artfeed::before {
+      content: ""; position: absolute; top: 0; left: 0; right: 0; height: 26px;
+      background: linear-gradient(#fff, rgba(255,255,255,0)); z-index: 3; pointer-events: none;
+    }
+    .artfeed::after {
+      content: ""; position: absolute; bottom: 0; left: 0; right: 0; height: 40px;
+      background: linear-gradient(rgba(255,255,255,0), #fff); z-index: 3; pointer-events: none;
+    }
+    .artfeed-track {
+      display: flex; flex-direction: column; gap: 8px; padding: 10px;
+      animation: artscroll 22s linear infinite;
+      will-change: transform;
+    }
+    .reel-articles:hover .artfeed-track { animation-play-state: paused; }
+    @keyframes artscroll { from { transform: translateY(0); } to { transform: translateY(-50%); } }
+    .artcard {
+      display: block; background: #fff; border: 1px solid var(--border);
+      border-radius: 11px; padding: 9px 10px; text-decoration: none;
+      box-shadow: 0 2px 10px rgba(20, 8, 60, .05); transition: border-color .25s, box-shadow .25s;
+    }
+    .artcard:hover { border-color: var(--p); box-shadow: 0 8px 20px var(--glow); }
+    .artcard-top { display: flex; align-items: center; gap: 6px; margin-bottom: 5px; }
+    .artcard-fav { width: 15px; height: 15px; border-radius: 4px; flex-shrink: 0; }
+    .artcard-outlet {
+      font-size: 9.5px; font-weight: 800; color: var(--p);
+      letter-spacing: .03em; text-transform: uppercase;
+      white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+    }
+    .artcard-date { font-size: 8.5px; color: var(--muted); margin-left: auto; white-space: nowrap; }
+    .artcard-h {
+      font-size: 11.5px; font-weight: 600; color: var(--black); line-height: 1.34;
+      display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;
+    }
+    .reel-articles .reel-tag {
+      background: var(--p); color: #fff; padding: 4px 10px; border-radius: 20px;
+      right: auto; text-shadow: none; font-size: 11px; z-index: 4;
+      box-shadow: 0 4px 12px rgba(108, 59, 255, .35);
+    }
+
     /* ===== NUMBERED 6-SERVICE LIST (services right column) ===== */
     .svc6-kicker {
       font-size: 12px;
@@ -2964,22 +3007,21 @@
         <div class="reels-wrap">
           <div class="reels" id="svcReels">
             <div class="reel">
-              <video src="assets/videos/reel1.mp4" poster="assets/videos/reel1.jpg" muted loop playsinline preload="none"></video>
-              <div class="reel-play"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
-              <div class="reel-tag">Press Conference</div>
-            </div>
-            <div class="reel">
-              <video src="assets/videos/reel2.mp4" poster="assets/videos/reel2.jpg" muted loop playsinline preload="none"></video>
-              <div class="reel-play"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
-              <div class="reel-tag">On Ground</div>
-            </div>
-            <div class="reel">
               <video src="assets/videos/reel3.mp4" poster="assets/videos/reel3.jpg" muted loop playsinline preload="none"></video>
               <div class="reel-play"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
               <div class="reel-tag">Coverage</div>
             </div>
+            <div class="reel">
+              <video src="assets/videos/reel1.mp4" poster="assets/videos/reel1.jpg" muted loop playsinline preload="none"></video>
+              <div class="reel-play"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
+              <div class="reel-tag">Press Conference</div>
+            </div>
+            <div class="reel reel-articles">
+              <div class="artfeed"><div class="artfeed-track" id="artfeedTrack"></div></div>
+              <div class="reel-tag">In the News</div>
+            </div>
           </div>
-          <div class="reels-note"><span class="rn-dot"></span>Hover to play &middot; tap on mobile &middot; swipe for more</div>
+          <div class="reels-note"><span class="rn-dot"></span>Hover to play &middot; tap on mobile &middot; hover the news card to pause</div>
         </div>
       </div>
       <div class="reveal-r">
@@ -4880,6 +4922,31 @@ scene.add(centralArt);
           });
         }
       });
+
+      // Build the "In the News" coverage feed
+      var track = document.getElementById('artfeedTrack');
+      if (track) {
+        var fav = function (d) {
+          return 'https://t3.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=http://' + d + '&size=64';
+        };
+        var ARTICLES = [
+          { o: 'India Today', d: 'indiatoday.in', dt: 'Jun 2025', h: 'Lafangey review: An emotionally enriching show about career, family and society', u: 'https://www.indiatoday.in/showbuzz/reviews/story/lafangey-ott-show-review-emotionally-enriching-series-about-career-family-and-society-2736665-2025-06-06' },
+          { o: 'Financial Express', d: 'financialexpress.com', dt: 'Jun 2025', h: 'Viral content creator Aman Sharma expands into the indie music scene', u: 'https://www.financialexpress.com/life/entertainment-viral-content-creator-aman-sharma-expands-into-indie-music-scene-3849346/' },
+          { o: 'NDTV', d: 'ndtv.com', dt: '2024', h: 'Purav Jha soon to debut on OTT with new web series Campus Diaries', u: 'https://ndtv.in/television/purav-jha-soon-to-debut-on-ott-with-new-web-series-campus-diaries-2696879' },
+          { o: 'Outlook India', d: 'outlookindia.com', dt: '2025', h: 'Viral content creator Aman Sharma expands into indie music scene', u: 'https://www.outlookindia.com/hub4business/viral-content-creator-aman-sharma-expands-into-indie-music-scene' },
+          { o: 'Zee News', d: 'zeenews.india.com', dt: '2025', h: 'Lafangey Trailer: Check streaming platform, when and where to watch', u: 'https://zeenews.india.com/entertainment/web-series/lafangey-trailer-check-streaming-platform-when-and-where-to-watch-2910171.html' },
+          { o: 'News18', d: 'news18.com', dt: 'Jun 2025', h: "Lafangey X review: Fans give a thumbs up to Harsh Beniwal's show", u: 'https://www.news18.com/movies/bollywood/lafangey-season-1-x-review-fans-give-a-thumbs-up-to-harsh-beniwals-show-ws-l-aa-9373624.html' }
+        ];
+        var html = ARTICLES.map(function (a) {
+          return '<a class="artcard" href="' + a.u + '" target="_blank" rel="noopener">' +
+            '<div class="artcard-top">' +
+            '<img class="artcard-fav" src="' + fav(a.d) + '" alt="" loading="lazy">' +
+            '<span class="artcard-outlet">' + a.o + '</span>' +
+            '<span class="artcard-date">' + a.dt + '</span>' +
+            '</div><div class="artcard-h">' + a.h + '</div></a>';
+        }).join('');
+        track.innerHTML = html + html; // duplicate for seamless loop
+      }
     })();
   </script>
 </body>
