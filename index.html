@@ -1105,18 +1105,66 @@
       color: var(--p);
       margin-bottom: 16px;
     }
+    .svc6-hint {
+      font-size: 12px;
+      color: var(--muted);
+      margin: -8px 0 14px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .svc6-hint::before {
+      content: "";
+      width: 6px; height: 6px; border-radius: 50%;
+      background: var(--p);
+    }
     .svc6-list { display: flex; flex-direction: column; }
     .svc6-row {
       display: flex;
       gap: 16px;
       align-items: flex-start;
-      padding: 16px 10px;
+      padding: 16px 12px;
       border-bottom: 1px solid var(--border);
       border-radius: 12px;
-      transition: background .3s, transform .3s;
+      transition: background .3s;
+      cursor: pointer;
+      -webkit-tap-highlight-color: transparent;
     }
     .svc6-row:last-child { border-bottom: none; }
-    .svc6-row:hover { background: var(--pl); transform: translateX(4px); }
+    .svc6-row:hover { background: var(--pl); }
+    .svc6-row.open { background: var(--pl); }
+    .svc6-chev {
+      width: 18px; height: 18px;
+      flex-shrink: 0;
+      color: var(--muted);
+      margin-top: 3px;
+      transition: transform .35s, color .3s;
+    }
+    .svc6-row.open .svc6-chev { transform: rotate(180deg); color: var(--p); }
+    .svc6-row.open .svc6-num { color: var(--p); }
+    /* expandable detail */
+    .svc6-detail {
+      max-height: 0;
+      overflow: hidden;
+      opacity: 0;
+      margin-top: 0;
+      transition: max-height .4s ease, opacity .3s, margin-top .3s;
+    }
+    .svc6-row.open .svc6-detail {
+      max-height: 360px;
+      opacity: 1;
+      margin-top: 11px;
+    }
+    .svc6-chips { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 9px; }
+    .svc6-chip {
+      display: inline-flex; align-items: center; gap: 6px;
+      font-size: 11.5px; font-weight: 600; color: var(--black);
+      background: #fff; border: 1px solid var(--border);
+      border-radius: 20px; padding: 4px 10px; white-space: nowrap;
+    }
+    .svc6-chip img { width: 14px; height: 14px; border-radius: 4px; flex-shrink: 0; }
+    .svc6-chip-p { background: var(--pl); border-color: transparent; color: var(--p); }
+    .svc6-note { font-size: 12.5px; color: var(--muted); line-height: 1.55; margin: 0; }
     .svc6-num {
       font-family: 'Inter Tight', sans-serif;
       font-size: 15px;
@@ -1127,7 +1175,7 @@
       min-width: 24px;
       font-variant-numeric: tabular-nums;
     }
-    .svc6-txt { min-width: 0; }
+    .svc6-txt { min-width: 0; flex: 1; }
     .svc6-txt h3 {
       font-size: 16.5px;
       font-weight: 700;
@@ -3026,49 +3074,119 @@
       </div>
       <div class="reveal-r">
         <div class="svc6-kicker">What We Do</div>
-        <div class="svc6-list">
-          <div class="svc6-row">
+        <div class="svc6-hint">Tap a service to see examples</div>
+        <div class="svc6-list" id="whatWeDo">
+
+          <div class="svc6-row open" role="button" tabindex="0" aria-expanded="true">
             <span class="svc6-num">01</span>
             <div class="svc6-txt">
               <h3>Press &amp; Publications <span class="svc6-cnt">70+ magazines</span></h3>
               <p>We get your brand featured in top newspapers and magazines.</p>
+              <div class="svc6-detail"><div class="svc6-detail-in">
+                <div class="svc6-chips">
+                  <span class="svc6-chip"><img src="https://t3.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=http://forbesindia.com&size=64" alt="">Forbes India</span>
+                  <span class="svc6-chip"><img src="https://t3.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=http://timesofindia.com&size=64" alt="">Times of India</span>
+                  <span class="svc6-chip"><img src="https://t3.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=http://hindustantimes.com&size=64" alt="">Hindustan Times</span>
+                  <span class="svc6-chip"><img src="https://t3.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=http://outlookindia.com&size=64" alt="">Outlook</span>
+                  <span class="svc6-chip"><img src="https://t3.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=http://mid-day.com&size=64" alt="">Mid-Day</span>
+                </div>
+                <p class="svc6-note">Guaranteed placements across 70+ national and regional titles, in print and digital.</p>
+              </div></div>
             </div>
+            <svg class="svc6-chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
           </div>
-          <div class="svc6-row">
+
+          <div class="svc6-row" role="button" tabindex="0" aria-expanded="false">
             <span class="svc6-num">02</span>
             <div class="svc6-txt">
               <h3>Press Conferences</h3>
               <p>We get your launch covered by top media through a press conference we organise for you.</p>
+              <div class="svc6-detail"><div class="svc6-detail-in">
+                <div class="svc6-chips">
+                  <span class="svc6-chip svc6-chip-p">Venue &amp; setup</span>
+                  <span class="svc6-chip svc6-chip-p">20-30 journalists</span>
+                  <span class="svc6-chip svc6-chip-p">Press kit</span>
+                  <span class="svc6-chip svc6-chip-p">Photo &amp; video</span>
+                  <span class="svc6-chip svc6-chip-p">Same-day coverage</span>
+                </div>
+                <p class="svc6-note">We plan the venue, invite the right press, and capture it all so your launch makes the news.</p>
+              </div></div>
             </div>
+            <svg class="svc6-chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
           </div>
-          <div class="svc6-row">
+
+          <div class="svc6-row" role="button" tabindex="0" aria-expanded="false">
             <span class="svc6-num">03</span>
             <div class="svc6-txt">
               <h3>News Page Features</h3>
               <p>We get your brand featured on the official Instagram pages of big news channels.</p>
+              <div class="svc6-detail"><div class="svc6-detail-in">
+                <div class="svc6-chips">
+                  <span class="svc6-chip"><img src="https://t3.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=http://aninews.in&size=64" alt="">ANI</span>
+                  <span class="svc6-chip"><img src="https://t3.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=http://zeenews.india.com&size=64" alt="">Zee News</span>
+                  <span class="svc6-chip"><img src="https://t3.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=http://abplive.com&size=64" alt="">ABP</span>
+                  <span class="svc6-chip"><img src="https://t3.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=http://news18.com&size=64" alt="">News18</span>
+                </div>
+                <p class="svc6-note">Reach millions through the verified Instagram handles of leading news channels.</p>
+              </div></div>
             </div>
+            <svg class="svc6-chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
           </div>
-          <div class="svc6-row">
+
+          <div class="svc6-row" role="button" tabindex="0" aria-expanded="false">
             <span class="svc6-num">04</span>
             <div class="svc6-txt">
               <h3>Meme Marketing</h3>
               <p>We get your brand featured on India's biggest meme pages.</p>
+              <div class="svc6-detail"><div class="svc6-detail-in">
+                <div class="svc6-chips">
+                  <span class="svc6-chip svc6-chip-p">50M+ combined reach</span>
+                  <span class="svc6-chip svc6-chip-p">Top meme communities</span>
+                  <span class="svc6-chip svc6-chip-p">Reels &amp; posts</span>
+                  <span class="svc6-chip svc6-chip-p">Viral-first formats</span>
+                </div>
+                <p class="svc6-note">Native, scroll-stopping placements on India's largest meme pages for mass reach.</p>
+              </div></div>
             </div>
+            <svg class="svc6-chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
           </div>
-          <div class="svc6-row">
+
+          <div class="svc6-row" role="button" tabindex="0" aria-expanded="false">
             <span class="svc6-num">05</span>
             <div class="svc6-txt">
               <h3>Podcasts</h3>
               <p>We get you featured as a guest on the most popular podcasts.</p>
+              <div class="svc6-detail"><div class="svc6-detail-in">
+                <div class="svc6-chips">
+                  <span class="svc6-chip svc6-chip-p">Founder interviews</span>
+                  <span class="svc6-chip svc6-chip-p">Long-form video</span>
+                  <span class="svc6-chip svc6-chip-p">Audio + YouTube</span>
+                  <span class="svc6-chip svc6-chip-p">Top-ranked shows</span>
+                </div>
+                <p class="svc6-note">Booked as a guest on popular business and entertainment podcasts, on audio and video.</p>
+              </div></div>
             </div>
+            <svg class="svc6-chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
           </div>
-          <div class="svc6-row">
+
+          <div class="svc6-row" role="button" tabindex="0" aria-expanded="false">
             <span class="svc6-num">06</span>
             <div class="svc6-txt">
               <h3>Influencer Collaborations</h3>
               <p>We get your brand featured by big influencers to their followers.</p>
+              <div class="svc6-detail"><div class="svc6-detail-in">
+                <div class="svc6-chips">
+                  <span class="svc6-chip svc6-chip-p">Nano to celebrity</span>
+                  <span class="svc6-chip svc6-chip-p">Instagram &amp; YouTube</span>
+                  <span class="svc6-chip svc6-chip-p">Reels &amp; shorts</span>
+                  <span class="svc6-chip svc6-chip-p">Niche-matched</span>
+                </div>
+                <p class="svc6-note">Matched with creators whose audience is exactly your target market.</p>
+              </div></div>
             </div>
+            <svg class="svc6-chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
           </div>
+
         </div>
       </div>
     </div>
@@ -4946,6 +5064,23 @@ scene.add(centralArt);
             '</div><div class="artcard-h">' + a.h + '</div></a>';
         }).join('');
         track.innerHTML = html + html; // duplicate for seamless loop
+      }
+
+      // "What We Do" accordion
+      var wwd = document.getElementById('whatWeDo');
+      if (wwd) {
+        var rows = wwd.querySelectorAll('.svc6-row');
+        rows.forEach(function (row) {
+          function toggle() {
+            var isOpen = row.classList.contains('open');
+            rows.forEach(function (o) { o.classList.remove('open'); o.setAttribute('aria-expanded', 'false'); });
+            if (!isOpen) { row.classList.add('open'); row.setAttribute('aria-expanded', 'true'); }
+          }
+          row.addEventListener('click', toggle);
+          row.addEventListener('keydown', function (e) {
+            if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); toggle(); }
+          });
+        });
       }
     })();
   </script>
