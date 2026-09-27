@@ -1,4 +1,0 @@
-User-agent: *
-Allow: /
-
-Sitemap: https://infusionbizz.com/sitemap.xml

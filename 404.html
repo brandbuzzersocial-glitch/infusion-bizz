@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noindex, follow">
+  <title>Page Not Found (404) | Infusion Bizz</title>
+  <link rel="icon" type="image/png" href="/logo.png">
+  <style>
+    :root { --p: #6C3BFF; --bg: #0e0520; }
+    * { margin: 0; box-sizing: border-box; }
+    body {
+      background: radial-gradient(circle at 50% -10%, rgba(108,59,255,.35), transparent 55%), var(--bg);
+      color: #fff; min-height: 100vh; display: flex; align-items: center; justify-content: center;
+      font-family: 'Inter Tight', system-ui, -apple-system, Segoe UI, Roboto, sans-serif; text-align: center; padding: 24px;
+    }
+    .wrap { max-width: 560px; }
+    img { height: 54px; width: auto; filter: brightness(0) invert(1); margin-bottom: 40px; }
+    .code { font-size: clamp(64px, 18vw, 120px); font-weight: 900; line-height: 1; letter-spacing: -2px;
+      background: linear-gradient(90deg, #a78bfa, #7c3aed, #c084fc); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; }
+    h1 { font-size: clamp(20px, 5vw, 28px); font-weight: 700; margin: 18px 0 10px; }
+    p { color: rgba(255,255,255,.6); font-size: 15.5px; line-height: 1.6; margin-bottom: 30px; }
+    .btns { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
+    a.btn { text-decoration: none; font-weight: 600; font-size: 14.5px; border-radius: 100px; padding: 13px 26px; transition: transform .2s, box-shadow .2s; }
+    a.primary { background: var(--p); color: #fff; box-shadow: 0 10px 30px rgba(108,59,255,.4); }
+    a.ghost { border: 1px solid rgba(255,255,255,.2); color: #fff; }
+    a.btn:hover { transform: translateY(-2px); }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <img src="/logo.png" alt="Infusion Bizz">
+    <div class="code">404</div>
+    <h1>This page could not be found</h1>
+    <p>The page you are looking for may have moved or no longer exists. Let's get you back on track.</p>
+    <div class="btns">
+      <a class="btn primary" href="/">Back to Home</a>
+      <a class="btn ghost" href="/our-work">See Our Work</a>
+    </div>
+  </div>
+</body>
+</html>
