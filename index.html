@@ -95,6 +95,18 @@
           "addressCountry": "IN"
         },
         "areaServed": { "@type": "Country", "name": "India" },
+        "hasOfferCatalog": {
+          "@type": "OfferCatalog",
+          "name": "PR & Media Services",
+          "itemListElement": [
+            { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Press & Publications", "description": "Brand features in top newspapers and magazines." } },
+            { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Press Conferences", "description": "Launch coverage by top media through a press conference we organise." } },
+            { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "News Page Features", "description": "Features on the official Instagram pages of big news channels." } },
+            { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Meme Marketing", "description": "Placements on India's biggest meme pages." } },
+            { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Podcasts", "description": "Guest features on popular podcasts." } },
+            { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Influencer Collaborations", "description": "Brand features by big influencers to their followers." } }
+          ]
+        },
         "sameAs": [
           "https://www.instagram.com/infusionbizz",
           "https://www.facebook.com/share/1BDQwVegn7/",
@@ -111,7 +123,7 @@
   <link
     href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@500;600;700;800;900&family=Inter:wght@400;500;600&display=swap"
     rel="stylesheet">
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+  <link rel="preload" as="script" href="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js">
   <style>
     :root {
       --p: #6C3BFF;
@@ -4144,6 +4156,8 @@ values commitment and quality service.
   </a>
 
 
+  <!-- Three.js loaded here (not in <head>) so it no longer blocks first paint; preloaded above -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
   <script>
     /* CURSOR */
     const cur = document.getElementById('cursor'), ring = document.getElementById('cursor-ring');
